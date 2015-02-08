@@ -1,3 +1,5 @@
 DigitalWatch/DigitalWatch/obj/
 DigitalWatch/DigitalWatch/bin/
 *.suo
+DigitalWatch/DigitalWatch.Tests/bin/
+DigitalWatch/DigitalWatch.Tests/obj/
