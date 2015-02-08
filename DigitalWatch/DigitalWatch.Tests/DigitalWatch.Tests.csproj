@@ -51,7 +51,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Behaviors\StopwatchBehaviorTests.cs" />
     <Compile Include="Behaviors\TimeBehaviorTests.cs" />
+    <Compile Include="Displays\DefaultDisplayTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

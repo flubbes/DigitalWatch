@@ -44,6 +44,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Core\Clock.cs" />
+    <Compile Include="Core\ClockTickEventHandler.cs" />
+    <Compile Include="Core\IClock.cs" />
+    <Compile Include="Behaviors\IClockBehavior.cs" />
+    <Compile Include="Behaviors\TimeBehavior.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
