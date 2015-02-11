@@ -1,4 +1,6 @@
-﻿namespace DigitalWatch.Displays
+﻿using DigitalWatch.Displays.UpdateEvent;
+
+namespace DigitalWatch.Displays
 {
     public class DefaultDisplay : IClockDisplay
     {

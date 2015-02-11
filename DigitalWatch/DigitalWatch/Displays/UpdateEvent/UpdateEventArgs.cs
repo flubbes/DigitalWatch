@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace DigitalWatch.Displays
+namespace DigitalWatch.Displays.UpdateEvent
 {
     public class UpdateEventArgs : EventArgs
     {

@@ -1,5 +1,6 @@
 ﻿using System;
 using DigitalWatch.Behaviors;
+using DigitalWatch.Tests.Core;
 using FluentAssertions;
 using NUnit.Framework;
 

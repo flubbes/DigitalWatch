@@ -1,7 +1,7 @@
 ﻿using System;
 using DigitalWatch.Core;
 
-namespace DigitalWatch.Tests.Behaviors
+namespace DigitalWatch.Tests.Core
 {
     public class TestableClock : IClock
     {
