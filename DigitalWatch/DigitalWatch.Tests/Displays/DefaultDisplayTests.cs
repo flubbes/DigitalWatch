@@ -1,4 +1,4 @@
-﻿using System;
+﻿using DigitalWatch.Displays;
 using FluentAssertions;
 using NUnit.Framework;
 
@@ -45,30 +45,5 @@ namespace DigitalWatch.Tests.Displays
 
             displayData.Should().Be("Test");
         }
-    }
-
-    public delegate void UpdateEventHandler(object sender, UpdateEventArgs e);
-
-    public class UpdateEventArgs : EventArgs
-    {
-        public string DisplayData { get; set; }
-    }
-
-    public interface IClockDisplay
-    {
-
-    }
-
-    public class DefaultDisplay : IClockDisplay
-    {
-        public void TriggerUpdate(string displayData)
-        {
-            Update(this, new UpdateEventArgs
-            {
-                DisplayData = displayData
-            });
-        }
-
-        public event UpdateEventHandler Update;
     }
 }
