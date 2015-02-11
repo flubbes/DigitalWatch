@@ -1,6 +1,5 @@
 ﻿using System;
 using DigitalWatch.Behaviors;
-using DigitalWatch.Core;
 using FluentAssertions;
 using NUnit.Framework;
 
@@ -32,19 +31,6 @@ namespace DigitalWatch.Tests.Behaviors
             _behavior.Time = previousValue;
             _testableClock.TriggerEvent();
             _behavior.Time.Should().Be(previousValue.AddSeconds(1.0));
-        }
-
-        private class TestableClock : IClock
-        {
-            public event ClockTickEventHandler Tick;
-
-            public void TriggerEvent()
-            {
-                if (Tick != null)
-                {
-                    Tick(this, EventArgs.Empty);
-                }
-            }
         }
     }
 }
