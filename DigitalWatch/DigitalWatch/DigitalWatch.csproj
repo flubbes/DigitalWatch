@@ -63,6 +63,10 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Ticks\DefaultClockTick.cs" />
+    <Compile Include="Ticks\IThreadProxy.cs" />
+    <Compile Include="Ticks\IThreadRoutineBuilder.cs" />
+    <Compile Include="Ticks\ITick.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
