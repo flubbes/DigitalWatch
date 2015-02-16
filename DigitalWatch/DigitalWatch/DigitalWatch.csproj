@@ -67,6 +67,7 @@
     <Compile Include="Ticks\IThreadProxy.cs" />
     <Compile Include="Ticks\IThreadRoutineBuilder.cs" />
     <Compile Include="Ticks\ITick.cs" />
+    <Compile Include="Ticks\ThreadProxy.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
