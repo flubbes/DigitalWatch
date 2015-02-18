@@ -36,7 +36,7 @@ namespace DigitalWatch.Tests.Behaviors
         public void CanHookUpToClockTickEvent_And_IncrementsWhenTriggered()
         {
             var previousValue = _behavior.TimeSpan;
-            _testableClock.TriggerEvent();
+            _testableClock.TriggerTickEvent();
             _behavior.TimeSpan.Should().Be(previousValue + new TimeSpan(0, 0, 0, 1));
         }
     }

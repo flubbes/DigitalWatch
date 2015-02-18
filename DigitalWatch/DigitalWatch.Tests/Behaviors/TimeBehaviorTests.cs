@@ -30,7 +30,7 @@ namespace DigitalWatch.Tests.Behaviors
         {
             var previousValue = DateTime.Now;
             _behavior.Time = previousValue;
-            _testableClock.TriggerEvent();
+            _testableClock.TriggerTickEvent();
             _behavior.Time.Should().Be(previousValue.AddSeconds(1.0));
         }
     }
