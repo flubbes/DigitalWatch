@@ -3,14 +3,9 @@ using DigitalWatch.Core;
 
 namespace DigitalWatch.Behaviors
 {
-    public class StopwatchBehavior : IClockBehavior
+    public class StopwatchBehavior : ClockBehavior
     {
         public TimeSpan TimeSpan { get; set; }
-
-        public StopwatchBehavior(IClock clock)
-        {
-            clock.Tick += Tick;
-        }
 
         public void IncrementTimeSpan()
         {
@@ -20,6 +15,11 @@ namespace DigitalWatch.Behaviors
         private void Tick(object sender, EventArgs eventArgs)
         {
             IncrementTimeSpan();
+        }
+
+        public override void SetClock(IClock clock)
+        {
+            clock.Tick += Tick;
         }
     }
 }

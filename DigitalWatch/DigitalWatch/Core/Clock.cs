@@ -6,9 +6,9 @@ namespace DigitalWatch.Core
     {
         public event ClockTickEventHandler Tick;
 
-        public IClockBehavior Behavior { get; set; }
+        public ClockBehavior Behavior { get; set; }
 
-        public void SwitchBehavior<T>() where T : IClockBehavior, new()
+        public void SwitchBehavior<T>() where T : ClockBehavior, new()
         {
             Behavior = new T();
         }

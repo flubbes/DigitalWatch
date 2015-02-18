@@ -8,15 +8,11 @@ namespace DigitalWatch.Tests.Core
     {
         public event ClockTickEventHandler Tick;
 
-        public IClockBehavior Behavior
-        {
-            get { throw new NotImplementedException(); }
-            set { throw new NotImplementedException(); }
-        }
+        public ClockBehavior Behavior { get; set; }
 
-        public void SwitchBehavior<T>() where T : IClockBehavior, new()
+        public void SwitchBehavior<T>() where T : ClockBehavior, new()
         {
-            throw new NotImplementedException();
+            
         }
 
         public void TriggerTickEvent()

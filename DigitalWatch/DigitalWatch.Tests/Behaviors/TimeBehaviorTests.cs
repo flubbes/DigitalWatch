@@ -16,13 +16,13 @@ namespace DigitalWatch.Tests.Behaviors
         public void SetUp()
         {
             _testableClock = new TestableClock();
-            _behavior = new TimeBehavior(_testableClock);
+            _behavior = new TimeBehavior();
         }
 
         [Test]
         public void IsDerivedFromClockBehaviorInterface()
         {
-            _behavior.Should().BeAssignableTo<IClockBehavior>();
+            _behavior.Should().BeAssignableTo<ClockBehavior>();
         }
 
         [Test]

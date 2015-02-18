@@ -49,7 +49,7 @@
     <Compile Include="Core\Clock.cs" />
     <Compile Include="Core\ClockTickEventHandler.cs" />
     <Compile Include="Core\IClock.cs" />
-    <Compile Include="Behaviors\IClockBehavior.cs" />
+    <Compile Include="Behaviors\ClockBehavior.cs" />
     <Compile Include="Behaviors\TimeBehavior.cs" />
     <Compile Include="Displays\DefaultDisplay.cs" />
     <Compile Include="Displays\IClockDisplay.cs" />
