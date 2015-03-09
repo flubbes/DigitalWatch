@@ -25,6 +25,15 @@
         isAbstract="false"
         isLeaf="false"
         isActiveClass="false">
+        <suppliersInternal>
+          <interfaceRealization
+            Id="19181457-6c53-451a-8f75-bd7cfd0467c6">
+            <interfaceMoniker
+              Id="b037b587-effd-4aa4-9c16-695c93448938"
+              LastKnownName="IClock"
+              LastKnownLocation="DigitalWatchModelingProject.uml" />
+          </interfaceRealization>
+        </suppliersInternal>
         <ownedAttributesInternal>
           <property
             Id="95c34eb8-8211-408a-bb12-6c3d8b8f7390"
@@ -41,24 +50,6 @@
               <interfaceMoniker
                 Id="ec1c2cb7-293b-4dcf-835a-26a719458746"
                 LastKnownName="IClockDisplay"
-                LastKnownLocation="DigitalWatchModelingProject.uml" />
-            </type_NamedElement>
-          </property>
-          <property
-            Id="db57ca1b-0330-4bee-a911-97ba0fc812b7"
-            name="Behavior"
-            isLeaf="false"
-            isStatic="false"
-            isReadOnly="false"
-            isUnique="false"
-            isDerived="false"
-            isDerivedUnion="false"
-            aggregation="None"
-            isComposite="false">
-            <type_NamedElement>
-              <interfaceMoniker
-                Id="5385459a-7041-4c8e-935d-9b4cda1e265e"
-                LastKnownName="IClockBehavior"
                 LastKnownLocation="DigitalWatchModelingProject.uml" />
             </type_NamedElement>
           </property>
@@ -91,7 +82,35 @@
                 LastKnownLocation="DigitalWatchModelingProject.uml" />
             </type_NamedElement>
           </property>
+          <property
+            Id="4e41f6e1-4410-4016-8f38-1d684dff07cc"
+            name="Behavior"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <classMoniker
+                Id="d89dba3a-c3eb-400d-a8a8-d3fa987a9b0e"
+                LastKnownName="ClockBehavior"
+                LastKnownLocation="DigitalWatchModelingProject.uml" />
+            </type_NamedElement>
+          </property>
         </ownedAttributesInternal>
+        <ownedOperationsInternal>
+          <operation
+            Id="57132f26-1b9c-4dc4-8773-04f64eb65d0a"
+            name="SwitchBehavior&lt;T&gt;"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="true"
+            concurrency="Sequential"
+            isQuery="false" />
+        </ownedOperationsInternal>
       </class>
     </packageHasNamedElement>
     <packageHasNamedElement>
@@ -105,7 +124,7 @@
     <packageHasNamedElement>
       <class
         Id="7d818a0b-0fec-4486-af3a-0f03f4d01d51"
-        name="NumericDisplay"
+        name="DefaultDisplay"
         isAbstract="false"
         isLeaf="false"
         isActiveClass="false">
@@ -320,6 +339,16 @@
               LastKnownLocation="DigitalWatchModelingProject.uml" />
           </interfaceRealization>
         </suppliersInternal>
+        <generalsInternal>
+          <generalization
+            Id="b534243c-0ed2-489c-a151-2421da59c424"
+            isSubstitutable="false">
+            <classMoniker
+              Id="3b08b32a-5973-4a3c-9f08-bbf087c1acd0"
+              LastKnownName="SingletonClockBehavior"
+              LastKnownLocation="DigitalWatchModelingProject.uml" />
+          </generalization>
+        </generalsInternal>
         <ownedAttributesInternal>
           <property
             Id="fa20f1a9-cde1-4307-bbaf-fed69d9c22d3"
@@ -339,25 +368,34 @@
                 LastKnownLocation="DigitalWatchModelingProject.uml" />
             </type_NamedElement>
           </property>
-          <property
-            Id="f88aff53-002d-4ada-b6a7-d6534e71db2c"
-            name="IsVolatile"
+        </ownedAttributesInternal>
+        <ownedOperationsInternal>
+          <operation
+            Id="4403ecfa-76aa-4a78-815a-2d6bdcb46081"
+            name="SetClock"
             isLeaf="false"
             isStatic="false"
-            isReadOnly="false"
-            isUnique="false"
-            isDerived="false"
-            isDerivedUnion="false"
-            aggregation="None"
-            isComposite="false">
-            <type_NamedElement>
-              <primitiveTypeMoniker
-                Id="8943dc84-709e-4f62-b15a-a3273aa6f165"
-                LastKnownName="Boolean"
-                LastKnownLocation="DigitalWatchModelingProject.uml" />
-            </type_NamedElement>
-          </property>
-        </ownedAttributesInternal>
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="f56e971d-8613-403e-9fc4-fbdc410590ff"
+                  name="clock"
+                  direction="In"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="33a80091-a26a-439b-b540-ffb9a430bdef"
+                      LastKnownName="IClock"
+                      LastKnownLocation="DigitalWatchModelingProject.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+        </ownedOperationsInternal>
       </class>
     </packageHasNamedElement>
     <packageHasNamedElement>
@@ -376,6 +414,16 @@
               LastKnownLocation="DigitalWatchModelingProject.uml" />
           </interfaceRealization>
         </suppliersInternal>
+        <generalsInternal>
+          <generalization
+            Id="0d03a652-51f4-447f-af01-0a6213b258fa"
+            isSubstitutable="false">
+            <classMoniker
+              Id="d89dba3a-c3eb-400d-a8a8-d3fa987a9b0e"
+              LastKnownName="ClockBehavior"
+              LastKnownLocation="DigitalWatchModelingProject.uml" />
+          </generalization>
+        </generalsInternal>
         <ownedAttributesInternal>
           <property
             Id="f44a40a1-2a9c-4899-bdb9-7b8efe4927fd"
@@ -394,25 +442,34 @@
                 LastKnownLocation="DigitalWatchModelingProject.uml" />
             </type_NamedElement>
           </property>
-          <property
-            Id="cd699f2f-fb8b-403a-bd6f-2f40c1e2fc44"
-            name="IsVolatile"
+        </ownedAttributesInternal>
+        <ownedOperationsInternal>
+          <operation
+            Id="c90a2a27-730b-4dc2-8201-c763cc31d7ab"
+            name="SetClock"
             isLeaf="false"
             isStatic="false"
-            isReadOnly="false"
-            isUnique="false"
-            isDerived="false"
-            isDerivedUnion="false"
-            aggregation="None"
-            isComposite="false">
-            <type_NamedElement>
-              <primitiveTypeMoniker
-                Id="8943dc84-709e-4f62-b15a-a3273aa6f165"
-                LastKnownName="Boolean"
-                LastKnownLocation="DigitalWatchModelingProject.uml" />
-            </type_NamedElement>
-          </property>
-        </ownedAttributesInternal>
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="4b092b86-42b3-4a2d-bdbc-e1f390206043"
+                  name="clock"
+                  direction="In"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="33a80091-a26a-439b-b540-ffb9a430bdef"
+                      LastKnownName="IClock"
+                      LastKnownLocation="DigitalWatchModelingProject.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+        </ownedOperationsInternal>
       </class>
     </packageHasNamedElement>
     <packageHasNamedElement>
@@ -431,26 +488,43 @@
               LastKnownLocation="DigitalWatchModelingProject.uml" />
           </interfaceRealization>
         </suppliersInternal>
-        <ownedAttributesInternal>
-          <property
-            Id="95974472-1cd0-4bb7-bfdd-ed73bd2fab69"
-            name="IsVolatile"
+        <generalsInternal>
+          <generalization
+            Id="10b10f4b-9899-4d23-9e2d-1b382ed5156f"
+            isSubstitutable="false">
+            <classMoniker
+              Id="d89dba3a-c3eb-400d-a8a8-d3fa987a9b0e"
+              LastKnownName="ClockBehavior"
+              LastKnownLocation="DigitalWatchModelingProject.uml" />
+          </generalization>
+        </generalsInternal>
+        <ownedOperationsInternal>
+          <operation
+            Id="187b43e0-ea0e-44b8-af4f-85b141145cea"
+            name="SetClock"
             isLeaf="false"
             isStatic="false"
-            isReadOnly="false"
-            isUnique="false"
-            isDerived="false"
-            isDerivedUnion="false"
-            aggregation="None"
-            isComposite="false">
-            <type_NamedElement>
-              <primitiveTypeMoniker
-                Id="8943dc84-709e-4f62-b15a-a3273aa6f165"
-                LastKnownName="Boolean"
-                LastKnownLocation="DigitalWatchModelingProject.uml" />
-            </type_NamedElement>
-          </property>
-        </ownedAttributesInternal>
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="3d58e4f8-6e03-4fb5-afa0-94678445bc52"
+                  name="clock"
+                  direction="In"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="33a80091-a26a-439b-b540-ffb9a430bdef"
+                      LastKnownName="IClock"
+                      LastKnownLocation="DigitalWatchModelingProject.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+        </ownedOperationsInternal>
       </class>
     </packageHasNamedElement>
     <packageHasNamedElement>
@@ -507,7 +581,7 @@
       <class
         Id="9ec292e5-b3ce-4525-a2ee-971ee0cff080"
         name="StandardClockFactory"
-        isAbstract="false"
+        isAbstract="true"
         isLeaf="false"
         isActiveClass="false">
         <suppliersInternal>
@@ -576,6 +650,194 @@
               </operationHasOwnedParameters>
             </ownedParameters>
           </operation>
+        </ownedOperations>
+      </Interface>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="d89dba3a-c3eb-400d-a8a8-d3fa987a9b0e"
+        name="ClockBehavior"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <ownedOperationsInternal>
+          <operation
+            Id="d451feb3-f750-4371-80db-cc458259f4ae"
+            name="SetClock"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="2b57a2c3-33c2-4f7a-9305-2b0291d9f443"
+                  name="clock"
+                  direction="In"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="33a80091-a26a-439b-b540-ffb9a430bdef"
+                      LastKnownName="IClock"
+                      LastKnownLocation="DigitalWatchModelingProject.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <undefinedType
+        Id="33a80091-a26a-439b-b540-ffb9a430bdef"
+        name="IClock" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="af3c02d4-191e-4cf4-8d38-71d02145c2ef"
+        name="StandardClock"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="3b08b32a-5973-4a3c-9f08-bbf087c1acd0"
+        name="SingletonClockBehavior"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <generalsInternal>
+          <generalization
+            Id="e773dcdf-7371-4e39-8266-403b0a3c6f61"
+            isSubstitutable="false">
+            <classMoniker
+              Id="d89dba3a-c3eb-400d-a8a8-d3fa987a9b0e"
+              LastKnownName="ClockBehavior"
+              LastKnownLocation="DigitalWatchModelingProject.uml" />
+          </generalization>
+        </generalsInternal>
+        <ownedOperationsInternal>
+          <operation
+            Id="01ea3c60-9a9b-4e35-a7d1-84ef9be83437"
+            name="SetClock"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="fa2a72f6-79c5-4799-a930-4c20ac60b872"
+                  name="clock"
+                  direction="In"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="33a80091-a26a-439b-b540-ffb9a430bdef"
+                      LastKnownName="IClock"
+                      LastKnownLocation="DigitalWatchModelingProject.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="0286d4b2-8f9b-4291-b1af-9227e2738477"
+        name="Class1"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <Interface
+        Id="b037b587-effd-4aa4-9c16-695c93448938"
+        name="IClock"
+        isAbstract="false"
+        isLeaf="false">
+        <ownedAttributes>
+          <property
+            Id="46d8fc62-191b-4f56-b8b7-cddadd121d90"
+            name="Behavior"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <classMoniker
+                Id="d89dba3a-c3eb-400d-a8a8-d3fa987a9b0e"
+                LastKnownName="ClockBehavior"
+                LastKnownLocation="DigitalWatchModelingProject.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="af05d8d3-15fa-43e3-89b6-4bec976abd29"
+            name="Buttons"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <undefinedTypeMoniker
+                Id="cb70666b-9090-4a85-9112-ed31db740dd6"
+                LastKnownName="IClockButton[]"
+                LastKnownLocation="DigitalWatchModelingProject.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="6906f413-c681-4a72-9747-3ef5faf822ea"
+            name="Display"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <interfaceMoniker
+                Id="ec1c2cb7-293b-4dcf-835a-26a719458746"
+                LastKnownName="IClockDisplay"
+                LastKnownLocation="DigitalWatchModelingProject.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="5103d1c8-1421-4737-bdd9-b618e0ea9584"
+            name="Event Tick"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false" />
+        </ownedAttributes>
+        <ownedOperations>
+          <operation
+            Id="4918d671-f0cb-4e6e-bb1a-67d969531b86"
+            name="SwitchBehavior&lt;T&gt;"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="true"
+            concurrency="Sequential"
+            isQuery="false" />
         </ownedOperations>
       </Interface>
     </packageHasNamedElement>
