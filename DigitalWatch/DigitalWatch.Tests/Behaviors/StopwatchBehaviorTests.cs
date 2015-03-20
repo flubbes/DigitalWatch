@@ -4,6 +4,8 @@ using FluentAssertions;
 using NUnit.Framework;
 using System;
 using DigitalWatch.Clicks;
+using DigitalWatch.Core;
+using FakeItEasy;
 
 namespace DigitalWatch.Tests.Behaviors
 {
@@ -45,7 +47,10 @@ namespace DigitalWatch.Tests.Behaviors
         [Test]
         public void ModeButtonClickTriggersCorrectAction()
         {
+            var clock = A.Fake<IClock>();
+            _behavior.SetClock(clock);
             _behavior.OnClick(new ModeClick());
+            A.CallTo(() => clock.SwitchBehavior<TimeBehavior>()).MustHaveHappened();
         }
     }
 }
