@@ -1,9 +1,11 @@
-﻿using System.Collections.Generic;
-using DigitalWatch.Behaviors;
+﻿using DigitalWatch.Behaviors;
+using DigitalWatch.Clicks;
 using DigitalWatch.Core;
 using DigitalWatch.Displays;
+using FakeItEasy;
 using FluentAssertions;
 using NUnit.Framework;
+using System.Collections.Generic;
 
 namespace DigitalWatch.Tests
 {
@@ -12,8 +14,8 @@ namespace DigitalWatch.Tests
     {
         private DefaultClockFactory _factory;
 
-        [Test]
-        public void CanCreateFactory()
+        [SetUp]
+        public void SetUp()
         {
             _factory = new DefaultClockFactory();
         }
@@ -24,6 +26,13 @@ namespace DigitalWatch.Tests
             var clock = _factory.Create();
             clock.Behavior.Should().BeOfType<TimeBehavior>();
             clock.Display.Should().BeOfType<DefaultDisplay>();
+        }
+
+        [Test]
+        public void AfterCreation_ClockInBehavior_IsNotNull()
+        {
+            var clock = _factory.Create();
+            clock.Behavior.OnClick(new ModeClick());
         }
     }
 }

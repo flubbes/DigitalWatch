@@ -15,6 +15,7 @@ namespace DigitalWatch
                 Behavior = defaultBehavior,
                 Display = defaultDisplay
             };
+            defaultBehavior.SetClock(defaultClock);
             return defaultClock;
         }
     }
