@@ -16,13 +16,13 @@ namespace DigitalWatch.Tests.Behaviors
         public void SetUp()
         {
             _testableClock = new TestableClock();
-            _behavior = new StopwatchBehavior(_testableClock) { TimeSpan = new TimeSpan() };
+            _behavior = new StopwatchBehavior() { TimeSpan = new TimeSpan() };
         }
 
         [Test]
         public void IsDerivedFromBehaviorInterface()
         {
-            _behavior.Should().BeAssignableTo<IClockBehavior>();
+            _behavior.Should().BeAssignableTo<ClockBehavior>();
         }
 
         [Test]
@@ -36,7 +36,7 @@ namespace DigitalWatch.Tests.Behaviors
         public void CanHookUpToClockTickEvent_And_IncrementsWhenTriggered()
         {
             var previousValue = _behavior.TimeSpan;
-            _testableClock.TriggerEvent();
+            _testableClock.TriggerTickEvent();
             _behavior.TimeSpan.Should().Be(previousValue + new TimeSpan(0, 0, 0, 1));
         }
     }

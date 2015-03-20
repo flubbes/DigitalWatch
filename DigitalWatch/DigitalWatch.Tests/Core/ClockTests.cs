@@ -11,10 +11,15 @@ namespace DigitalWatch.Tests.Core
     {
         private IClock _clock;
 
+        [SetUp]
+        public void SetUp()
+        {
+            _clock = new Clock();
+        }
+
         [Test]
         public void CanSwitchBehavior()
         {
-            _clock = new Clock();
             var previousBehavior = _clock.Behavior;
             _clock.SwitchBehavior<TestBehavior>();
             _clock.Behavior.Should().BeOfType<TestBehavior>();
@@ -28,9 +33,10 @@ namespace DigitalWatch.Tests.Core
             _clock.SwitchBehavior<StopwatchBehavior>();
             _clock.SwitchBehavior<TimeBehavior>();
             _clock.Behavior.Should().Be(behavior);
+            //TODO implement the SingletonClockBehavior
         }
 
-        public class TestBehavior : ClockBehavior
+        private class TestBehavior : ClockBehavior
         {
             public override void SetClock(IClock clock)
             {

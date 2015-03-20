@@ -56,6 +56,7 @@
     <Compile Include="Core\ClockTests.cs" />
     <Compile Include="Core\TestableClock.cs" />
     <Compile Include="Behaviors\TimeBehaviorTests.cs" />
+    <Compile Include="DefaultClockFactoryTests.cs" />
     <Compile Include="Displays\DefaultDisplayTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Ticks\DefaultClockTickTests.cs" />
