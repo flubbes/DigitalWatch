@@ -1,6 +1,6 @@
-﻿using System;
-using DigitalWatch.Behaviors;
+﻿using DigitalWatch.Behaviors;
 using DigitalWatch.Core;
+using System;
 
 namespace DigitalWatch.Tests.Core
 {
@@ -12,7 +12,11 @@ namespace DigitalWatch.Tests.Core
 
         public void SwitchBehavior<T>() where T : ClockBehavior, new()
         {
-            
+        }
+
+        public void RegisterClick(IClockButtonClick clockButtonClick)
+        {
+            throw new NotImplementedException();
         }
 
         public void TriggerTickEvent()

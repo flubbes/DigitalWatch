@@ -15,5 +15,10 @@ namespace DigitalWatch.Core
         {
             Behavior = new T();
         }
+
+        public void RegisterClick(IClockButtonClick clockButtonClick)
+        {
+            Behavior.OnClick(clockButtonClick);
+        }
     }
 }

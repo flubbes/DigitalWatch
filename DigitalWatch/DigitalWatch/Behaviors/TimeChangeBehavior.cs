@@ -1,5 +1,5 @@
-using System;
 using DigitalWatch.Core;
+using System;
 
 namespace DigitalWatch.Behaviors
 {
@@ -43,6 +43,11 @@ namespace DigitalWatch.Behaviors
         private void Tick(object sender, EventArgs e)
         {
             IncrementSecond();
+        }
+
+        public override void OnClick(IClockButtonClick buttonClick)
+        {
+            throw new NotImplementedException();
         }
     }
 }
