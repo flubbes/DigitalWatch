@@ -2,6 +2,7 @@
 using DigitalWatch.Clicks;
 using DigitalWatch.Core;
 using DigitalWatch.Displays;
+using DigitalWatch.Ticks;
 using FakeItEasy;
 using FluentAssertions;
 using NUnit.Framework;
@@ -26,6 +27,7 @@ namespace DigitalWatch.Tests
             var clock = _factory.Create();
             clock.Behavior.Should().BeOfType<TimeBehavior>();
             clock.Display.Should().BeOfType<DefaultDisplay>();
+            clock.TickControl.Should().BeOfType<DefaultClockTickControl>();
         }
 
         [Test]

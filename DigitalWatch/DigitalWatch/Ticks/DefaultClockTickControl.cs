@@ -3,11 +3,11 @@ using System.Threading;
 
 namespace DigitalWatch.Ticks
 {
-    public class DefaultClockTick : ITick
+    public class DefaultClockTickControl : ITickControl
     {
         private Action _routine;
 
-        public DefaultClockTick()
+        public DefaultClockTickControl()
         {
         }
 

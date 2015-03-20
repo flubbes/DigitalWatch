@@ -8,20 +8,20 @@ using System.Threading;
 namespace DigitalWatch.Tests.Ticks
 {
     [TestFixture]
-    public class DefaultClockTickTests
+    public class DefaultClockTickControlTests
     {
-        private ITick _tick;
+        private ITickControl _tickControl;
 
         [SetUp]
         public void SetUp()
         {
-            _tick = new DefaultClockTick();
+            _tickControl = new DefaultClockTickControl();
         }
 
         [Test]
         public void IsDerivedFromTickInterface()
         {
-            _tick.Should().BeAssignableTo<ITick>();
+            _tickControl.Should().BeAssignableTo<ITickControl>();
         }
 
         [Test]
@@ -29,7 +29,7 @@ namespace DigitalWatch.Tests.Ticks
         {
             var counter = 0;
             Action a = () => counter++;
-            _tick.Start(a);
+            _tickControl.Start(a);
             Thread.Sleep(3000);
             counter.Should().Be(3);
         }

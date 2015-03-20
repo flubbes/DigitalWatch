@@ -1,5 +1,6 @@
 ﻿using DigitalWatch.Behaviors;
 using DigitalWatch.Displays;
+using DigitalWatch.Ticks;
 
 namespace DigitalWatch.Core
 {
@@ -10,6 +11,8 @@ namespace DigitalWatch.Core
         public ClockBehavior Behavior { get; set; }
 
         public IClockDisplay Display { get; set; }
+
+        public ITickControl TickControl { get; set; }
 
         public void SwitchBehavior<T>() where T : ClockBehavior, new()
         {

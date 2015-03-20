@@ -2,7 +2,7 @@
 
 namespace DigitalWatch.Ticks
 {
-    public interface ITick
+    public interface ITickControl
     {
         void Start(Action routine);
     }
