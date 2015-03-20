@@ -8,9 +8,17 @@ namespace DigitalWatch.Behaviors
         public DateTime Time { get; set; }
 
         /// <summary>
+        /// Increments the property 'Time' by one (1) Second
+        /// </summary>
+        public void IncrementSecond()
+        {
+            Time = Time.AddSeconds(1.0);
+        }
+
+        /// <summary>
         /// Increments the property 'Time' by one (1) Minute
         /// </summary>
-        public void IncrementMinutes()
+        public void IncrementMinute()
         {
             Time = Time.AddMinutes(1.0);
         }
@@ -34,7 +42,7 @@ namespace DigitalWatch.Behaviors
 
         private void Tick(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            IncrementSecond();
         }
     }
 }
