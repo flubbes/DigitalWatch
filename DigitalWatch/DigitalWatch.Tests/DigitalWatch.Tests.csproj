@@ -62,8 +62,6 @@
     <Compile Include="Displays\DefaultDisplayTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Ticks\DefaultClockTickTests.cs" />
-    <Compile Include="Ticks\ThreadProxyTests.cs" />
-    <Compile Include="Ticks\ThreadRoutineBuilderTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

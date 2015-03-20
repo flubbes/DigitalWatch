@@ -69,7 +69,7 @@ namespace DigitalWatch.Tests.Behaviors
             _behavior.Time = time;
             _testableClock.TriggerTickEvent();
             var t = time.AddSeconds(1);
-            A.CallTo(() => _clockDisplay.OnUpdate("04:04")).MustHaveHappened();
+            A.CallTo(() => _clockDisplay.OnUpdate("0404")).MustHaveHappened();
         }
     }
 }

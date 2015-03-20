@@ -28,28 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.sevenSegmentArray = new DigitalWatch.Controls.SevenSegmentArray();
             this.btnMode = new System.Windows.Forms.Button();
             this.btnSet = new System.Windows.Forms.Button();
             this.btnLight = new System.Windows.Forms.Button();
+            this.sevenSegmentArray = new DigitalWatch.Controls.SevenSegmentArray();
             this.SuspendLayout();
-            // 
-            // sevenSegmentArray
-            // 
-            this.sevenSegmentArray.ArrayCount = 4;
-            this.sevenSegmentArray.ColorBackground = System.Drawing.SystemColors.Control;
-            this.sevenSegmentArray.ColorDark = System.Drawing.Color.Black;
-            this.sevenSegmentArray.ColorLight = System.Drawing.Color.Red;
-            this.sevenSegmentArray.DecimalShow = true;
-            this.sevenSegmentArray.ElementPadding = new System.Windows.Forms.Padding(16);
-            this.sevenSegmentArray.ElementWidth = 10;
-            this.sevenSegmentArray.ItalicFactor = 0F;
-            this.sevenSegmentArray.Location = new System.Drawing.Point(12, 2);
-            this.sevenSegmentArray.Name = "sevenSegmentArray";
-            this.sevenSegmentArray.Size = new System.Drawing.Size(409, 138);
-            this.sevenSegmentArray.TabIndex = 0;
-            this.sevenSegmentArray.TabStop = false;
-            this.sevenSegmentArray.Value = null;
             // 
             // btnMode
             // 
@@ -85,6 +68,23 @@
             this.btnLight.Text = "Light";
             this.btnLight.UseVisualStyleBackColor = true;
             this.btnLight.Click += new System.EventHandler(this.btnLight_Click);
+            // 
+            // sevenSegmentArray
+            // 
+            this.sevenSegmentArray.ArrayCount = 4;
+            this.sevenSegmentArray.ColorBackground = System.Drawing.SystemColors.Control;
+            this.sevenSegmentArray.ColorDark = System.Drawing.Color.Black;
+            this.sevenSegmentArray.ColorLight = System.Drawing.Color.Red;
+            this.sevenSegmentArray.DecimalShow = true;
+            this.sevenSegmentArray.ElementPadding = new System.Windows.Forms.Padding(16);
+            this.sevenSegmentArray.ElementWidth = 10;
+            this.sevenSegmentArray.ItalicFactor = 0F;
+            this.sevenSegmentArray.Location = new System.Drawing.Point(12, 2);
+            this.sevenSegmentArray.Name = "sevenSegmentArray";
+            this.sevenSegmentArray.Size = new System.Drawing.Size(409, 138);
+            this.sevenSegmentArray.TabIndex = 0;
+            this.sevenSegmentArray.TabStop = false;
+            this.sevenSegmentArray.Value = "0000";
             // 
             // FormMain
             // 

@@ -1,21 +1,29 @@
 ﻿using System;
+using System.Threading;
 
 namespace DigitalWatch.Ticks
 {
     public class DefaultClockTick : ITick
     {
-        private readonly IThreadProxy _thread;
-        private readonly IThreadRoutineBuilder _builder;
+        private Action _routine;
 
-        public DefaultClockTick(IThreadProxy thread, IThreadRoutineBuilder builder)
+        public DefaultClockTick()
         {
-            _thread = thread;
-            _builder = builder;
         }
 
         public void Start(Action routine)
         {
-            _thread.Run(_builder.Execute(routine));
+            _routine = routine;
+            new Thread(ThreadMethod) { IsBackground = true }.Start();
+        }
+
+        private void ThreadMethod()
+        {
+            while (true)
+            {
+                _routine.Invoke();
+                Thread.Sleep(1000);
+            }
         }
     }
 }

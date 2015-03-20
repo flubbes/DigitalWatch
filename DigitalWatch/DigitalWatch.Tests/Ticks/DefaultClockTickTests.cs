@@ -1,8 +1,9 @@
-﻿using System;
-using DigitalWatch.Ticks;
+﻿using DigitalWatch.Ticks;
 using FakeItEasy;
 using FluentAssertions;
 using NUnit.Framework;
+using System;
+using System.Threading;
 
 namespace DigitalWatch.Tests.Ticks
 {
@@ -10,15 +11,11 @@ namespace DigitalWatch.Tests.Ticks
     public class DefaultClockTickTests
     {
         private ITick _tick;
-        private IThreadProxy _thread;
-        private IThreadRoutineBuilder _builder;
 
         [SetUp]
         public void SetUp()
         {
-            _builder = A.Fake<IThreadRoutineBuilder>();
-            _thread = A.Fake<IThreadProxy>();
-            _tick = new DefaultClockTick(_thread, _builder);
+            _tick = new DefaultClockTick();
         }
 
         [Test]
@@ -28,13 +25,13 @@ namespace DigitalWatch.Tests.Ticks
         }
 
         [Test]
-        public void DoesStartThreadWithCorrectAction()
+        public void TriggersEverySecond()
         {
-            var testAction = new Action(() => { });
-            var modifiedBuilderAction = new Action(() => { });
-            A.CallTo(() => _builder.Execute(testAction)).Returns(modifiedBuilderAction);
-            _tick.Start(testAction);
-            A.CallTo(() => _thread.Run(modifiedBuilderAction)).MustHaveHappened();
+            var counter = 0;
+            Action a = () => counter++;
+            _tick.Start(a);
+            Thread.Sleep(3000);
+            counter.Should().Be(3);
         }
     }
 }
