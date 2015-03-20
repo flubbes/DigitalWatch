@@ -11,7 +11,7 @@ namespace DigitalWatch
         public FormMain()
         {
             InitializeComponent();
-            _clock = new Clock();
+            _clock = new DefaultClockFactory().Create();
         }
 
         private void btnMode_Click(object sender, EventArgs e)

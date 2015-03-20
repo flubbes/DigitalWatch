@@ -1,7 +1,6 @@
 ﻿namespace DigitalWatch.Core
 {
-    public interface IClockButton
+    public interface IClockButtonClick
     {
-
     }
 }

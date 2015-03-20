@@ -24,7 +24,6 @@ namespace DigitalWatch.Tests
             var clock = _factory.Create();
             clock.Behavior.Should().BeOfType<TimeBehavior>();
             clock.Display.Should().BeOfType<DefaultDisplay>();
-            clock.Buttons.Should().BeOfType<List<IClockButton>>();
         }
     }
 }

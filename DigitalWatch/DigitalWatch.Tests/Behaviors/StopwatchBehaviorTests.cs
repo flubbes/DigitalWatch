@@ -1,8 +1,8 @@
-﻿using System;
-using DigitalWatch.Behaviors;
+﻿using DigitalWatch.Behaviors;
 using DigitalWatch.Tests.Core;
 using FluentAssertions;
 using NUnit.Framework;
+using System;
 
 namespace DigitalWatch.Tests.Behaviors
 {
@@ -17,6 +17,7 @@ namespace DigitalWatch.Tests.Behaviors
         {
             _testableClock = new TestableClock();
             _behavior = new StopwatchBehavior() { TimeSpan = new TimeSpan() };
+            _behavior.SetClock(_testableClock);
         }
 
         [Test]
