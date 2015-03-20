@@ -32,7 +32,7 @@ namespace DigitalWatch.Tests.Behaviors
         [Test]
         public void CanIncrementTimeSpanByASecond()
         {
-            _behavior.IncrementTimeSpan();
+            _behavior.IncrementTimeSpanBySecond();
             _behavior.TimeSpan.Should().Be(new TimeSpan(0, 0, 0, 1));
         }
 
