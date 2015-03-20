@@ -21,10 +21,9 @@ namespace DigitalWatch.Tests
         [Test]
         public void ClockPropertiesHaveConcreteTypes()
         {
-            var clock = _factory.CreateDefaultClock();
+            var clock = _factory.Create();
             clock.Behavior.Should().BeOfType<TimeBehavior>();
             clock.Display.Should().BeOfType<DefaultDisplay>();
-            clock.Buttons.Should().BeOfType<List<IClockButton>>();
         }
     }
 }
