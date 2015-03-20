@@ -1,5 +1,5 @@
-using System;
 using DigitalWatch.Core;
+using System;
 
 namespace DigitalWatch.Behaviors
 {
@@ -18,6 +18,11 @@ namespace DigitalWatch.Behaviors
         }
 
         public override void SetClock(IClock clock)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void OnClick(IClockButtonClick buttonClick)
         {
             throw new NotImplementedException();
         }

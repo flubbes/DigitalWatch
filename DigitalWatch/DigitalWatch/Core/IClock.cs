@@ -9,5 +9,7 @@ namespace DigitalWatch.Core
         ClockBehavior Behavior { get; set; }
 
         void SwitchBehavior<T>() where T : ClockBehavior, new();
+
+        void RegisterClick(IClockButtonClick clockButtonClick);
     }
 }
