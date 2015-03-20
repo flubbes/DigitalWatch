@@ -51,6 +51,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Behaviors\SingletonClockBehaviorTests.cs" />
     <Compile Include="Behaviors\StopwatchBehaviorTests.cs" />
     <Compile Include="Behaviors\TimeChangeBehaviorTests.cs" />
     <Compile Include="Core\ClockTests.cs" />
