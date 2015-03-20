@@ -32,6 +32,7 @@ namespace DigitalWatch.Tests.Behaviors
             _behavior.Time = previousValue;
             _testableClock.TriggerTickEvent();
             _behavior.Time.Should().Be(previousValue.AddSeconds(1.0));
+            //TODO fix this test
         }
     }
 }

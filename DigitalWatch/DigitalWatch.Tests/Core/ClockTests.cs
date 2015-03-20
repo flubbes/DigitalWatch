@@ -1,7 +1,6 @@
 ﻿using DigitalWatch.Behaviors;
 using DigitalWatch.Core;
 using FluentAssertions;
-using FluentAssertions.Common;
 using NUnit.Framework;
 
 namespace DigitalWatch.Tests.Core
@@ -40,7 +39,6 @@ namespace DigitalWatch.Tests.Core
         {
             public override void SetClock(IClock clock)
             {
-                
             }
         }
     }
