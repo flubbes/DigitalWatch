@@ -51,6 +51,7 @@
             // 
             // btnMode
             // 
+            this.btnMode.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMode.Location = new System.Drawing.Point(427, 2);
             this.btnMode.Name = "btnMode";
             this.btnMode.Size = new System.Drawing.Size(75, 23);
