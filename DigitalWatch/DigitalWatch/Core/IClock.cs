@@ -1,4 +1,5 @@
 using DigitalWatch.Behaviors;
+using DigitalWatch.Displays;
 
 namespace DigitalWatch.Core
 {
@@ -9,6 +10,8 @@ namespace DigitalWatch.Core
         ClockBehavior Behavior { get; set; }
 
         void SwitchBehavior<T>() where T : ClockBehavior, new();
+
+        IClockDisplay Display { get; set; }
 
         void RegisterClick(IClockButtonClick clockButtonClick);
     }

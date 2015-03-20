@@ -55,5 +55,20 @@ namespace DigitalWatch.Tests.Behaviors
             _behavior.OnClick(new SetClick());
             A.CallTo(() => clock.SwitchBehavior<TimeChangeBehavior>()).MustHaveHappened();
         }
+
+        [Test]
+        public void WhenTimeIncreases_UpdatesDisplay()
+        {
+            var data = "";
+
+            var time = DateTime.Now;
+            _behavior.Time = time;
+            _testableClock.Display.Update += (sender, args) =>
+            {
+                data = args.DisplayData;
+            };
+            _testableClock.TriggerTickEvent();
+            data.Should().Be(time.AddSeconds(1).ToShortTimeString());
+        }
     }
 }
