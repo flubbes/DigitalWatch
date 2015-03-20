@@ -36,15 +36,15 @@
             // 
             this.sevenSegmentArray.ArrayCount = 4;
             this.sevenSegmentArray.ColorBackground = System.Drawing.SystemColors.Control;
-            this.sevenSegmentArray.ColorDark = System.Drawing.Color.DimGray;
+            this.sevenSegmentArray.ColorDark = System.Drawing.Color.Black;
             this.sevenSegmentArray.ColorLight = System.Drawing.Color.Red;
             this.sevenSegmentArray.DecimalShow = true;
-            this.sevenSegmentArray.ElementPadding = new System.Windows.Forms.Padding(4);
+            this.sevenSegmentArray.ElementPadding = new System.Windows.Forms.Padding(16);
             this.sevenSegmentArray.ElementWidth = 10;
             this.sevenSegmentArray.ItalicFactor = 0F;
             this.sevenSegmentArray.Location = new System.Drawing.Point(12, 2);
             this.sevenSegmentArray.Name = "sevenSegmentArray";
-            this.sevenSegmentArray.Size = new System.Drawing.Size(409, 131);
+            this.sevenSegmentArray.Size = new System.Drawing.Size(409, 138);
             this.sevenSegmentArray.TabIndex = 0;
             this.sevenSegmentArray.TabStop = false;
             this.sevenSegmentArray.Value = null;
