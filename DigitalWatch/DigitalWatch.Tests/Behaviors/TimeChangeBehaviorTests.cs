@@ -18,7 +18,7 @@ namespace DigitalWatch.Tests.Behaviors
         [Test]
         public void IsDerivedFromClockBehaviorInterface()
         {
-            _behavior.Should().BeAssignableTo<IClockBehavior>();
+            _behavior.Should().BeAssignableTo<ClockBehavior>();
         }
 
         [Test]

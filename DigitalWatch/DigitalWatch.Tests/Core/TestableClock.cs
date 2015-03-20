@@ -1,4 +1,5 @@
 ﻿using System;
+using DigitalWatch.Behaviors;
 using DigitalWatch.Core;
 
 namespace DigitalWatch.Tests.Core
@@ -7,7 +8,14 @@ namespace DigitalWatch.Tests.Core
     {
         public event ClockTickEventHandler Tick;
 
-        public void TriggerEvent()
+        public ClockBehavior Behavior { get; set; }
+
+        public void SwitchBehavior<T>() where T : ClockBehavior, new()
+        {
+            
+        }
+
+        public void TriggerTickEvent()
         {
             if (Tick != null)
             {

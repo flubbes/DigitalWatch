@@ -4,17 +4,17 @@
     <logicalClassDesignerModelHasTypes>
       <class Id="3a727212-430c-4aea-8c22-8b4943f38f2a" name="Clock" isAbstract="false" isLeaf="false" isActiveClass="false">
         <elementDefinition Id="17396319-adfe-4379-b0d0-504df5bcb346" />
+        <suppliersInternal>
+          <interfaceRealization Id="5884123d-abd7-4f4b-9701-eb67684e5fca">
+            <interfaceMoniker Id="f86edaf2-d45f-4696-9718-6653f6a66333" LastKnownName="IClock" />
+            <elementDefinition Id="19181457-6c53-451a-8f75-bd7cfd0467c6" />
+          </interfaceRealization>
+        </suppliersInternal>
         <ownedAttributesInternal>
           <property Id="64cc6024-08fe-4324-a761-da798c77acf1" name="Display" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
             <elementDefinition Id="95c34eb8-8211-408a-bb12-6c3d8b8f7390" />
             <type_NamedElement>
               <referencedTypeMoniker Id="8012c1f6-560b-4f26-8c4f-73de7e1dcc01" LastKnownName="IClockDisplay" />
-            </type_NamedElement>
-          </property>
-          <property Id="56011cdc-7421-488a-b7cd-aade9d8fcec0" name="Behavior" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
-            <elementDefinition Id="db57ca1b-0330-4bee-a911-97ba0fc812b7" />
-            <type_NamedElement>
-              <referencedTypeMoniker Id="9307279e-395d-4cdd-a8ef-79018456d37a" LastKnownName="IClockBehavior" />
             </type_NamedElement>
           </property>
           <property Id="35f238bf-6711-4bf5-b003-c4171634528c" name="Event Tick" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
@@ -26,11 +26,22 @@
               <referencedTypeMoniker Id="525be8c3-8e87-4d01-b024-e2b24399ab9d" LastKnownName="IClockButton[]" />
             </type_NamedElement>
           </property>
+          <property Id="920c44c2-18fd-45da-a2a6-88c949617c3e" name="Behavior" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="4e41f6e1-4410-4016-8f38-1d684dff07cc" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="bc017a73-354f-4898-980d-b8aa5d010d0a" LastKnownName="ClockBehavior" />
+            </type_NamedElement>
+          </property>
         </ownedAttributesInternal>
+        <ownedOperationsInternal>
+          <operation Id="a1f4bfc3-0d4c-475c-b9af-855facc0f0a9" name="SwitchBehavior&lt;T&gt;" isLeaf="false" isStatic="false" isAbstract="true" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="57132f26-1b9c-4dc4-8773-04f64eb65d0a" />
+          </operation>
+        </ownedOperationsInternal>
       </class>
     </logicalClassDesignerModelHasTypes>
     <logicalClassDesignerModelHasTypes>
-      <class Id="47e5c214-5285-4f8b-b8ec-d0cf4bebb2c0" name="NumericDisplay" isAbstract="false" isLeaf="false" isActiveClass="false">
+      <class Id="47e5c214-5285-4f8b-b8ec-d0cf4bebb2c0" name="DefaultDisplay" isAbstract="false" isLeaf="false" isActiveClass="false">
         <elementDefinition Id="7d818a0b-0fec-4486-af3a-0f03f4d01d51" />
         <suppliersInternal>
           <interfaceRealization Id="648e41ed-7259-4c78-913b-1af018661c95">
@@ -55,24 +66,6 @@
         </ownedOperationsInternal>
       </class>
     </logicalClassDesignerModelHasTypes>
-    <logicalClassDesignerModelHasTypes>
-      <Interface Id="a2925dfb-d94c-486a-be20-201bb78bd1d5" name="IClockBehavior" isAbstract="false" isLeaf="false">
-        <elementDefinition Id="5385459a-7041-4c8e-935d-9b4cda1e265e" />
-        <ownedAttributes>
-          <property Id="e4816291-e83e-49b2-bcd0-f942df8fa8fa" name="IsVolatile" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
-            <elementDefinition Id="faac9288-98bd-4a07-816e-b5c343ac5522" />
-            <type_NamedElement>
-              <referencedTypeMoniker Id="5ce8ef65-5dea-443f-9b51-57ba4d986968" LastKnownName="Boolean" />
-            </type_NamedElement>
-          </property>
-        </ownedAttributes>
-      </Interface>
-    </logicalClassDesignerModelHasTypes>
-    <packageHasNamedElement>
-      <referencedType Id="9307279e-395d-4cdd-a8ef-79018456d37a" name="IClockBehavior" isAbstract="false" isLeaf="false" cachedFullName="DigitalWatchModelingProject::IClockBehavior">
-        <elementDefinition Id="5385459a-7041-4c8e-935d-9b4cda1e265e" />
-      </referencedType>
-    </packageHasNamedElement>
     <logicalClassDesignerModelHasTypes>
       <Interface Id="74032e5e-6303-4cb3-a2a1-4c918d1f0847" name="IClockDisplay" isAbstract="false" isLeaf="false">
         <elementDefinition Id="ec1c2cb7-293b-4dcf-835a-26a719458746" />
@@ -157,12 +150,12 @@
     <logicalClassDesignerModelHasTypes>
       <class Id="eca3579e-0fc2-439a-b3e6-e1de75c1086c" name="TimeBehavior" isAbstract="false" isLeaf="false" isActiveClass="false">
         <elementDefinition Id="d8f71604-139e-4b64-9c1f-9f5c44faf9a9" />
-        <suppliersInternal>
-          <interfaceRealization Id="ba331893-ab41-4881-8b1c-45bb01339b99">
-            <interfaceMoniker Id="a2925dfb-d94c-486a-be20-201bb78bd1d5" LastKnownName="IClockBehavior" />
-            <elementDefinition Id="5d09513b-7b48-474a-8055-a08cacd75d58" />
-          </interfaceRealization>
-        </suppliersInternal>
+        <generalsInternal>
+          <generalization Id="ef4bd665-ca82-4cb5-8c1e-0d23d87a1a88" isSubstitutable="false">
+            <classMoniker Id="b2b94c6c-5e6d-4fda-9111-326037acdfd6" LastKnownName="SingletonClockBehavior" />
+            <elementDefinition Id="b534243c-0ed2-489c-a151-2421da59c424" />
+          </generalization>
+        </generalsInternal>
         <ownedAttributesInternal>
           <property Id="484b856c-6349-4a9b-9574-e26899a7a884" name="Time" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
             <elementDefinition Id="fa20f1a9-cde1-4307-bbaf-fed69d9c22d3" />
@@ -170,24 +163,33 @@
               <referencedTypeMoniker Id="b626490b-01f4-4a37-bb3c-ddac946bf80a" LastKnownName="DateTime" />
             </type_NamedElement>
           </property>
-          <property Id="ad3b580e-3a0e-472b-a8ab-0ef0acfc5d62" name="IsVolatile" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
-            <elementDefinition Id="f88aff53-002d-4ada-b6a7-d6534e71db2c" />
-            <type_NamedElement>
-              <referencedTypeMoniker Id="da0f76ce-f86d-4445-a97f-0ce26fc41a27" LastKnownName="Boolean" />
-            </type_NamedElement>
-          </property>
         </ownedAttributesInternal>
+        <ownedOperationsInternal>
+          <operation Id="17e186c2-c08a-46bb-8e2d-cfec62b6b933" name="SetClock" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="4403ecfa-76aa-4a78-815a-2d6bdcb46081" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="20b3aba8-6c50-404f-add7-1dbfbc249a79" name="clock" direction="In" isUnique="false">
+                  <elementDefinition Id="f56e971d-8613-403e-9fc4-fbdc410590ff" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="4f996ec3-03c6-4e78-90a6-62a89dfc8dd9" LastKnownName="IClock" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+        </ownedOperationsInternal>
       </class>
     </logicalClassDesignerModelHasTypes>
     <logicalClassDesignerModelHasTypes>
       <class Id="9140895c-ada2-4653-80c0-be5cb2dd1249" name="StopwatchBehavior" isAbstract="false" isLeaf="false" isActiveClass="false">
         <elementDefinition Id="62a53d15-6776-46a3-8e64-68b42d7aba1b" />
-        <suppliersInternal>
-          <interfaceRealization Id="c6ddf6a6-f32b-48ff-846e-69078e5e5452">
-            <interfaceMoniker Id="a2925dfb-d94c-486a-be20-201bb78bd1d5" LastKnownName="IClockBehavior" />
-            <elementDefinition Id="168c6db4-c9dd-4849-9507-a4c2def84e2a" />
-          </interfaceRealization>
-        </suppliersInternal>
+        <generalsInternal>
+          <generalization Id="7a5d7877-f4c5-4769-9ab9-020a36151c63" isSubstitutable="false">
+            <classMoniker Id="6b47756e-c430-49df-bfa7-8ee460f59bd9" LastKnownName="ClockBehavior" />
+            <elementDefinition Id="0d03a652-51f4-447f-af01-0a6213b258fa" />
+          </generalization>
+        </generalsInternal>
         <ownedAttributesInternal>
           <property Id="eee3b9fa-4c45-4f30-b09f-fa95f6058de7" name="TimeSpan" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
             <elementDefinition Id="f44a40a1-2a9c-4899-bdb9-7b8efe4927fd" />
@@ -195,32 +197,48 @@
               <referencedTypeMoniker Id="39dbe682-cda1-4b27-9798-62b60cf2576c" LastKnownName="TimeSpan" />
             </type_NamedElement>
           </property>
-          <property Id="c6c2091d-2c92-4db3-887d-66edfb97a74a" name="IsVolatile" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
-            <elementDefinition Id="cd699f2f-fb8b-403a-bd6f-2f40c1e2fc44" />
-            <type_NamedElement>
-              <referencedTypeMoniker Id="b7a0a145-c274-4e18-b518-a74a6ebb8847" LastKnownName="Boolean" />
-            </type_NamedElement>
-          </property>
         </ownedAttributesInternal>
+        <ownedOperationsInternal>
+          <operation Id="dfc1a5ce-5749-455e-9e76-a4d82db21ba5" name="SetClock" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="c90a2a27-730b-4dc2-8201-c763cc31d7ab" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="5195dae1-9f8b-490a-9866-8ee92f649a37" name="clock" direction="In" isUnique="false">
+                  <elementDefinition Id="4b092b86-42b3-4a2d-bdbc-e1f390206043" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="4f996ec3-03c6-4e78-90a6-62a89dfc8dd9" LastKnownName="IClock" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+        </ownedOperationsInternal>
       </class>
     </logicalClassDesignerModelHasTypes>
     <logicalClassDesignerModelHasTypes>
       <class Id="cae85c12-cb59-4067-8d74-7dcaffbee562" name="TimeChangeBehavior" isAbstract="false" isLeaf="false" isActiveClass="false">
         <elementDefinition Id="5be4ea4f-b550-4f99-aed7-a0eab38c0bfa" />
-        <suppliersInternal>
-          <interfaceRealization Id="45eacf89-51a1-4262-be12-9ab6fb5fd47e">
-            <interfaceMoniker Id="a2925dfb-d94c-486a-be20-201bb78bd1d5" LastKnownName="IClockBehavior" />
-            <elementDefinition Id="b2897893-4c4d-4f37-906a-a2aa8e049de8" />
-          </interfaceRealization>
-        </suppliersInternal>
-        <ownedAttributesInternal>
-          <property Id="f721cdd2-2806-4f06-b9a0-c5384c3789da" name="IsVolatile" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
-            <elementDefinition Id="95974472-1cd0-4bb7-bfdd-ed73bd2fab69" />
-            <type_NamedElement>
-              <referencedTypeMoniker Id="f51581b3-2360-4bb5-b581-b81ddb6d8303" LastKnownName="Boolean" />
-            </type_NamedElement>
-          </property>
-        </ownedAttributesInternal>
+        <generalsInternal>
+          <generalization Id="789c288d-80dd-4f60-8c32-b208a69aee90" isSubstitutable="false">
+            <classMoniker Id="6b47756e-c430-49df-bfa7-8ee460f59bd9" LastKnownName="ClockBehavior" />
+            <elementDefinition Id="10b10f4b-9899-4d23-9e2d-1b382ed5156f" />
+          </generalization>
+        </generalsInternal>
+        <ownedOperationsInternal>
+          <operation Id="9cf52502-6cf1-4391-bbf5-f23b895ffc6b" name="SetClock" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="187b43e0-ea0e-44b8-af4f-85b141145cea" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="96d714ce-01a9-4c49-ad1f-591b9bdc1649" name="clock" direction="In" isUnique="false">
+                  <elementDefinition Id="3d58e4f8-6e03-4fb5-afa0-94678445bc52" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="4f996ec3-03c6-4e78-90a6-62a89dfc8dd9" LastKnownName="IClock" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+        </ownedOperationsInternal>
       </class>
     </logicalClassDesignerModelHasTypes>
     <packageHasNamedElement>
@@ -231,11 +249,6 @@
     <packageHasNamedElement>
       <referencedType Id="39dbe682-cda1-4b27-9798-62b60cf2576c" name="TimeSpan" isAbstract="false" isLeaf="false" cachedFullName="TimeSpan">
         <elementDefinition Id="4dbf69de-24e5-412e-a19b-60f74af54fdb" />
-      </referencedType>
-    </packageHasNamedElement>
-    <packageHasNamedElement>
-      <referencedType Id="5ce8ef65-5dea-443f-9b51-57ba4d986968" name="Boolean" isAbstract="false" isLeaf="false" cachedFullName="Boolean">
-        <elementDefinition Id="8943dc84-709e-4f62-b15a-a3273aa6f165" />
       </referencedType>
     </packageHasNamedElement>
     <packageHasNamedElement>
@@ -259,27 +272,12 @@
       </referencedType>
     </packageHasNamedElement>
     <packageHasNamedElement>
-      <referencedType Id="da0f76ce-f86d-4445-a97f-0ce26fc41a27" name="Boolean" isAbstract="false" isLeaf="false" cachedFullName="Boolean">
-        <elementDefinition Id="8943dc84-709e-4f62-b15a-a3273aa6f165" />
-      </referencedType>
-    </packageHasNamedElement>
-    <packageHasNamedElement>
-      <referencedType Id="b7a0a145-c274-4e18-b518-a74a6ebb8847" name="Boolean" isAbstract="false" isLeaf="false" cachedFullName="Boolean">
-        <elementDefinition Id="8943dc84-709e-4f62-b15a-a3273aa6f165" />
-      </referencedType>
-    </packageHasNamedElement>
-    <packageHasNamedElement>
-      <referencedType Id="f51581b3-2360-4bb5-b581-b81ddb6d8303" name="Boolean" isAbstract="false" isLeaf="false" cachedFullName="Boolean">
-        <elementDefinition Id="8943dc84-709e-4f62-b15a-a3273aa6f165" />
-      </referencedType>
-    </packageHasNamedElement>
-    <packageHasNamedElement>
       <referencedType Id="b6803acb-5d4f-461a-9414-25dd806043bb" name="Clock" isAbstract="false" isLeaf="false" cachedFullName="DigitalWatchModelingProject::Clock">
         <elementDefinition Id="17396319-adfe-4379-b0d0-504df5bcb346" />
       </referencedType>
     </packageHasNamedElement>
     <logicalClassDesignerModelHasTypes>
-      <class Id="4ab21af0-8bc7-46c7-9151-ae2982fc48c1" name="StandardClockFactory" isAbstract="false" isLeaf="false" isActiveClass="false">
+      <class Id="4ab21af0-8bc7-46c7-9151-ae2982fc48c1" name="StandardClockFactory" isAbstract="true" isLeaf="false" isActiveClass="false">
         <elementDefinition Id="9ec292e5-b3ce-4525-a2ee-971ee0cff080" />
         <suppliersInternal>
           <interfaceRealization Id="b82d4c07-f884-4005-9118-d79d2a321952">
@@ -332,6 +330,110 @@
     <packageHasNamedElement>
       <referencedType Id="50a20b25-9490-442c-81b7-70e94a3961b8" name="Clock" isAbstract="false" isLeaf="false" cachedFullName="DigitalWatchModelingProject::Clock">
         <elementDefinition Id="17396319-adfe-4379-b0d0-504df5bcb346" />
+      </referencedType>
+    </packageHasNamedElement>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="6b47756e-c430-49df-bfa7-8ee460f59bd9" name="ClockBehavior" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="d89dba3a-c3eb-400d-a8a8-d3fa987a9b0e" />
+        <ownedOperationsInternal>
+          <operation Id="cf57542c-bc58-4dd0-b6e0-12ddb80a8296" name="SetClock" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="d451feb3-f750-4371-80db-cc458259f4ae" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="883583ed-c37b-4984-bf89-f0491d8d47cf" name="clock" direction="In" isUnique="false">
+                  <elementDefinition Id="2b57a2c3-33c2-4f7a-9305-2b0291d9f443" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="4f996ec3-03c6-4e78-90a6-62a89dfc8dd9" LastKnownName="IClock" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <packageHasNamedElement>
+      <referencedType Id="4f996ec3-03c6-4e78-90a6-62a89dfc8dd9" name="IClock" isAbstract="false" isLeaf="false" cachedFullName="IClock">
+        <elementDefinition Id="33a80091-a26a-439b-b540-ffb9a430bdef" />
+      </referencedType>
+    </packageHasNamedElement>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="b2b94c6c-5e6d-4fda-9111-326037acdfd6" name="SingletonClockBehavior" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="3b08b32a-5973-4a3c-9f08-bbf087c1acd0" />
+        <generalsInternal>
+          <generalization Id="50f0c085-79dc-4bc2-9553-c6fb7167db8f" isSubstitutable="false">
+            <classMoniker Id="6b47756e-c430-49df-bfa7-8ee460f59bd9" LastKnownName="ClockBehavior" />
+            <elementDefinition Id="e773dcdf-7371-4e39-8266-403b0a3c6f61" />
+          </generalization>
+        </generalsInternal>
+        <ownedOperationsInternal>
+          <operation Id="dded5677-6d21-4e80-b0e0-21334d046c30" name="SetClock" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="01ea3c60-9a9b-4e35-a7d1-84ef9be83437" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="88921259-01c5-45ce-8441-acb7b9855b54" name="clock" direction="In" isUnique="false">
+                  <elementDefinition Id="fa2a72f6-79c5-4799-a930-4c20ac60b872" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="4f996ec3-03c6-4e78-90a6-62a89dfc8dd9" LastKnownName="IClock" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <Interface Id="f86edaf2-d45f-4696-9718-6653f6a66333" name="IClock" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="b037b587-effd-4aa4-9c16-695c93448938" />
+        <ownedAttributes>
+          <property Id="9e2b2e8d-c9be-4e79-af73-aad282432122" name="Behavior" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="46d8fc62-191b-4f56-b8b7-cddadd121d90" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="8381c051-d701-4d4b-8f5c-3b1c3ec37fd3" LastKnownName="ClockBehavior" />
+            </type_NamedElement>
+          </property>
+          <property Id="4142e610-93c6-4953-8eee-e4a97a1660a3" name="Buttons" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="af05d8d3-15fa-43e3-89b6-4bec976abd29" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="b54e1c83-6c5f-4475-a543-6f0e433e43e1" LastKnownName="IClockButton[]" />
+            </type_NamedElement>
+          </property>
+          <property Id="61c93330-50a6-4111-81ac-e1382b2ec54a" name="Display" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="6906f413-c681-4a72-9747-3ef5faf822ea" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="737f769b-9e65-4029-ae04-59324383c97f" LastKnownName="IClockDisplay" />
+            </type_NamedElement>
+          </property>
+          <property Id="56d78802-7686-450b-896b-3d9267dda7e9" name="Event Tick" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="5103d1c8-1421-4737-bdd9-b618e0ea9584" />
+          </property>
+        </ownedAttributes>
+        <ownedOperations>
+          <operation Id="a6550012-9fef-49b8-8bf5-ef4c41a094ea" name="SwitchBehavior&lt;T&gt;" isLeaf="false" isStatic="false" isAbstract="true" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="4918d671-f0cb-4e6e-bb1a-67d969531b86" />
+          </operation>
+        </ownedOperations>
+      </Interface>
+    </logicalClassDesignerModelHasTypes>
+    <packageHasNamedElement>
+      <referencedType Id="b54e1c83-6c5f-4475-a543-6f0e433e43e1" name="IClockButton[]" isAbstract="false" isLeaf="false" cachedFullName="IClockButton[]">
+        <elementDefinition Id="cb70666b-9090-4a85-9112-ed31db740dd6" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="737f769b-9e65-4029-ae04-59324383c97f" name="IClockDisplay" isAbstract="false" isLeaf="false" cachedFullName="DigitalWatchModelingProject::IClockDisplay">
+        <elementDefinition Id="ec1c2cb7-293b-4dcf-835a-26a719458746" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="8381c051-d701-4d4b-8f5c-3b1c3ec37fd3" name="ClockBehavior" isAbstract="false" isLeaf="false" cachedFullName="DigitalWatchModelingProject::ClockBehavior">
+        <elementDefinition Id="d89dba3a-c3eb-400d-a8a8-d3fa987a9b0e" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="bc017a73-354f-4898-980d-b8aa5d010d0a" name="ClockBehavior" isAbstract="false" isLeaf="false" cachedFullName="DigitalWatchModelingProject::ClockBehavior">
+        <elementDefinition Id="d89dba3a-c3eb-400d-a8a8-d3fa987a9b0e" />
       </referencedType>
     </packageHasNamedElement>
   </packagedElements>
