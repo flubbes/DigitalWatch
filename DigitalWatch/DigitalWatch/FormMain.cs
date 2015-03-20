@@ -1,4 +1,5 @@
-﻿using DigitalWatch.Core;
+﻿using DigitalWatch.Clicks;
+using DigitalWatch.Core;
 using System;
 using System.Windows.Forms;
 
@@ -6,7 +7,7 @@ namespace DigitalWatch
 {
     public partial class FormMain : Form
     {
-        private readonly Clock _clock;
+        private readonly IClock _clock;
 
         public FormMain()
         {
@@ -16,14 +17,17 @@ namespace DigitalWatch
 
         private void btnMode_Click(object sender, EventArgs e)
         {
+            _clock.RegisterClick(new ModeClick());
         }
 
         private void btnSet_Click(object sender, EventArgs e)
         {
+            _clock.RegisterClick(new SetClick());
         }
 
         private void btnLight_Click(object sender, EventArgs e)
         {
+            _clock.RegisterClick(new LightClick());
         }
     }
 }
