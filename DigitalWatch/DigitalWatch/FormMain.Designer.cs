@@ -35,7 +35,7 @@
             // sevenSegmentArray
             // 
             this.sevenSegmentArray.ArrayCount = 4;
-            this.sevenSegmentArray.ColorBackground = System.Drawing.Color.DarkGray;
+            this.sevenSegmentArray.ColorBackground = System.Drawing.SystemColors.Control;
             this.sevenSegmentArray.ColorDark = System.Drawing.Color.DimGray;
             this.sevenSegmentArray.ColorLight = System.Drawing.Color.Red;
             this.sevenSegmentArray.DecimalShow = true;
