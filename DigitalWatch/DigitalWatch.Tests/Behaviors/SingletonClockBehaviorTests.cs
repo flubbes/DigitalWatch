@@ -1,4 +1,5 @@
 ﻿using DigitalWatch.Behaviors;
+using DigitalWatch.Core;
 using FluentAssertions;
 using NUnit.Framework;
 
@@ -21,12 +22,20 @@ namespace DigitalWatch.Tests.Behaviors
         [Test]
         public void IsAbstract()
         {
-            typeof (SingletonClockBehavior).IsAbstract.Should().BeTrue();
+            typeof(SingletonClockBehavior).IsAbstract.Should().BeTrue();
         }
 
         private class SingletonTestBehavior : SingletonClockBehavior
         {
-            
+            public override void SetClock(IClock clock)
+            {
+                throw new System.NotImplementedException();
+            }
+
+            public override void OnClick(IClockButtonClick buttonClick)
+            {
+                throw new System.NotImplementedException();
+            }
         }
     }
 }

@@ -6,7 +6,7 @@ namespace DigitalWatch.Displays
     {
         public void TriggerUpdate(string displayData)
         {
-            if(Update != null)
+            if (Update != null)
             {
                 Update(this, new UpdateEventArgs
                 {
@@ -16,5 +16,10 @@ namespace DigitalWatch.Displays
         }
 
         public event UpdateEventHandler Update;
+
+        public void OnUpdate(string displayData)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

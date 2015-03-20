@@ -35,10 +35,20 @@ namespace DigitalWatch.Tests.Core
             A.CallTo(() => behavior.OnClick(buttonClick)).MustHaveHappened();
         }
 
+        [Test]
+        public void CallsSetClock_AfterSwitchingBehavior()
+        {
+            _clock.SwitchBehavior<TestBehavior>();
+            (_clock.Behavior as TestBehavior).IsSetClockCalled.Should().BeTrue();
+        }
+
         private class TestBehavior : ClockBehavior
         {
+            public bool IsSetClockCalled { get; set; }
+
             public override void SetClock(IClock clock)
             {
+                IsSetClockCalled = true;
             }
 
             public override void OnClick(IClockButtonClick buttonClick)

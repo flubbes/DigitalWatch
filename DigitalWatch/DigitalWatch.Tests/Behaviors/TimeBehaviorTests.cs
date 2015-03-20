@@ -1,6 +1,7 @@
 ﻿using DigitalWatch.Behaviors;
 using DigitalWatch.Clicks;
 using DigitalWatch.Core;
+using DigitalWatch.Displays;
 using DigitalWatch.Tests.Core;
 using FakeItEasy;
 using FluentAssertions;
@@ -14,11 +15,16 @@ namespace DigitalWatch.Tests.Behaviors
     {
         private TimeBehavior _behavior;
         private TestableClock _testableClock;
+        private IClockDisplay _clockDisplay;
 
         [SetUp]
         public void SetUp()
         {
-            _testableClock = new TestableClock();
+            _clockDisplay = A.Fake<IClockDisplay>();
+            _testableClock = new TestableClock
+            {
+                Display = _clockDisplay
+            };
             _behavior = new TimeBehavior();
             _behavior.SetClock(_testableClock);
         }
@@ -59,16 +65,11 @@ namespace DigitalWatch.Tests.Behaviors
         [Test]
         public void WhenTimeIncreases_UpdatesDisplay()
         {
-            var data = "";
-
-            var time = DateTime.Now;
+            var time = new DateTime(2015, 3, 20, 4, 3, 59);
             _behavior.Time = time;
-            _testableClock.Display.Update += (sender, args) =>
-            {
-                data = args.DisplayData;
-            };
             _testableClock.TriggerTickEvent();
-            data.Should().Be(time.AddSeconds(1).ToShortTimeString());
+            var t = time.AddSeconds(1);
+            A.CallTo(() => _clockDisplay.OnUpdate("04:04")).MustHaveHappened();
         }
     }
 }
