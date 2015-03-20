@@ -18,6 +18,12 @@ namespace DigitalWatch.Tests.Behaviors
             originalInstance.SingletonContainer.Should().Be(behavior.SingletonContainer).And.NotBeNull();
         }
 
+        [Test]
+        public void IsAbstract()
+        {
+            typeof (SingletonClockBehavior).IsAbstract.Should().BeTrue();
+        }
+
         private class SingletonTestBehavior : SingletonClockBehavior
         {
             

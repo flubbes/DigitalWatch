@@ -1,10 +1,10 @@
 ﻿namespace DigitalWatch.Behaviors
 {
-    public class SingletonClockBehavior
+    public abstract class SingletonClockBehavior
     {
         private static object _singletonContainer;
 
-        public SingletonClockBehavior()
+        protected SingletonClockBehavior()
         {
             if (_singletonContainer == null)
             {
