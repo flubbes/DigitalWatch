@@ -39,7 +39,6 @@ namespace DigitalWatch.Tests.Behaviors
             var previousValue = _behavior.TimeSpan;
             _testableClock.TriggerTickEvent();
             _behavior.TimeSpan.Should().Be(previousValue + new TimeSpan(0, 0, 0, 1));
-            //TODO fix this test
         }
     }
 }
