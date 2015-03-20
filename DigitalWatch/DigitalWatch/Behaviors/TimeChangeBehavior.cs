@@ -41,11 +41,20 @@ namespace DigitalWatch.Behaviors
             clock.Tick += Tick;
         }
 
+        /// <summary>
+        /// Contains all actions that are executed when the Tick Event occurs
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Tick(object sender, EventArgs e)
         {
             IncrementSecond();
         }
 
+        /// <summary>
+        /// Decides what happens if a certain button is clicked
+        /// </summary>
+        /// <param name="buttonClick"></param>
         public override void OnClick(IClockButtonClick buttonClick)
         {
             //TODO implement full logic
