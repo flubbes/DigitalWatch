@@ -1,4 +1,4 @@
-﻿using System;
+﻿using DigitalWatch.Ticks;
 using FluentAssertions;
 using NUnit.Framework;
 
@@ -20,7 +20,7 @@ namespace DigitalWatch.Tests.Ticks
         public void ActionIsNeverInvoked()
         {
             var counter = 0;
-            var threadRoutineBuilder = new ThreadRoutineThatImmediatlyShutsDown();
+            var threadRoutineBuilder = new ThreadRoutineThatImmediatelyShutsDown();
             threadRoutineBuilder.WrapAction(() => counter++);
             counter.Should().Be(0);
         }
@@ -48,32 +48,11 @@ namespace DigitalWatch.Tests.Ticks
             }
         }
 
-        private class ThreadRoutineThatImmediatlyShutsDown : ThreadRoutineBuilder
+        private class ThreadRoutineThatImmediatelyShutsDown : ThreadRoutineBuilder
         {
             protected override bool ShouldRun()
             {
                 return false;
-            }
-        }
-    }
-
-    public class ThreadRoutineBuilder
-    {
-        public Action Execute(Action routine)
-        {
-            throw new NotImplementedException();
-        }
-
-        protected virtual bool ShouldRun()
-        {
-            return true;
-        }
-
-        public void WrapAction(Action action)
-        {
-            while (ShouldRun())
-            {
-                action.Invoke();
             }
         }
     }

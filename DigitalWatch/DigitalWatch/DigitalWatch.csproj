@@ -46,6 +46,12 @@
   <ItemGroup>
     <Compile Include="Behaviors\StopwatchBehavior.cs" />
     <Compile Include="Behaviors\TimeChangeBehavior.cs" />
+    <Compile Include="Controls\SevenSegment.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\SevenSegmentArray.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="Core\Clock.cs" />
     <Compile Include="Core\ClockTickEventHandler.cs" />
     <Compile Include="Core\IClock.cs" />
@@ -55,11 +61,11 @@
     <Compile Include="Displays\IClockDisplay.cs" />
     <Compile Include="Displays\UpdateEvent\UpdateEventArgs.cs" />
     <Compile Include="Displays\UpdateEvent\UpdateEventHandler.cs" />
-    <Compile Include="Form1.cs">
+    <Compile Include="FormMain.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="FormMain.Designer.cs">
+      <DependentUpon>FormMain.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -68,6 +74,13 @@
     <Compile Include="Ticks\IThreadRoutineBuilder.cs" />
     <Compile Include="Ticks\ITick.cs" />
     <Compile Include="Ticks\ThreadProxy.cs" />
+    <Compile Include="Ticks\ThreadRoutineBuilder.cs" />
+    <EmbeddedResource Include="Controls\SevenSegmentArray.resx">
+      <DependentUpon>SevenSegmentArray.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormMain.resx">
+      <DependentUpon>FormMain.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
