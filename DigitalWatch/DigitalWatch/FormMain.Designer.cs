@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.sevenSegmentArray = new DigitalWatch.Controls.SevenSegmentArray();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnMode = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // sevenSegmentArray
@@ -49,21 +49,21 @@
             this.sevenSegmentArray.TabStop = false;
             this.sevenSegmentArray.Value = null;
             // 
-            // button1
+            // btnMode
             // 
-            this.button1.Location = new System.Drawing.Point(427, 12);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnMode.Location = new System.Drawing.Point(427, 12);
+            this.btnMode.Name = "btnMode";
+            this.btnMode.Size = new System.Drawing.Size(75, 23);
+            this.btnMode.TabIndex = 1;
+            this.btnMode.Text = "button1";
+            this.btnMode.UseVisualStyleBackColor = true;
             // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(562, 237);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnMode);
             this.Controls.Add(this.sevenSegmentArray);
             this.Name = "FormMain";
             this.Text = "DigitalWatch";
@@ -74,7 +74,7 @@
         #endregion
 
         private Controls.SevenSegmentArray sevenSegmentArray;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnMode;
     }
 }
 
