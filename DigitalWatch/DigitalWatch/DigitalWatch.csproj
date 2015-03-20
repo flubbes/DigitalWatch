@@ -57,6 +57,7 @@
     <Compile Include="Core\IClock.cs" />
     <Compile Include="Behaviors\ClockBehavior.cs" />
     <Compile Include="Behaviors\TimeBehavior.cs" />
+    <Compile Include="Core\IClockButton.cs" />
     <Compile Include="DefaultClockFactory.cs" />
     <Compile Include="Displays\DefaultDisplay.cs" />
     <Compile Include="Displays\IClockDisplay.cs" />
