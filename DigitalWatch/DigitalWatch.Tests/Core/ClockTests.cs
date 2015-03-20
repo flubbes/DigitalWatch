@@ -1,13 +1,15 @@
 ﻿using DigitalWatch.Behaviors;
 using DigitalWatch.Core;
+using DigitalWatch.Ticks;
 using FakeItEasy;
 using FluentAssertions;
 using NUnit.Framework;
+using System;
 
 namespace DigitalWatch.Tests.Core
 {
     [TestFixture]
-    public class ClockTests
+    public class ClockTests : Clock
     {
         private IClock _clock;
 
@@ -40,6 +42,14 @@ namespace DigitalWatch.Tests.Core
         {
             _clock.SwitchBehavior<TestBehavior>();
             (_clock.Behavior as TestBehavior).IsSetClockCalled.Should().BeTrue();
+        }
+
+        [Test]
+        public void StartsTickControlAfterDeclaration()
+        {
+            var tickControl = A.Fake<ITickControl>();
+            _clock.TickControl = tickControl;
+            A.CallTo(() => tickControl.Start(A<Action>.Ignored)).MustHaveHappened();
         }
 
         private class TestBehavior : ClockBehavior

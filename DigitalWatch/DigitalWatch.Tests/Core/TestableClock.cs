@@ -1,6 +1,7 @@
 ﻿using DigitalWatch.Behaviors;
 using DigitalWatch.Core;
 using DigitalWatch.Displays;
+using DigitalWatch.Ticks;
 using System;
 
 namespace DigitalWatch.Tests.Core
@@ -19,6 +20,12 @@ namespace DigitalWatch.Tests.Core
         {
             get;
             set;
+        }
+
+        public ITickControl TickControl
+        {
+            get { throw new NotImplementedException(); }
+            set { throw new NotImplementedException(); }
         }
 
         public void RegisterClick(IClockButtonClick clockButtonClick)

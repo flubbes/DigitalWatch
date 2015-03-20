@@ -1,5 +1,6 @@
 using DigitalWatch.Behaviors;
 using DigitalWatch.Displays;
+using DigitalWatch.Ticks;
 
 namespace DigitalWatch.Core
 {
@@ -31,6 +32,8 @@ namespace DigitalWatch.Core
         /// <summary>
         /// Hands the clicks to the submerged structures
         /// </summary>
+        ITickControl TickControl { get; set; }
+
         void RegisterClick(IClockButtonClick clockButtonClick);
     }
 }

@@ -1,6 +1,7 @@
 ﻿using DigitalWatch.Behaviors;
 using DigitalWatch.Displays;
 using DigitalWatch.Ticks;
+using System;
 
 namespace DigitalWatch.Core
 {
@@ -12,6 +13,8 @@ namespace DigitalWatch.Core
         /// <summary>
         /// The eventhandler that handles the Ticks
         /// </summary>
+        private ITickControl _tickControl;
+
         public event ClockTickEventHandler Tick;
 
         /// <summary>
@@ -24,10 +27,21 @@ namespace DigitalWatch.Core
         /// </summary>
         public IClockDisplay Display { get; set; }
 
+
         /// <summary>
         /// The control instance that gives the 'heartbeat'
         /// </summary>
         public ITickControl TickControl { get; set; }
+
+        public ITickControl TickControl
+        {
+            get { return _tickControl; }
+            set
+            {
+                _tickControl = value;
+                _tickControl.Start(OnTick);
+            }
+        }
 
         /// <summary>
         /// Switches the behavior to a given new one
@@ -46,6 +60,10 @@ namespace DigitalWatch.Core
         public void RegisterClick(IClockButtonClick clockButtonClick)
         {
             Behavior.OnClick(clockButtonClick);
+        }
+
+        protected void OnTick()
+        {
         }
     }
 }
