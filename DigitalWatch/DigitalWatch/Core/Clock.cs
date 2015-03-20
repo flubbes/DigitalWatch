@@ -14,6 +14,7 @@ namespace DigitalWatch.Core
         public void SwitchBehavior<T>() where T : ClockBehavior, new()
         {
             Behavior = new T();
+            Behavior.SetClock(this);
         }
 
         public void RegisterClick(IClockButtonClick clockButtonClick)

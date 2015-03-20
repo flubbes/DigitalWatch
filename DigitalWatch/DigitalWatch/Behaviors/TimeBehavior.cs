@@ -4,7 +4,7 @@ using System;
 
 namespace DigitalWatch.Behaviors
 {
-    public class TimeBehavior : ClockBehavior
+    public class TimeBehavior : SingletonClockBehavior
     {
         private IClock _clock;
 
