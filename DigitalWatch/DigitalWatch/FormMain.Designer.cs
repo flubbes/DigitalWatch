@@ -60,6 +60,7 @@
             this.btnMode.TabIndex = 1;
             this.btnMode.Text = "Mode";
             this.btnMode.UseVisualStyleBackColor = true;
+            this.btnMode.Click += new System.EventHandler(this.btnMode_Click);
             // 
             // btnSet
             // 
@@ -70,6 +71,7 @@
             this.btnSet.TabIndex = 2;
             this.btnSet.Text = "Set";
             this.btnSet.UseVisualStyleBackColor = true;
+            this.btnSet.Click += new System.EventHandler(this.btnSet_Click);
             // 
             // btnLight
             // 
@@ -80,6 +82,7 @@
             this.btnLight.TabIndex = 3;
             this.btnLight.Text = "Light";
             this.btnLight.UseVisualStyleBackColor = true;
+            this.btnLight.Click += new System.EventHandler(this.btnLight_Click);
             // 
             // FormMain
             // 
