@@ -48,6 +48,7 @@
     <Compile Include="Behaviors\StopwatchBehavior.cs" />
     <Compile Include="Behaviors\TimeChangeBehavior.cs" />
     <Compile Include="Clicks\LightClick.cs" />
+    <Compile Include="Clicks\LongSetClick.cs" />
     <Compile Include="Clicks\SetClick.cs" />
     <Compile Include="Clicks\ModeClick.cs" />
     <Compile Include="Controls\SevenSegment.cs">
