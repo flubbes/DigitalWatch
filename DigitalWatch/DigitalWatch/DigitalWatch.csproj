@@ -44,6 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Behaviors\SingletonClockBehavior.cs" />
     <Compile Include="Behaviors\StopwatchBehavior.cs" />
     <Compile Include="Behaviors\TimeChangeBehavior.cs" />
     <Compile Include="Controls\SevenSegment.cs">
