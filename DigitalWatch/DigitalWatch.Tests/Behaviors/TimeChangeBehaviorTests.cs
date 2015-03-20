@@ -17,20 +17,13 @@ namespace DigitalWatch.Tests.Behaviors
         {
             _behavior = new TimeChangeBehavior();
             _testableClock = new TestableClock();
+            _behavior.SetClock(_testableClock);
         }
 
         [Test]
         public void IsDerivedFromClockBehaviorInterface()
         {
             _behavior.Should().BeAssignableTo<ClockBehavior>();
-        }
-
-        [Test]
-        public void CanIncrementSecondValue()
-        {
-            var previousValue = _behavior.Time;
-            _behavior.IncrementSecond();
-            _behavior.Time.Should().Be(previousValue.AddSeconds(1.0));
         }
 
         [Test]
@@ -47,15 +40,6 @@ namespace DigitalWatch.Tests.Behaviors
             var previousValue = _behavior.Time;
             _behavior.IncrementHour();
             _behavior.Time.Should().Be(previousValue.AddHours(1.0));
-        }
-
-        [Test]
-        public void CanHookUpToClockTickEvent_And_IncrementsWhenTriggered()
-        {
-            var previousValue = DateTime.Now;
-            _behavior.Time = previousValue;
-            _testableClock.TriggerTickEvent();
-            _behavior.Time.Should().Be(previousValue.AddSeconds(1.0));
         }
     }
 }

@@ -24,7 +24,7 @@ namespace DigitalWatch.Behaviors
 
         public override void OnClick(IClockButtonClick buttonClick)
         {
-            throw new NotImplementedException();
+            
         }
     }
 }

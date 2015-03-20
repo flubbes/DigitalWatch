@@ -3,6 +3,7 @@ using DigitalWatch.Tests.Core;
 using FluentAssertions;
 using NUnit.Framework;
 using System;
+using DigitalWatch.Clicks;
 
 namespace DigitalWatch.Tests.Behaviors
 {
@@ -39,6 +40,12 @@ namespace DigitalWatch.Tests.Behaviors
             var previousValue = _behavior.TimeSpan;
             _testableClock.TriggerTickEvent();
             _behavior.TimeSpan.Should().Be(previousValue + new TimeSpan(0, 0, 0, 1));
+        }
+
+        [Test]
+        public void ModeButtonClickTriggersCorrectAction()
+        {
+            _behavior.OnClick(new ModeClick());
         }
     }
 }
