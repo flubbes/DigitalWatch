@@ -13,6 +13,9 @@ namespace DigitalWatch.Behaviors
         private void Tick(object sender, EventArgs eventArgs)
         {
             Time = Time.AddSeconds(1.0);
+            var hourString = (Time.Hour < 10 ? "0" : "") + Time.Hour;
+            var minuteString = (Time.Minute < 10 ? "0" : "") + Time.Minute;
+            _clock.Display.OnUpdate(string.Format("{0}:{1}", hourString, minuteString));
         }
 
         public override void SetClock(IClock clock)
