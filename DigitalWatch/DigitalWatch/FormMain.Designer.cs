@@ -51,11 +51,11 @@
             // 
             // btnMode
             // 
-            this.btnMode.Location = new System.Drawing.Point(427, 12);
+            this.btnMode.Location = new System.Drawing.Point(427, 2);
             this.btnMode.Name = "btnMode";
             this.btnMode.Size = new System.Drawing.Size(75, 23);
             this.btnMode.TabIndex = 1;
-            this.btnMode.Text = "button1";
+            this.btnMode.Text = "Mode";
             this.btnMode.UseVisualStyleBackColor = true;
             // 
             // FormMain
