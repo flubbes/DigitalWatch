@@ -12,6 +12,7 @@ namespace DigitalWatch
     public partial class FormMain : Form
     {
         private readonly IClock _clock;
+        private DateTime _mouseDownTime;
 
         /// <summary>
         /// Initializes a new instance of FormMain
@@ -61,6 +62,31 @@ namespace DigitalWatch
         private void btnLight_Click(object sender, EventArgs e)
         {
             _clock.RegisterClick(new LightClick());
+        }
+
+        /// <summary>
+        /// Is executed when the set button is clicked for a prolonged period of time
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnLongSetClick_Click(object sender, EventArgs e)
+        {
+            _clock.RegisterClick(new LongSetClick());
+        }
+
+        private void btnSet_MouseDown(object sender, MouseEventArgs e)
+        {
+            _mouseDownTime = DateTime.Now;
+        }
+
+        private void btnSet_MouseUp(object sender, MouseEventArgs e)
+        {
+            var mouseDownTimespan =  DateTime.Now - _mouseDownTime;
+            var thresholdValue = new TimeSpan(0, 0, 0, 1, 500);
+            if (mouseDownTimespan > thresholdValue)
+            {
+                btnLongSetClick_Click(this, new EventArgs());
+            }
         }
     }
 }
