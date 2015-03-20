@@ -1,10 +1,12 @@
 ﻿using DigitalWatch.Core;
 using System;
+using DigitalWatch.Clicks;
 
 namespace DigitalWatch.Behaviors
 {
     public class StopwatchBehavior : ClockBehavior
     {
+        private IClock _clock;
         public TimeSpan TimeSpan { get; set; }
 
         public void IncrementTimeSpan()
@@ -19,12 +21,16 @@ namespace DigitalWatch.Behaviors
 
         public override void SetClock(IClock clock)
         {
+            _clock = clock;
             clock.Tick += Tick;
         }
 
         public override void OnClick(IClockButtonClick buttonClick)
         {
-            
+            if (buttonClick is ModeClick)
+            {
+                _clock.SwitchBehavior<TimeBehavior>();
+            }
         }
     }
 }
