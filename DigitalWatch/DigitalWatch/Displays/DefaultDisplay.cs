@@ -6,10 +6,13 @@ namespace DigitalWatch.Displays
     {
         public void TriggerUpdate(string displayData)
         {
-            Update(this, new UpdateEventArgs
+            if(Update != null)
             {
-                DisplayData = displayData
-            });
+                Update(this, new UpdateEventArgs
+                {
+                    DisplayData = displayData
+                });
+            }
         }
 
         public event UpdateEventHandler Update;
