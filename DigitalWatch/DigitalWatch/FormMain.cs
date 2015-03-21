@@ -74,14 +74,24 @@ namespace DigitalWatch
             _clock.RegisterClick(new LongSetClick());
         }
 
+        /// <summary>
+        /// Handles the MouseDown event of the btnSet control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="MouseEventArgs"/> instance containing the event data.</param>
         private void btnSet_MouseDown(object sender, MouseEventArgs e)
         {
             _mouseDownTime = DateTime.Now;
         }
 
+        /// <summary>
+        /// Handles the MouseUp event of the btnSet control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="MouseEventArgs"/> instance containing the event data.</param>
         private void btnSet_MouseUp(object sender, MouseEventArgs e)
         {
-            var mouseDownTimespan =  DateTime.Now - _mouseDownTime;
+            var mouseDownTimespan = DateTime.Now - _mouseDownTime;
             var thresholdValue = new TimeSpan(0, 0, 0, 1, 500);
             if (mouseDownTimespan > thresholdValue)
             {

@@ -1,15 +1,22 @@
-﻿using DigitalWatch.Core;
+﻿using DigitalWatch.Clicks;
+using DigitalWatch.Core;
 using System;
-using DigitalWatch.Clicks;
 
 namespace DigitalWatch.Behaviors
 {
     /// <summary>
-    /// The behavior that contains the functionality for the stopwatch 
+    /// The behavior that contains the functionality for the stopwatch
     /// </summary>
     public class StopwatchBehavior : ClockBehavior
     {
         private IClock _clock;
+
+        /// <summary>
+        /// Gets or sets the time span.
+        /// </summary>
+        /// <value>
+        /// The time span.
+        /// </value>
         public TimeSpan TimeSpan { get; set; }
         public bool IsRunning { get; set; }
 
