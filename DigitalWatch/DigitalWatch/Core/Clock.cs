@@ -38,6 +38,10 @@ namespace DigitalWatch.Core
 
         protected void OnTick()
         {
+            if (Tick != null)
+            {
+                Tick(this, new EventArgs());
+            }
         }
     }
 }

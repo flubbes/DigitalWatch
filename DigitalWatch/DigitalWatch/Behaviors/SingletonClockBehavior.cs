@@ -3,27 +3,16 @@
     /// <summary>
     /// The base class for all behaviors that must be unique in one instance of the program
     /// </summary>
-    public abstract class SingletonClockBehavior : ClockBehavior
+    public abstract class SingletonClockBehavior<T> : ClockBehavior where T : new()
     {
-        private static object _singletonContainer;
-
-        /// <summary>
-        /// initializes a new instance of a SingletonClockBehavior
-        /// </summary>
-        protected SingletonClockBehavior()
-        {
-            if (_singletonContainer == null)
-            {
-                _singletonContainer = this;
-            }
-        }
+        private static readonly T SingletonInstance = new T();
 
         /// <summary>
         /// A workaround to make singletons check their own existence
         /// </summary>
-        public object SingletonContainer
+        public object Instance
         {
-            get { return _singletonContainer; }
+            get { return SingletonInstance; }
         }
     }
 }

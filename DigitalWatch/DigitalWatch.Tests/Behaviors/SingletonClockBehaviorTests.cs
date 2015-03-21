@@ -12,20 +12,25 @@ namespace DigitalWatch.Tests.Behaviors
         public void CanCreate()
         {
             var behavior = new SingletonTestBehavior();
-            SingletonClockBehavior originalInstance = behavior;
+            SingletonClockBehavior<SingletonTestBehavior> originalInstance = behavior;
 
             behavior = new SingletonTestBehavior();
 
-            originalInstance.SingletonContainer.Should().Be(behavior.SingletonContainer).And.NotBeNull();
+            originalInstance.Instance.Should().Be(behavior.Instance).And.NotBeNull();
         }
 
         [Test]
         public void IsAbstract()
         {
-            typeof(SingletonClockBehavior).IsAbstract.Should().BeTrue();
+            typeof(SingletonClockBehavior<SingletonTestBehavior>).IsAbstract.Should().BeTrue();
         }
 
-        private class SingletonTestBehavior : SingletonClockBehavior
+        [Test]
+        public void Test()
+        {
+        }
+
+        private class SingletonTestBehavior : SingletonClockBehavior<SingletonTestBehavior>
         {
             public override void SetClock(IClock clock)
             {

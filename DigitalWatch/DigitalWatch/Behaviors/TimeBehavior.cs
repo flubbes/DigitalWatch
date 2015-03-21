@@ -3,15 +3,25 @@ using DigitalWatch.Core;
 using System;
 
 namespace DigitalWatch.Behaviors
-{  
+{
     /// <summary>
-    /// The behavior that contains the functionality for displaying the time of the watch 
+    /// The behavior that contains the functionality for displaying the time of the watch
     /// </summary>
-    public class TimeBehavior : SingletonClockBehavior
+    public class TimeBehavior : SingletonClockBehavior<TimeBehavior>
     {
         private IClock _clock;
+        private DateTime _time;
 
-        public DateTime Time { get; set; }
+        private TimeBehavior Container
+        {
+            get { return Instance as TimeBehavior; }
+        }
+
+        public DateTime Time
+        {
+            get { return Container._time; }
+            set { Container._time = value; }
+        }
 
         /// <summary>
         /// Contains all actions that are executed when the Tick Event occurs
@@ -20,10 +30,10 @@ namespace DigitalWatch.Behaviors
         /// <param name="eventArgs"></param>
         private void Tick(object sender, EventArgs eventArgs)
         {
-            Time = Time.AddSeconds(1.0);
+            Container.Time = Time.AddSeconds(1.0);
             var hourString = (Time.Hour < 10 ? "0" : "") + Time.Hour;
             var minuteString = (Time.Minute < 10 ? "0" : "") + Time.Minute;
-            _clock.Display.OnUpdate(string.Format("{0}{1}", hourString, minuteString));
+            Container._clock.Display.TriggerUpdate(string.Format("{0}{1}", hourString, minuteString));
         }
 
         /// <summary>
@@ -32,7 +42,7 @@ namespace DigitalWatch.Behaviors
         /// <param name="clock"></param>
         public override void SetClock(IClock clock)
         {
-            _clock = clock;
+            Container._clock = clock;
             clock.Tick += Tick;
         }
 
@@ -44,11 +54,11 @@ namespace DigitalWatch.Behaviors
         {
             if (buttonClick is ModeClick)
             {
-                _clock.SwitchBehavior<StopwatchBehavior>();
+                Container._clock.SwitchBehavior<StopwatchBehavior>();
             }
             else if (buttonClick is SetClick)
             {
-                _clock.SwitchBehavior<TimeChangeBehavior>();
+                Container._clock.SwitchBehavior<TimeChangeBehavior>();
             }
         }
     }

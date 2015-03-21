@@ -2,6 +2,7 @@
 using DigitalWatch.Core;
 using DigitalWatch.Displays;
 using DigitalWatch.Ticks;
+using System;
 
 namespace DigitalWatch
 {
@@ -17,6 +18,7 @@ namespace DigitalWatch
         public Clock Create()
         {
             var defaultBehavior = new TimeBehavior();
+            defaultBehavior.Time = DateTime.Now;
             var defaultDisplay = new DefaultDisplay();
 
             var defaultClock = new Clock

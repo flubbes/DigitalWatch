@@ -16,10 +16,5 @@ namespace DigitalWatch.Displays
         }
 
         public event UpdateEventHandler Update;
-
-        public void OnUpdate(string displayData)
-        {
-            throw new System.NotImplementedException();
-        }
     }
 }
