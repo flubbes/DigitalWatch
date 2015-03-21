@@ -2,13 +2,25 @@ using DigitalWatch.Clicks;
 using DigitalWatch.Core;
 using DigitalWatch.Utilities;
 using System;
-using System.Windows.Forms;
 
 namespace DigitalWatch.Behaviors
 {
+    /// <summary>
+    /// The behavior to change the time
+    /// </summary>
     public class TimeChangeBehavior : ClockBehavior
     {
         private IClock _clock;
+        private Mode _mode;
+
+        /// <summary>
+        /// The internal  ode of the timeChangeBehavior
+        /// </summary>
+        private enum Mode
+        {
+            ChangeHour,
+            ChangeMinute
+        }
 
         /// <summary>
         /// Gets or sets the time.
@@ -70,8 +82,30 @@ namespace DigitalWatch.Behaviors
         {
             if (buttonClick is ModeClick)
             {
-                IncrementHour();
+                switch (_mode)
+                {
+                    case Mode.ChangeHour:
+                        IncrementHour();
+                        break;
+
+                    case Mode.ChangeMinute:
+                        IncrementMinute();
+                        break;
+                }
                 _clock.Display.TriggerUpdate(Time.ToDigitalClockFormat());
+            }
+            if (buttonClick is SetClick)
+            {
+                switch (_mode)
+                {
+                    case Mode.ChangeHour:
+                        _mode = Mode.ChangeMinute;
+                        break;
+
+                    case Mode.ChangeMinute:
+                        _clock.SwitchBehavior<TimeBehavior>();
+                        break;
+                }
             }
         }
     }
