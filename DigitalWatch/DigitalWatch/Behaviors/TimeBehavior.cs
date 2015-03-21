@@ -44,7 +44,11 @@ namespace DigitalWatch.Behaviors
         private void Tick(object sender, EventArgs eventArgs)
         {
             Container._time = Time.AddSeconds(1.0);
-            Container._clock.Display.TriggerUpdate(Time.ToDigitalClockFormat());
+
+            if (Container._clock.Behavior is TimeBehavior)
+            {
+                Container._clock.Display.TriggerUpdate(Time.ToDigitalClockFormat());
+            }
         }
 
         /// <summary>
