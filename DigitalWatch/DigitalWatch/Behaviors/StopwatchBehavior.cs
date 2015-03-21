@@ -11,6 +11,7 @@ namespace DigitalWatch.Behaviors
     {
         private IClock _clock;
         public TimeSpan TimeSpan { get; set; }
+        public bool IsRunning { get; set; }
 
         /// <summary>
         /// Increments the stopwatch's timespan by a second
@@ -27,7 +28,22 @@ namespace DigitalWatch.Behaviors
         /// <param name="eventArgs"></param>
         private void Tick(object sender, EventArgs eventArgs)
         {
-            IncrementTimeSpanBySecond();
+            if (IsRunning)
+            {
+                IncrementTimeSpanBySecond();
+                _clock.Display.TriggerUpdate(GetTimeSpanString());
+            }
+        }
+
+        /// <summary>
+        /// Delivers a string containing the timespans data
+        /// </summary>
+        /// <returns></returns>
+        private string GetTimeSpanString()
+        {
+            var hourString = TimeSpan.Hours.ToString();
+            var minuteString = TimeSpan.Minutes.ToString();
+            return hourString + minuteString;
         }
 
         /// <summary>
@@ -37,6 +53,7 @@ namespace DigitalWatch.Behaviors
         public override void SetClock(IClock clock)
         {
             _clock = clock;
+            _clock.Display.TriggerUpdate(GetTimeSpanString());
             clock.Tick += Tick;
         }
 
@@ -50,6 +67,40 @@ namespace DigitalWatch.Behaviors
             {
                 _clock.SwitchBehavior<TimeBehavior>();
             }
+
+            if (buttonClick is SetClick)
+            {
+                if (IsRunning)
+                {
+                    IsRunning = false;
+                }
+                else
+                {
+                    IsRunning = true;
+                }
+            }
+
+            if (buttonClick is LongSetClick)
+            {
+                IsRunning = false;
+                TimeSpan = new TimeSpan(0,0,0,0,0);
+            }
+        }
+
+        /// <summary>
+        /// Starts the Stopwatch
+        /// </summary>
+        public void Start()
+        {
+            IsRunning = true;
+        }
+
+        /// <summary>
+        /// Stops the Stopwatch
+        /// </summary>
+        public void Stop()
+        {
+            IsRunning = false;
         }
     }
 }

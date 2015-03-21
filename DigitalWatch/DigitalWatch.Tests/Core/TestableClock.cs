@@ -22,11 +22,7 @@ namespace DigitalWatch.Tests.Core
             set;
         }
 
-        public ITickControl TickControl
-        {
-            get { throw new NotImplementedException(); }
-            set { throw new NotImplementedException(); }
-        }
+        public ITickControl TickControl { get; set; }
 
         public void RegisterClick(IClockButtonClick clockButtonClick)
         {
