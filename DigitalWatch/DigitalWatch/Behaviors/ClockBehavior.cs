@@ -11,7 +11,7 @@ namespace DigitalWatch.Behaviors
         /// Sets the clock.
         /// </summary>
         /// <param name="clock">The clock.</param>
-        public abstract void SetClock(IClock clock);
+        public abstract void Load(IClock clock);
 
         /// <summary>
         /// Called when a button is clicked.

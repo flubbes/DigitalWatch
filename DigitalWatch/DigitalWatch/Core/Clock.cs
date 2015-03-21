@@ -50,7 +50,7 @@ namespace DigitalWatch.Core
         public void SwitchBehavior<T>() where T : ClockBehavior, new()
         {
             Behavior = new T();
-            Behavior.SetClock(this);
+            Behavior.Load(this);
         }
 
         /// <summary>

@@ -27,7 +27,7 @@ namespace DigitalWatch
                 Display = defaultDisplay,
                 TickControl = new DefaultClockTickControl()
             };
-            defaultBehavior.SetClock(defaultClock);
+            defaultBehavior.Load(defaultClock);
             return defaultClock;
         }
     }

@@ -57,7 +57,7 @@ namespace DigitalWatch.Behaviors
         /// Hands the Clock object to the behavior and hooks up the tick event
         /// </summary>
         /// <param name="clock"></param>
-        public override void SetClock(IClock clock)
+        public override void Load(IClock clock)
         {
             _clock = clock;
             _clock.Display.TriggerUpdate(GetTimeSpanString());

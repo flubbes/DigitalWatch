@@ -25,7 +25,7 @@ namespace DigitalWatch.Tests.Behaviors
             _testableClock = new TestableClock();
             _clockDisplay = A.Fake<IClockDisplay>();
             _testableClock.Display = _clockDisplay;
-            _behavior.SetClock(_testableClock);
+            _behavior.Load(_testableClock);
         }
 
         [Test]
@@ -74,7 +74,7 @@ namespace DigitalWatch.Tests.Behaviors
         {
             var behavior = new TimeChangeBehavior();
             var clock = A.Fake<IClock>();
-            behavior.SetClock(clock);
+            behavior.Load(clock);
             behavior.OnClick(new SetClick());
             behavior.OnClick(new SetClick());
             A.CallTo(() => clock.SwitchBehavior<TimeBehavior>()).MustHaveHappened();

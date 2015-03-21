@@ -26,7 +26,7 @@ namespace DigitalWatch.Tests.Behaviors
                 Display = _clockDisplay
             };
             _behavior = new TimeBehavior();
-            _behavior.SetClock(_testableClock);
+            _behavior.Load(_testableClock);
         }
 
         [Test]
@@ -48,7 +48,7 @@ namespace DigitalWatch.Tests.Behaviors
         public void WhenModeButtonIsClicked_LoadsStopwatchBehavior()
         {
             var clock = A.Fake<IClock>();
-            _behavior.SetClock(clock);
+            _behavior.Load(clock);
             _behavior.OnClick(new ModeClick());
             A.CallTo(() => clock.SwitchBehavior<StopwatchBehavior>()).MustHaveHappened();
         }
@@ -57,7 +57,7 @@ namespace DigitalWatch.Tests.Behaviors
         public void WhenSetButtonIsClicked_LoadsTimeChangeBehavior()
         {
             var clock = A.Fake<IClock>();
-            _behavior.SetClock(clock);
+            _behavior.Load(clock);
             _behavior.OnClick(new SetClick());
             A.CallTo(() => clock.SwitchBehavior<TimeChangeBehavior>()).MustHaveHappened();
         }

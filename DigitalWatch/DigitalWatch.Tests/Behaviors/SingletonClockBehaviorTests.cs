@@ -32,7 +32,7 @@ namespace DigitalWatch.Tests.Behaviors
 
         private class SingletonTestBehavior : SingletonClockBehavior<SingletonTestBehavior>
         {
-            public override void SetClock(IClock clock)
+            public override void Load(IClock clock)
             {
                 throw new System.NotImplementedException();
             }

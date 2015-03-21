@@ -58,7 +58,7 @@ namespace DigitalWatch.Behaviors
         /// Hands the Clock object instance to the Behavior to work with
         /// </summary>
         /// <param name="clock"></param>
-        public override void SetClock(IClock clock)
+        public override void Load(IClock clock)
         {
             clock.Tick += Tick;
             _clock = clock;

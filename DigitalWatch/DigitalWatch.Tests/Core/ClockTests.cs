@@ -56,7 +56,7 @@ namespace DigitalWatch.Tests.Core
         {
             public bool IsSetClockCalled { get; set; }
 
-            public override void SetClock(IClock clock)
+            public override void Load(IClock clock)
             {
                 IsSetClockCalled = true;
             }
