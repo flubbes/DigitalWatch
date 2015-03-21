@@ -1,3 +1,4 @@
+using DigitalWatch.Clicks;
 using DigitalWatch.Core;
 using System;
 using System.Windows.Forms;
@@ -6,12 +7,20 @@ namespace DigitalWatch.Behaviors
 {
     public class TimeChangeBehavior : ClockBehavior
     {
+        private IClock _clock;
+
+        /// <summary>
+        /// Gets or sets the time.
+        /// </summary>
+        /// <value>
+        /// The time.
+        /// </value>
         public DateTime Time { get; set; }
 
         /// <summary>
         /// Increments the property 'Time' by one (1) Second
         /// </summary>
-        public void IncrementSecond()
+        private void IncrementSecond()
         {
             Time = Time.AddSeconds(1.0);
         }
@@ -39,6 +48,7 @@ namespace DigitalWatch.Behaviors
         public override void SetClock(IClock clock)
         {
             clock.Tick += Tick;
+            _clock = clock;
         }
 
         /// <summary>
@@ -57,7 +67,9 @@ namespace DigitalWatch.Behaviors
         /// <param name="buttonClick"></param>
         public override void OnClick(IClockButtonClick buttonClick)
         {
-            //TODO implement full logic
+            if (buttonClick is ModeClick)
+            {
+            }
         }
     }
 }

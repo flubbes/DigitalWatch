@@ -1,8 +1,11 @@
-﻿using System;
-using DigitalWatch.Behaviors;
+﻿using DigitalWatch.Behaviors;
+using DigitalWatch.Clicks;
+using DigitalWatch.Displays;
 using DigitalWatch.Tests.Core;
+using FakeItEasy;
 using FluentAssertions;
 using NUnit.Framework;
+using System;
 
 namespace DigitalWatch.Tests.Behaviors
 {
@@ -11,12 +14,15 @@ namespace DigitalWatch.Tests.Behaviors
     {
         private TimeChangeBehavior _behavior;
         private TestableClock _testableClock;
+        private IClockDisplay _clockDisplay;
 
         [SetUp]
         public void SetUp()
         {
             _behavior = new TimeChangeBehavior();
             _testableClock = new TestableClock();
+            _clockDisplay = A.Fake<IClockDisplay>();
+            _testableClock.Display = _clockDisplay;
             _behavior.SetClock(_testableClock);
         }
 
@@ -40,6 +46,15 @@ namespace DigitalWatch.Tests.Behaviors
             var previousValue = _behavior.Time;
             _behavior.IncrementHour();
             _behavior.Time.Should().Be(previousValue.AddHours(1.0));
+        }
+
+        [Test]
+        public void WhenModeButtonIsClicked_UpdatesDisplayWithNewValue()
+        {
+            _behavior.Time = new DateTime(2000, 1, 1, 12, 0, 0);
+            var previousValue = _behavior.Time;
+            _behavior.OnClick(new ModeClick());
+            A.CallTo(() => _clockDisplay.TriggerUpdate("1300"));
         }
     }
 }

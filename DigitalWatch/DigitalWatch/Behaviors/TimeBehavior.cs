@@ -1,5 +1,6 @@
 ﻿using DigitalWatch.Clicks;
 using DigitalWatch.Core;
+using DigitalWatch.Utilities;
 using System;
 
 namespace DigitalWatch.Behaviors
@@ -42,10 +43,8 @@ namespace DigitalWatch.Behaviors
         /// <param name="eventArgs"></param>
         private void Tick(object sender, EventArgs eventArgs)
         {
-            Container.Time = Time.AddSeconds(1.0);
-            var hourString = (Time.Hour < 10 ? "0" : "") + Time.Hour;
-            var minuteString = (Time.Minute < 10 ? "0" : "") + Time.Minute;
-            Container._clock.Display.TriggerUpdate(string.Format("{0}{1}", hourString, minuteString));
+            Container._time = Time.AddSeconds(1.0);
+            Container._clock.Display.TriggerUpdate(Time.ToDigitalClockFormat());
         }
 
         /// <summary>
