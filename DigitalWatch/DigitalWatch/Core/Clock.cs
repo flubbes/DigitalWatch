@@ -27,12 +27,9 @@ namespace DigitalWatch.Core
         /// </summary>
         public IClockDisplay Display { get; set; }
 
-
         /// <summary>
         /// The control instance that gives the 'heartbeat'
         /// </summary>
-        public ITickControl TickControl { get; set; }
-
         public ITickControl TickControl
         {
             get { return _tickControl; }
