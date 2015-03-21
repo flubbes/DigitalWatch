@@ -21,7 +21,7 @@ namespace DigitalWatch.Tests.Behaviors
         public void SetUp()
         {
             _clockDisplay = A.Fake<IClockDisplay>();
-            _testableClock = new TestableClock
+            _testableClock = new TestableClock()
             {
                 Display = _clockDisplay
             };

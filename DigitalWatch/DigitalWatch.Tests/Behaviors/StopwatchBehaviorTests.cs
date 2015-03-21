@@ -5,6 +5,7 @@ using NUnit.Framework;
 using System;
 using DigitalWatch.Clicks;
 using DigitalWatch.Core;
+using DigitalWatch.Displays;
 using FakeItEasy;
 
 namespace DigitalWatch.Tests.Behaviors
@@ -18,7 +19,10 @@ namespace DigitalWatch.Tests.Behaviors
         [SetUp]
         public void SetUp()
         {
-            _testableClock = new TestableClock();
+            _testableClock = new TestableClock
+            {
+                Display = A.Fake<IClockDisplay>()
+            };
             _behavior = new StopwatchBehavior() { TimeSpan = new TimeSpan() };
             _behavior.SetClock(_testableClock);
         }
@@ -51,6 +55,24 @@ namespace DigitalWatch.Tests.Behaviors
             _behavior.SetClock(clock);
             _behavior.OnClick(new ModeClick());
             A.CallTo(() => clock.SwitchBehavior<TimeBehavior>()).MustHaveHappened();
+        }
+
+        [Test]
+        public void CanBeStarted()
+        {
+            _behavior.SetClock(_testableClock);
+            _behavior.Start();
+            _behavior.IsRunning.Should().BeTrue();
+        }
+
+        [Test]
+        public void CanBeStopped()
+        {
+            _behavior.SetClock(_testableClock);
+            _behavior.Start();
+            _behavior.IsRunning.Should().BeTrue();
+            _behavior.Stop();
+            _behavior.IsRunning.Should().BeFalse();
         }
     }
 }
