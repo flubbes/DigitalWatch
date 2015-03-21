@@ -12,11 +12,23 @@ namespace DigitalWatch.Behaviors
         private IClock _clock;
         private DateTime _time;
 
+        /// <summary>
+        /// Gets the container.
+        /// </summary>
+        /// <value>
+        /// The container.
+        /// </value>
         private TimeBehavior Container
         {
             get { return Instance as TimeBehavior; }
         }
 
+        /// <summary>
+        /// Gets or sets the time.
+        /// </summary>
+        /// <value>
+        /// The time.
+        /// </value>
         public DateTime Time
         {
             get { return Container._time; }

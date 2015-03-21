@@ -15,6 +15,9 @@ namespace DigitalWatch.Core
         /// </summary>
         private ITickControl _tickControl;
 
+        /// <summary>
+        /// The eventhandler that handles the Ticks
+        /// </summary>
         public event ClockTickEventHandler Tick;
 
         /// <summary>
@@ -41,7 +44,7 @@ namespace DigitalWatch.Core
         }
 
         /// <summary>
-        /// Switches the behavior to a given new one
+        /// Switches the behavior to a given new one.
         /// </summary>
         /// <typeparam name="T"></typeparam>
         public void SwitchBehavior<T>() where T : ClockBehavior, new()
@@ -51,7 +54,7 @@ namespace DigitalWatch.Core
         }
 
         /// <summary>
-        /// Hands the clicks to the submerged structures
+        /// Hands the clicks to the submerged structures.
         /// </summary>
         /// <param name="clockButtonClick"></param>
         public void RegisterClick(IClockButtonClick clockButtonClick)
@@ -59,6 +62,9 @@ namespace DigitalWatch.Core
             Behavior.OnClick(clockButtonClick);
         }
 
+        /// <summary>
+        /// Fires the tick event.
+        /// </summary>
         protected void OnTick()
         {
             if (Tick != null)
