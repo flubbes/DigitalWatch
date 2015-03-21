@@ -31,7 +31,7 @@ namespace DigitalWatch.Tests.Ticks
             Action a = () => counter++;
             _tickControl.Start(a);
             Thread.Sleep(3000);
-            counter.Should().Be(3);
+            counter.Should().BeInRange(3, 4);
         }
     }
 }

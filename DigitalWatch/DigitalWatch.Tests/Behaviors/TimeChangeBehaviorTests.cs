@@ -54,7 +54,7 @@ namespace DigitalWatch.Tests.Behaviors
             _behavior.Time = new DateTime(2000, 1, 1, 12, 0, 0);
             var previousValue = _behavior.Time;
             _behavior.OnClick(new ModeClick());
-            A.CallTo(() => _clockDisplay.TriggerUpdate("1300"));
+            A.CallTo(() => _clockDisplay.TriggerUpdate("1300")).MustHaveHappened();
         }
     }
 }
