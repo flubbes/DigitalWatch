@@ -48,9 +48,9 @@ namespace DigitalWatch.Behaviors
         /// <returns></returns>
         private string GetTimeSpanString()
         {
-            var hourString = TimeSpan.Hours.ToString();
             var minuteString = TimeSpan.Minutes.ToString();
-            return hourString + minuteString;
+            var secondString = TimeSpan.Seconds.ToString();
+            return minuteString + secondString;
         }
 
         /// <summary>
@@ -91,6 +91,7 @@ namespace DigitalWatch.Behaviors
             {
                 IsRunning = false;
                 TimeSpan = new TimeSpan(0,0,0,0,0);
+                _clock.Display.TriggerUpdate(GetTimeSpanString());
             }
         }
 
