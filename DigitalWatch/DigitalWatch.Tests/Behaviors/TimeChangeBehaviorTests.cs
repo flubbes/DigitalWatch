@@ -1,7 +1,9 @@
 ﻿using DigitalWatch.Behaviors;
 using DigitalWatch.Clicks;
+using DigitalWatch.Core;
 using DigitalWatch.Displays;
 using DigitalWatch.Tests.Core;
+using DigitalWatch.Utilities;
 using FakeItEasy;
 using FluentAssertions;
 using NUnit.Framework;
@@ -55,6 +57,27 @@ namespace DigitalWatch.Tests.Behaviors
             var previousValue = _behavior.Time;
             _behavior.OnClick(new ModeClick());
             A.CallTo(() => _clockDisplay.TriggerUpdate("1300")).MustHaveHappened();
+        }
+
+        [Test]
+        public void WhenSetButtonPressedOnce_And_ModeButtonIsPressed_IncreasesMinutes()
+        {
+            var time = DateTime.Now;
+            _behavior.Time = time;
+            _behavior.OnClick(new SetClick());
+            _behavior.OnClick(new ModeClick());
+            A.CallTo(() => _clockDisplay.TriggerUpdate(time.AddMinutes(1).ToDigitalClockFormat())).MustHaveHappened();
+        }
+
+        [Test]
+        public void WhenSetButtonPressedTwice_LoadsTimeBehavior()
+        {
+            var behavior = new TimeChangeBehavior();
+            var clock = A.Fake<IClock>();
+            behavior.SetClock(clock);
+            behavior.OnClick(new SetClick());
+            behavior.OnClick(new SetClick());
+            A.CallTo(() => clock.SwitchBehavior<TimeBehavior>()).MustHaveHappened();
         }
     }
 }
