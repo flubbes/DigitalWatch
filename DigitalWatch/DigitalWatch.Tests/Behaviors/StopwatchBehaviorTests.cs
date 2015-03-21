@@ -41,11 +41,21 @@ namespace DigitalWatch.Tests.Behaviors
         }
 
         [Test]
-        public void CanHookUpToClockTickEvent_And_IncrementsWhenTriggered()
+        public void CanHookUpToClockTickEvent_And_IncrementsWhenTriggeredAndStopWatchIsRunning()
         {
             var previousValue = _behavior.TimeSpan;
+            _behavior.IsRunning = true;
             _testableClock.TriggerTickEvent();
             _behavior.TimeSpan.Should().Be(previousValue + new TimeSpan(0, 0, 0, 1));
+        }
+
+        [Test]
+        public void CanHookUpToClockTickEvent_And_DoesNotIncrementsWhenTriggeredAndNotRunning()
+        {
+            var previousValue = _behavior.TimeSpan;
+            _behavior.IsRunning = false;
+            _testableClock.TriggerTickEvent();
+            _behavior.TimeSpan.Should().Be(previousValue);
         }
 
         [Test]
