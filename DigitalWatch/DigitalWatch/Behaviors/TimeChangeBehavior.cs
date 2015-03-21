@@ -1,5 +1,6 @@
 using DigitalWatch.Clicks;
 using DigitalWatch.Core;
+using DigitalWatch.Utilities;
 using System;
 using System.Windows.Forms;
 
@@ -69,6 +70,8 @@ namespace DigitalWatch.Behaviors
         {
             if (buttonClick is ModeClick)
             {
+                IncrementHour();
+                _clock.Display.TriggerUpdate(Time.ToDigitalClockFormat());
             }
         }
     }
