@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Diagnostics;
 using System.Threading;
 using DigitalWatch.Displays.ToggleLightEvent;
 using DigitalWatch.Displays.UpdateEvent;
