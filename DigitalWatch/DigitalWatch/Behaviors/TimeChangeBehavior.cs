@@ -108,5 +108,16 @@ namespace DigitalWatch.Behaviors
                 }
             }
         }
+
+        /// <summary>
+        /// Loads the specified clock.
+        /// </summary>
+        /// <param name="clock">The clock.</param>
+        /// <param name="data">The data.</param>
+        /// <exception cref="NotImplementedException"></exception>
+        public override void Load(IClock clock, DateTime data)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

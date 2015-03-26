@@ -43,7 +43,8 @@ namespace DigitalWatch.Core
 
         public void SwitchBehavior<T>(DateTime time) where T : ClockBehavior, new()
         {
-            throw new NotImplementedException();
+            Behavior = new T();
+            Behavior.Load(this, time);
         }
 
         /// <summary>

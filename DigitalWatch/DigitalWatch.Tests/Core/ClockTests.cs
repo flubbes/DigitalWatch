@@ -41,7 +41,7 @@ namespace DigitalWatch.Tests.Core
         public void CallsSetClock_AfterSwitchingBehavior()
         {
             _clock.SwitchBehavior<TestBehavior>();
-            (_clock.Behavior as TestBehavior).IsSetClockCalled.Should().BeTrue();
+            (_clock.Behavior as TestBehavior).IsLoadCalled.Should().BeTrue();
         }
 
         [Test]
@@ -52,13 +52,30 @@ namespace DigitalWatch.Tests.Core
             A.CallTo(() => tickControl.Start(A<Action>.Ignored)).MustHaveHappened();
         }
 
+        [Test]
+        public void CanSwitchBehavior_And_GivesDateTimeToNewBehavior()
+        {
+            var expected = DateTime.Now;
+            _clock.SwitchBehavior<TestBehavior>(expected);
+            _clock.Behavior.Should().BeOfType<TestBehavior>();
+            var testBehavior = _clock.Behavior as TestBehavior;
+            testBehavior.LoadDateTime.Should().Be(expected);
+        }
+
         private class TestBehavior : ClockBehavior
         {
-            public bool IsSetClockCalled { get; set; }
+            public bool IsLoadCalled { get; private set; }
+
+            public DateTime LoadDateTime { get; private set; }
+
+            public override void Load(IClock clock, DateTime data)
+            {
+                LoadDateTime = data;
+            }
 
             public override void Load(IClock clock)
             {
-                IsSetClockCalled = true;
+                IsLoadCalled = true;
             }
 
             public override void OnClick(IClockButtonClick buttonClick)

@@ -2,6 +2,7 @@
 using DigitalWatch.Core;
 using FluentAssertions;
 using NUnit.Framework;
+using System;
 
 namespace DigitalWatch.Tests.Behaviors
 {
@@ -40,6 +41,11 @@ namespace DigitalWatch.Tests.Behaviors
             public override void OnClick(IClockButtonClick buttonClick)
             {
                 throw new System.NotImplementedException();
+            }
+
+            public override void Load(IClock clock, DateTime data)
+            {
+                throw new NotImplementedException();
             }
         }
     }
