@@ -3,6 +3,7 @@ using DigitalWatch.Clicks;
 using DigitalWatch.Core;
 using DigitalWatch.Displays;
 using DigitalWatch.Tests.Core;
+using DigitalWatch.Utilities;
 using FakeItEasy;
 using FluentAssertions;
 using NUnit.Framework;
@@ -54,22 +55,39 @@ namespace DigitalWatch.Tests.Behaviors
         }
 
         [Test]
-        public void WhenSetButtonIsClicked_LoadsTimeChangeBehavior()
-        {
-            var clock = A.Fake<IClock>();
-            _behavior.Load(clock);
-            _behavior.OnClick(new SetClick());
-            A.CallTo(() => clock.SwitchBehavior<TimeChangeBehavior>()).MustHaveHappened();
-        }
-
-        [Test]
         public void WhenTimeIncreases_UpdatesDisplay()
         {
+            _testableClock.Behavior = _behavior;
             var time = new DateTime(2015, 3, 20, 4, 3, 59);
             _behavior.Time = time;
             _testableClock.TriggerTickEvent();
-            var t = time.AddSeconds(1);
             A.CallTo(() => _clockDisplay.TriggerUpdate("0404")).MustHaveHappened();
+        }
+
+        [Test]
+        public void AfterLoadingBehavior_UpdatesDisplay()
+        {
+            var clock = A.Fake<IClock>();
+            var clockDisplay = A.Fake<IClockDisplay>();
+            clock.Display = clockDisplay;
+            var time = DateTime.Now;
+            var behavior = new TimeBehavior
+            {
+                Time = time
+            };
+            behavior.Load(clock);
+
+            A.CallTo(() => clockDisplay.TriggerUpdate(time.ToDigitalClockFormat())).MustHaveHappened();
+        }
+
+        [Test]
+        public void WhenSwitchingToTimeChangeBehavior_GivesCurrentTimeToIt()
+        {
+            _behavior.Time = DateTime.Now;
+            var clock = A.Fake<IClock>();
+            _behavior.Load(clock);
+            _behavior.OnClick(new SetClick());
+            A.CallTo(() => clock.SwitchBehavior<TimeChangeBehavior>(_behavior.Time)).MustHaveHappened();
         }
     }
 }

@@ -21,7 +21,7 @@ namespace DigitalWatch.Behaviors
         /// </value>
         private TimeBehavior Container
         {
-            get { return Instance as TimeBehavior; }
+            get { return Instance; }
         }
 
         /// <summary>
@@ -58,7 +58,8 @@ namespace DigitalWatch.Behaviors
         public override void Load(IClock clock)
         {
             Container._clock = clock;
-            clock.Tick += Tick;
+            clock.Tick += Container.Tick;
+            clock.Display.TriggerUpdate(Container._time.ToDigitalClockFormat());
         }
 
         /// <summary>
@@ -73,8 +74,19 @@ namespace DigitalWatch.Behaviors
             }
             else if (buttonClick is SetClick)
             {
-                Container._clock.SwitchBehavior<TimeChangeBehavior>();
+                Container._clock.SwitchBehavior<TimeChangeBehavior>(Time);
             }
+        }
+
+        /// <summary>
+        /// Loads the specified clock.
+        /// </summary>
+        /// <param name="clock">The clock.</param>
+        /// <param name="data">The data.</param>
+        /// <exception cref="NotImplementedException"></exception>
+        public override void Load(IClock clock, DateTime data)
+        {
+            throw new NotImplementedException();
         }
     }
 }

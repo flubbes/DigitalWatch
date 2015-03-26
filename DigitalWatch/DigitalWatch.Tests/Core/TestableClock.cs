@@ -16,6 +16,11 @@ namespace DigitalWatch.Tests.Core
         {
         }
 
+        public void SwitchBehavior<T>(DateTime time) where T : ClockBehavior, new()
+        {
+            throw new NotImplementedException();
+        }
+
         public IClockDisplay Display
         {
             get;

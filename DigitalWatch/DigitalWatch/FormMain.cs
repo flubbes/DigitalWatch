@@ -1,5 +1,6 @@
 ﻿using DigitalWatch.Clicks;
 using DigitalWatch.Core;
+using DigitalWatch.Displays.UpdateEvent;
 using System;
 using System.Drawing;
 using System.Windows.Forms;

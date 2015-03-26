@@ -80,33 +80,55 @@ namespace DigitalWatch.Behaviors
         /// <param name="buttonClick"></param>
         public override void OnClick(IClockButtonClick buttonClick)
         {
+            //TODO clean this method
             if (buttonClick is ModeClick)
             {
                 switch (_mode)
                 {
                     case Mode.ChangeHour:
-                        IncrementHour();
+                        {
+                            IncrementHour();
+                        }
                         break;
 
                     case Mode.ChangeMinute:
-                        IncrementMinute();
+                        {
+                            IncrementMinute();
+                        }
                         break;
                 }
                 _clock.Display.TriggerUpdate(Time.ToDigitalClockFormat());
             }
-            if (buttonClick is SetClick)
+            if (!(buttonClick is SetClick))
             {
-                switch (_mode)
-                {
-                    case Mode.ChangeHour:
-                        _mode = Mode.ChangeMinute;
-                        break;
-
-                    case Mode.ChangeMinute:
-                        _clock.SwitchBehavior<TimeBehavior>();
-                        break;
-                }
+                return;
             }
+            switch (_mode)
+            {
+                case Mode.ChangeHour:
+                    {
+                        _mode = Mode.ChangeMinute;
+                    }
+                    break;
+
+                case Mode.ChangeMinute:
+                    {
+                        _clock.SwitchBehavior<TimeBehavior>(Time);
+                    }
+                    break;
+            }
+        }
+
+        /// <summary>
+        /// Loads the specified clock.
+        /// </summary>
+        /// <param name="clock">The clock.</param>
+        /// <param name="data">The data.</param>
+        /// <exception cref="NotImplementedException"></exception>
+        public override void Load(IClock clock, DateTime data)
+        {
+            Load(clock);
+            Time = data;
         }
     }
 }

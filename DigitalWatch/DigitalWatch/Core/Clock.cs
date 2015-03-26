@@ -3,6 +3,7 @@ using DigitalWatch.Displays;
 using DigitalWatch.Ticks;
 using System;
 using DigitalWatch.Clicks;
+using System.Linq;
 
 namespace DigitalWatch.Core
 {
@@ -11,6 +12,8 @@ namespace DigitalWatch.Core
     /// </summary>
     public class Clock : IClock
     {
+        private event ClockTickEventHandler _tick;
+
         /// <summary>
         /// The eventhandler that handles the Ticks
         /// </summary>
@@ -19,12 +22,31 @@ namespace DigitalWatch.Core
         /// <summary>
         /// The eventhandler that handles the Ticks
         /// </summary>
-        public event ClockTickEventHandler Tick;
+        public event ClockTickEventHandler Tick
+        {
+            add
+            {
+                if (_tick == null || !_tick.GetInvocationList().ToList().Contains(value))
+                {
+                    _tick += value;
+                }
+            }
+            remove
+            {
+                _tick -= value;
+            }
+        }
 
         /// <summary>
         /// The behavior that is currently active
         /// </summary>
         public ClockBehavior Behavior { get; set; }
+
+        public void SwitchBehavior<T>(DateTime time) where T : ClockBehavior, new()
+        {
+            Behavior = new T();
+            Behavior.Load(this, time);
+        }
 
         /// <summary>
         /// The display that is currently active
@@ -73,9 +95,9 @@ namespace DigitalWatch.Core
         /// </summary>
         protected void OnTick()
         {
-            if (Tick != null)
+            if (_tick != null)
             {
-                Tick(this, new EventArgs());
+                _tick(this, new EventArgs());
             }
         }
     }

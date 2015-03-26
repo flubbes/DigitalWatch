@@ -18,6 +18,7 @@ namespace DigitalWatch.Behaviors
         /// The time span.
         /// </value>
         public TimeSpan TimeSpan { get; set; }
+
         public bool IsRunning { get; set; }
 
         /// <summary>
@@ -90,9 +91,20 @@ namespace DigitalWatch.Behaviors
             if (buttonClick is LongSetClick)
             {
                 IsRunning = false;
-                TimeSpan = new TimeSpan(0,0,0,0,0);
+                TimeSpan = new TimeSpan(0, 0, 0, 0, 0);
                 _clock.Display.TriggerUpdate(GetTimeSpanString());
             }
+        }
+
+        /// <summary>
+        /// Loads the specified clock.
+        /// </summary>
+        /// <param name="clock">The clock.</param>
+        /// <param name="data">The data.</param>
+        /// <exception cref="NotImplementedException"></exception>
+        public override void Load(IClock clock, DateTime data)
+        {
+            throw new NotImplementedException();
         }
 
         /// <summary>

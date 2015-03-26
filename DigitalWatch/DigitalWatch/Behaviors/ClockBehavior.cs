@@ -1,4 +1,5 @@
 ﻿using DigitalWatch.Core;
+using System;
 
 namespace DigitalWatch.Behaviors
 {
@@ -18,5 +19,7 @@ namespace DigitalWatch.Behaviors
         /// </summary>
         /// <param name="buttonClick">The button click.</param>
         public abstract void OnClick(IClockButtonClick buttonClick);
+
+        public abstract void Load(IClock clock, DateTime data);
     }
 }

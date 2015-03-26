@@ -1,6 +1,7 @@
 using DigitalWatch.Behaviors;
 using DigitalWatch.Displays;
 using DigitalWatch.Ticks;
+using System;
 
 namespace DigitalWatch.Core
 {
@@ -23,6 +24,13 @@ namespace DigitalWatch.Core
         /// Switches the behavior to a given new one
         /// </summary>
         void SwitchBehavior<T>() where T : ClockBehavior, new();
+
+        /// <summary>
+        /// Switches the behavior.
+        /// </summary>
+        /// <typeparam name="T">The behavior you want to switch to</typeparam>
+        /// <param name="time">The time to give to the loaded behavior.</param>
+        void SwitchBehavior<T>(DateTime time) where T : ClockBehavior, new();
 
         /// <summary>
         /// The display that is currently active
