@@ -88,5 +88,15 @@ namespace DigitalWatch.Tests.Behaviors
 
             A.CallTo(() => clockDisplay.TriggerUpdate(time.ToDigitalClockFormat())).MustHaveHappened();
         }
+
+        [Test]
+        public void WhenSwitchingToTimeChangeBehavior_GivesCurrentTimeToIt()
+        {
+            _behavior.Time = DateTime.Now;
+            var clock = A.Fake<IClock>();
+            _behavior.Load(clock);
+            _behavior.OnClick(new SetClick());
+            A.CallTo(() => clock.SwitchBehavior<TimeChangeBehavior>(_behavior.Time)).MustHaveHappened();
+        }
     }
 }

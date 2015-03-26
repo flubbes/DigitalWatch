@@ -10,7 +10,7 @@ namespace DigitalWatch.Behaviors
     /// </summary>
     public class TimeBehavior : SingletonClockBehavior<TimeBehavior>
     {
-        protected IClock _clock;
+        private IClock _clock;
         private DateTime _time;
 
         /// <summary>
@@ -74,7 +74,7 @@ namespace DigitalWatch.Behaviors
             }
             else if (buttonClick is SetClick)
             {
-                Container._clock.SwitchBehavior<TimeChangeBehavior>();
+                Container._clock.SwitchBehavior<TimeChangeBehavior>(Time);
             }
         }
     }

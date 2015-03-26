@@ -41,6 +41,11 @@ namespace DigitalWatch.Core
         /// </summary>
         public ClockBehavior Behavior { get; set; }
 
+        public void SwitchBehavior<T>(DateTime time) where T : ClockBehavior, new()
+        {
+            throw new NotImplementedException();
+        }
+
         /// <summary>
         /// The display that is currently active
         /// </summary>
