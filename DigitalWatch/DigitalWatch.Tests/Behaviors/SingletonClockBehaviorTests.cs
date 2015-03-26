@@ -26,11 +26,6 @@ namespace DigitalWatch.Tests.Behaviors
             typeof(SingletonClockBehavior<SingletonTestBehavior>).IsAbstract.Should().BeTrue();
         }
 
-        [Test]
-        public void Test()
-        {
-        }
-
         private class SingletonTestBehavior : SingletonClockBehavior<SingletonTestBehavior>
         {
             public override void Load(IClock clock)
