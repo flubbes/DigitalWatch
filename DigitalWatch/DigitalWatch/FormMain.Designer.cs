@@ -37,7 +37,7 @@
             // btnMode
             // 
             this.btnMode.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnMode.Location = new System.Drawing.Point(427, 12);
+            this.btnMode.Location = new System.Drawing.Point(433, 32);
             this.btnMode.Name = "btnMode";
             this.btnMode.Size = new System.Drawing.Size(75, 23);
             this.btnMode.TabIndex = 1;
@@ -48,7 +48,7 @@
             // btnSet
             // 
             this.btnSet.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSet.Location = new System.Drawing.Point(427, 41);
+            this.btnSet.Location = new System.Drawing.Point(433, 61);
             this.btnSet.Name = "btnSet";
             this.btnSet.Size = new System.Drawing.Size(75, 23);
             this.btnSet.TabIndex = 2;
@@ -61,7 +61,7 @@
             // btnLight
             // 
             this.btnLight.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLight.Location = new System.Drawing.Point(427, 70);
+            this.btnLight.Location = new System.Drawing.Point(433, 90);
             this.btnLight.Name = "btnLight";
             this.btnLight.Size = new System.Drawing.Size(75, 23);
             this.btnLight.TabIndex = 3;
@@ -73,7 +73,7 @@
             // 
             this.sevenSegmentArray.ArrayCount = 4;
             this.sevenSegmentArray.ColorBackground = System.Drawing.SystemColors.Control;
-            this.sevenSegmentArray.ColorDark = System.Drawing.Color.Silver;
+            this.sevenSegmentArray.ColorDark = System.Drawing.Color.Gainsboro;
             this.sevenSegmentArray.ColorLight = System.Drawing.Color.Green;
             this.sevenSegmentArray.DecimalShow = true;
             this.sevenSegmentArray.ElementPadding = new System.Windows.Forms.Padding(16);
@@ -90,13 +90,14 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(514, 134);
+            this.ClientSize = new System.Drawing.Size(520, 137);
             this.Controls.Add(this.btnLight);
             this.Controls.Add(this.btnSet);
             this.Controls.Add(this.btnMode);
             this.Controls.Add(this.sevenSegmentArray);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(540, 180);
             this.Name = "FormMain";
             this.Text = "DigitalWatch";
             this.ResumeLayout(false);
