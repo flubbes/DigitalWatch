@@ -10,7 +10,7 @@
         /// <summary>
         /// A workaround to make singletons check their own existence
         /// </summary>
-        public object Instance
+        public T Instance
         {
             get { return SingletonInstance; }
         }

@@ -10,7 +10,7 @@ namespace DigitalWatch.Behaviors
     /// </summary>
     public class TimeBehavior : SingletonClockBehavior<TimeBehavior>
     {
-        private IClock _clock;
+        protected IClock _clock;
         private DateTime _time;
 
         /// <summary>
@@ -21,7 +21,7 @@ namespace DigitalWatch.Behaviors
         /// </value>
         private TimeBehavior Container
         {
-            get { return Instance as TimeBehavior; }
+            get { return Instance; }
         }
 
         /// <summary>
@@ -58,7 +58,8 @@ namespace DigitalWatch.Behaviors
         public override void Load(IClock clock)
         {
             Container._clock = clock;
-            clock.Tick += Tick;
+            clock.Tick += Container.Tick;
+            clock.Display.TriggerUpdate(Container._time.ToDigitalClockFormat());
         }
 
         /// <summary>
