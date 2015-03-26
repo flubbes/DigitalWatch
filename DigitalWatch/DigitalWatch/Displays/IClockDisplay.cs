@@ -1,4 +1,5 @@
-﻿using DigitalWatch.Displays.UpdateEvent;
+﻿using DigitalWatch.Displays.ToggleLightEvent;
+using DigitalWatch.Displays.UpdateEvent;
 
 namespace DigitalWatch.Displays
 {
@@ -9,6 +10,14 @@ namespace DigitalWatch.Displays
     {
         event UpdateEventHandler Update;
 
+        event SwitchLightOnEventHandler SwitchLightOn;
+
+        event SwitchLightOffEventHandler SwitchLightOff;
+
         void TriggerUpdate(string displayData);
+
+        void TriggerSwitchLightOn();
+
+        void TriggerSwitchLightOff();
     }
 }

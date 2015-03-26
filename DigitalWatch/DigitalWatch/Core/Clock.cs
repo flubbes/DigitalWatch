@@ -2,6 +2,7 @@
 using DigitalWatch.Displays;
 using DigitalWatch.Ticks;
 using System;
+using DigitalWatch.Clicks;
 
 namespace DigitalWatch.Core
 {
@@ -59,6 +60,11 @@ namespace DigitalWatch.Core
         /// <param name="clockButtonClick"></param>
         public void RegisterClick(IClockButtonClick clockButtonClick)
         {
+            if (clockButtonClick is LightClick)
+            {
+                Display.TriggerSwitchLightOn();
+            }
+
             Behavior.OnClick(clockButtonClick);
         }
 

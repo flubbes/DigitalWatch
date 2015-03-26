@@ -74,7 +74,7 @@
             this.sevenSegmentArray.ArrayCount = 4;
             this.sevenSegmentArray.ColorBackground = System.Drawing.SystemColors.Control;
             this.sevenSegmentArray.ColorDark = System.Drawing.Color.Gainsboro;
-            this.sevenSegmentArray.ColorLight = System.Drawing.Color.Green;
+            this.sevenSegmentArray.ColorLight = System.Drawing.Color.Black;
             this.sevenSegmentArray.DecimalShow = true;
             this.sevenSegmentArray.ElementPadding = new System.Windows.Forms.Padding(16);
             this.sevenSegmentArray.ElementWidth = 10;
