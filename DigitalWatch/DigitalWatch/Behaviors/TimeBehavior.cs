@@ -86,7 +86,8 @@ namespace DigitalWatch.Behaviors
         /// <exception cref="NotImplementedException"></exception>
         public override void Load(IClock clock, DateTime data)
         {
-            throw new NotImplementedException();
+            Time = data;
+            Load(clock);
         }
     }
 }
