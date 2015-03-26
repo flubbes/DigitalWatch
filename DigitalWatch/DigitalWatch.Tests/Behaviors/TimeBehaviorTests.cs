@@ -89,5 +89,19 @@ namespace DigitalWatch.Tests.Behaviors
             _behavior.OnClick(new SetClick());
             A.CallTo(() => clock.SwitchBehavior<TimeChangeBehavior>(_behavior.Time)).MustHaveHappened();
         }
+
+        [Test]
+        public void WhenLoadedWithDateTime_HooksTickEvent_SetsTime_And_UpdatesDisplay()
+        {
+            var behavior = new TimeBehavior();
+            var clock = new TestableClock();
+            var clockDisplay = A.Fake<IClockDisplay>();
+            clock.Display = clockDisplay;
+            var previousValue = DateTime.Now;
+            behavior.Load(clock, previousValue);
+            clock.TriggerTickEvent();
+            behavior.Time.Should().Be(previousValue.AddSeconds(1.0));
+            A.CallTo(() => clockDisplay.TriggerUpdate(previousValue.ToDigitalClockFormat())).MustHaveHappened();
+        }
     }
 }
