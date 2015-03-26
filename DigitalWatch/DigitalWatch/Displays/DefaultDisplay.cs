@@ -1,11 +1,13 @@
-﻿using System;
-using System.Diagnostics;
-using System.Threading;
-using DigitalWatch.Displays.ToggleLightEvent;
+﻿using DigitalWatch.Displays.ToggleLightEvent;
 using DigitalWatch.Displays.UpdateEvent;
+using System;
+using System.Threading;
 
 namespace DigitalWatch.Displays
 {
+    /// <summary>
+    /// The default display for the clock
+    /// </summary>
     public class DefaultDisplay : IClockDisplay
     {
         private int _countdownSeconds;
@@ -25,6 +27,9 @@ namespace DigitalWatch.Displays
             }
         }
 
+        /// <summary>
+        /// Triggers the switch light on.
+        /// </summary>
         public void TriggerSwitchLightOn()
         {
             if (SwitchLightOn != null)
@@ -34,6 +39,9 @@ namespace DigitalWatch.Displays
             InitiateCountdown();
         }
 
+        /// <summary>
+        /// Triggers the switch light off.
+        /// </summary>
         public void TriggerSwitchLightOff()
         {
             if (SwitchLightOff != null)
@@ -42,9 +50,12 @@ namespace DigitalWatch.Displays
             }
         }
 
+        /// <summary>
+        /// Initiates the countdown.
+        /// </summary>
         private void InitiateCountdown()
-        {   
-            if (DisplayLightIsNotActivated())
+        {
+            if (IsDisplayLightActivated())
             {
                 IncrementCountdownByFiveSeconds();
                 new Thread(Countdown) { IsBackground = true }.Start();
@@ -55,12 +66,19 @@ namespace DigitalWatch.Displays
             }
         }
 
+        /// <summary>
+        /// Increments the countdown by five seconds.
+        /// </summary>
         private void IncrementCountdownByFiveSeconds()
         {
             _countdownSeconds += 5;
         }
 
-        private bool DisplayLightIsNotActivated()
+        /// <summary>
+        /// Determines whether the display light is activated.
+        /// </summary>
+        /// <returns></returns>
+        private bool IsDisplayLightActivated()
         {
             if (_countdownSeconds > 0)
             {
@@ -69,6 +87,9 @@ namespace DigitalWatch.Displays
             return true;
         }
 
+        /// <summary>
+        /// Countdowns this instance.
+        /// </summary>
         private void Countdown()
         {
             while (_countdownSeconds > 0)
@@ -85,6 +106,4 @@ namespace DigitalWatch.Displays
 
         public event SwitchLightOffEventHandler SwitchLightOff;
     }
-
-
 }
