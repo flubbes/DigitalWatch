@@ -55,15 +55,6 @@ namespace DigitalWatch.Tests.Behaviors
         }
 
         [Test]
-        public void WhenSetButtonIsClicked_LoadsTimeChangeBehavior()
-        {
-            var clock = A.Fake<IClock>();
-            _behavior.Load(clock);
-            _behavior.OnClick(new SetClick());
-            A.CallTo(() => clock.SwitchBehavior<TimeChangeBehavior>()).MustHaveHappened();
-        }
-
-        [Test]
         public void WhenTimeIncreases_UpdatesDisplay()
         {
             _testableClock.Behavior = _behavior;

@@ -70,14 +70,27 @@ namespace DigitalWatch.Tests.Behaviors
         }
 
         [Test]
-        public void WhenSetButtonPressedTwice_LoadsTimeBehavior()
+        public void WhenSetButtonPressedTwice_LoadsTimeBehavior_WithCorrectTime()
         {
             var behavior = new TimeChangeBehavior();
             var clock = A.Fake<IClock>();
+            behavior.Time = DateTime.Now;
             behavior.Load(clock);
             behavior.OnClick(new SetClick());
             behavior.OnClick(new SetClick());
-            A.CallTo(() => clock.SwitchBehavior<TimeBehavior>()).MustHaveHappened();
+            A.CallTo(() => clock.SwitchBehavior<TimeBehavior>(behavior.Time)).MustHaveHappened();
+        }
+
+        [Test]
+        public void WhenGettingCalledWithDateTimeData_SetsTheTimeToTheData()
+        {
+            var behavior = new TimeChangeBehavior();
+            var clock = A.Fake<IClock>();
+            var expected = DateTime.Now;
+
+            behavior.Load(clock, expected);
+
+            behavior.Time.Should().Be(expected);
         }
     }
 }

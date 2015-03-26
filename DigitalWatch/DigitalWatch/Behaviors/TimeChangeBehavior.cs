@@ -80,32 +80,42 @@ namespace DigitalWatch.Behaviors
         /// <param name="buttonClick"></param>
         public override void OnClick(IClockButtonClick buttonClick)
         {
+            //TODO clean this method
             if (buttonClick is ModeClick)
             {
                 switch (_mode)
                 {
                     case Mode.ChangeHour:
-                        IncrementHour();
+                        {
+                            IncrementHour();
+                        }
                         break;
 
                     case Mode.ChangeMinute:
-                        IncrementMinute();
+                        {
+                            IncrementMinute();
+                        }
                         break;
                 }
                 _clock.Display.TriggerUpdate(Time.ToDigitalClockFormat());
             }
-            if (buttonClick is SetClick)
+            if (!(buttonClick is SetClick))
             {
-                switch (_mode)
-                {
-                    case Mode.ChangeHour:
+                return;
+            }
+            switch (_mode)
+            {
+                case Mode.ChangeHour:
+                    {
                         _mode = Mode.ChangeMinute;
-                        break;
+                    }
+                    break;
 
-                    case Mode.ChangeMinute:
-                        _clock.SwitchBehavior<TimeBehavior>();
-                        break;
-                }
+                case Mode.ChangeMinute:
+                    {
+                        _clock.SwitchBehavior<TimeBehavior>(Time);
+                    }
+                    break;
             }
         }
 
@@ -117,7 +127,8 @@ namespace DigitalWatch.Behaviors
         /// <exception cref="NotImplementedException"></exception>
         public override void Load(IClock clock, DateTime data)
         {
-            throw new NotImplementedException();
+            Load(clock);
+            Time = data;
         }
     }
 }
