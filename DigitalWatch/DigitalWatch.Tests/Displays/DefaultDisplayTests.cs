@@ -22,12 +22,35 @@ namespace DigitalWatch.Tests.Displays
         }
 
         [Test]
-        public void EventIsTriggeredWhenUpdateIsCalled()
+        public void UpdateEventIsTriggeredWhenUpdateIsCalled()
         {
             var isTriggered = false;
             _display.Update += (sender, args) => isTriggered = true;
 
             _display.TriggerUpdate("");
+
+            isTriggered.Should().BeTrue();
+        }
+
+        [Test]
+        public void ToggleLightOnEventIsTriggeredWhenCalled()
+        {
+            var isTriggered = false;
+            _display.SwitchLightOn += (sender, args) => isTriggered = true;
+
+            _display.TriggerSwitchLightOn();
+
+            isTriggered.Should().BeTrue();
+        }
+
+
+        [Test]
+        public void ToggleLighOfftEventIsTriggeredWhenCalled()
+        {
+            var isTriggered = false;
+            _display.SwitchLightOff += (sender, args) => isTriggered = true;
+
+            _display.TriggerSwitchLightOff();
 
             isTriggered.Should().BeTrue();
         }

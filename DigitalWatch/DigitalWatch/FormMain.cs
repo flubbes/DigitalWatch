@@ -2,6 +2,7 @@
 using DigitalWatch.Core;
 using DigitalWatch.Displays.UpdateEvent;
 using System;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace DigitalWatch
@@ -23,7 +24,20 @@ namespace DigitalWatch
             InitializeComponent();
             _clock = new DefaultClockFactory().Create();
             _clock.Display.Update += Display_Update;
+            _clock.Display.SwitchLightOn += Display_SwitchLightOn;
+            _clock.Display.SwitchLightOff += Display_SwitchLightOff;
         }
+
+        void Display_SwitchLightOn(object sender, EventArgs args)
+        {
+            SetDisplayColorToGreen();
+        }
+
+        void Display_SwitchLightOff(object sender, EventArgs args)
+        {
+            SetDisplayColorToBlack();
+        }
+
 
         /// <summary>
         /// Gets triggered when the display updates
@@ -98,6 +112,22 @@ namespace DigitalWatch
             {
                 btnLongSetClick_Click(this, new EventArgs());
             }
+        }
+
+        /// <summary>
+        /// Changes the displays color to green
+        /// </summary>
+        private void SetDisplayColorToGreen()
+        {
+            sevenSegmentArray.ColorLight = Color.Green;
+        }
+
+        /// <summary>
+        /// Changes the displays color to black
+        /// </summary>
+        private void SetDisplayColorToBlack()
+        {
+            sevenSegmentArray.ColorLight = Color.Black;
         }
     }
 }

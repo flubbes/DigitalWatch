@@ -66,6 +66,8 @@
     <Compile Include="DefaultClockFactory.cs" />
     <Compile Include="Displays\DefaultDisplay.cs" />
     <Compile Include="Displays\IClockDisplay.cs" />
+    <Compile Include="Displays\ToggleLightEvent\SwitchLightOffEventHandler.cs" />
+    <Compile Include="Displays\ToggleLightEvent\SwitchLightOnEventHandler.cs" />
     <Compile Include="Displays\UpdateEvent\UpdateEventArgs.cs" />
     <Compile Include="Displays\UpdateEvent\UpdateEventHandler.cs" />
     <Compile Include="FormMain.cs">
