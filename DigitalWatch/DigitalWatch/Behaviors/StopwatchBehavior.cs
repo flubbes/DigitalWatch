@@ -118,6 +118,7 @@ namespace DigitalWatch.Behaviors
         /// </summary>
         public override void Unload()
         {
+            _clock.Tick -= Tick;
         }
 
         /// <summary>

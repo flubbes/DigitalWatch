@@ -1,12 +1,12 @@
 ﻿using DigitalWatch.Behaviors;
-using DigitalWatch.Tests.Core;
-using FluentAssertions;
-using NUnit.Framework;
-using System;
 using DigitalWatch.Clicks;
 using DigitalWatch.Core;
 using DigitalWatch.Displays;
+using DigitalWatch.Tests.Core;
 using FakeItEasy;
+using FluentAssertions;
+using NUnit.Framework;
+using System;
 
 namespace DigitalWatch.Tests.Behaviors
 {
@@ -83,6 +83,14 @@ namespace DigitalWatch.Tests.Behaviors
             _behavior.IsRunning.Should().BeTrue();
             _behavior.Stop();
             _behavior.IsRunning.Should().BeFalse();
+        }
+
+        [Test]
+        public void WhenUnloadingBehavior_UnHooksClockTickEvent()
+        {
+            _behavior.Unload();
+            _testableClock.TriggerTickEvent();
+            A.CallTo(() => _testableClock.Display.TriggerUpdate(A<string>.Ignored)).MustHaveHappened(Repeated.Exactly.Once);
         }
     }
 }
