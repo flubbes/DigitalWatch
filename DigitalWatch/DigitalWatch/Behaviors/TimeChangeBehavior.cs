@@ -43,7 +43,12 @@ namespace DigitalWatch.Behaviors
         /// </summary>
         public void IncrementMinute()
         {
-            Time = Time.AddMinutes(1.0);
+            var tempTime = Time.AddMinutes(1.0);
+            if (tempTime.Hour != Time.Hour)
+            {
+                tempTime -= TimeSpan.FromHours(1);
+            }
+            Time = tempTime;
         }
 
         /// <summary>

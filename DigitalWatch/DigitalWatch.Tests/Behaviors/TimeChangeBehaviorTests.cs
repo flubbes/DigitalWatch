@@ -92,5 +92,17 @@ namespace DigitalWatch.Tests.Behaviors
 
             behavior.Time.Should().Be(expected);
         }
+
+        [Test]
+        public void WhenIncreasingMinutesToMaxValue_DoesNot_IncreaseHours()
+        {
+            var behavior = new TimeChangeBehavior
+            {
+                Time = new DateTime(2015, 3, 27, 12, 59, 0)
+            };
+            behavior.IncrementMinute();
+            behavior.Time.Hour.Should().Be(12);
+            behavior.Time.Minute.Should().Be(0);
+        }
     }
 }
