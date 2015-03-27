@@ -28,16 +28,25 @@ namespace DigitalWatch
             _clock.Display.SwitchLightOff += Display_SwitchLightOff;
         }
 
-        void Display_SwitchLightOn(object sender, EventArgs args)
+        /// <summary>
+        /// Handles the SwitchLightOn event of the Display control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="args">The <see cref="EventArgs"/> instance containing the event data.</param>
+        private void Display_SwitchLightOn(object sender, EventArgs args)
         {
             SetDisplayColorToGreen();
         }
 
-        void Display_SwitchLightOff(object sender, EventArgs args)
+        /// <summary>
+        /// Handles the SwitchLightOff event of the Display control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="args">The <see cref="EventArgs"/> instance containing the event data.</param>
+        private void Display_SwitchLightOff(object sender, EventArgs args)
         {
             SetDisplayColorToBlack();
         }
-
 
         /// <summary>
         /// Gets triggered when the display updates
