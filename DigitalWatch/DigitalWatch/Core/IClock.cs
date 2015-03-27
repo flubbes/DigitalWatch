@@ -42,6 +42,10 @@ namespace DigitalWatch.Core
         /// </summary>
         ITickControl TickControl { get; set; }
 
+        /// <summary>
+        /// Registers the click.
+        /// </summary>
+        /// <param name="clockButtonClick">The clock button click.</param>
         void RegisterClick(IClockButtonClick clockButtonClick);
     }
 }

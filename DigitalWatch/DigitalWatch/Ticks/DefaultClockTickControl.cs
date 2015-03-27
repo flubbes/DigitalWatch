@@ -9,13 +9,9 @@ namespace DigitalWatch.Ticks
     public class DefaultClockTickControl : ITickControl
     {
         /// <summary>
-        /// The routine that is executed once the clock is started 
+        /// The routine that is executed once the clock is started
         /// </summary>
         private Action _routine;
-
-        public DefaultClockTickControl()
-        {
-        }
 
         /// <summary>
         /// Kicks off the routine

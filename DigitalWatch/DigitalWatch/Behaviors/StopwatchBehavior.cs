@@ -19,6 +19,12 @@ namespace DigitalWatch.Behaviors
         /// </value>
         public TimeSpan TimeSpan { get; set; }
 
+        /// <summary>
+        /// Gets or sets a value indicating whether this instance is running.
+        /// </summary>
+        /// <value>
+        /// <c>true</c> if this instance is running; otherwise, <c>false</c>.
+        /// </value>
         public bool IsRunning { get; set; }
 
         /// <summary>
