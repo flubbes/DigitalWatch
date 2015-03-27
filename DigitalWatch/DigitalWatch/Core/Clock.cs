@@ -1,8 +1,8 @@
 ﻿using DigitalWatch.Behaviors;
+using DigitalWatch.Clicks;
 using DigitalWatch.Displays;
 using DigitalWatch.Ticks;
 using System;
-using DigitalWatch.Clicks;
 using System.Linq;
 
 namespace DigitalWatch.Core
@@ -44,6 +44,10 @@ namespace DigitalWatch.Core
 
         public void SwitchBehavior<T>(DateTime time) where T : ClockBehavior, new()
         {
+            if (Behavior != null)
+            {
+                Behavior.Unload();
+            }
             Behavior = new T();
             Behavior.Load(this, time);
         }
@@ -72,6 +76,10 @@ namespace DigitalWatch.Core
         /// <typeparam name="T"></typeparam>
         public void SwitchBehavior<T>() where T : ClockBehavior, new()
         {
+            if (Behavior != null)
+            {
+                Behavior.Unload();
+            }
             Behavior = new T();
             Behavior.Load(this);
         }

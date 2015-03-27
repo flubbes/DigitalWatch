@@ -114,6 +114,13 @@ namespace DigitalWatch.Behaviors
         }
 
         /// <summary>
+        /// Unloads this instance.
+        /// </summary>
+        public override void Unload()
+        {
+        }
+
+        /// <summary>
         /// Starts the Stopwatch
         /// </summary>
         public void Start()

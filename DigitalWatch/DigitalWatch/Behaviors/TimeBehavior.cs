@@ -89,5 +89,12 @@ namespace DigitalWatch.Behaviors
             Time = data;
             Load(clock);
         }
+
+        /// <summary>
+        /// Unloads this instance.
+        /// </summary>
+        public override void Unload()
+        {
+        }
     }
 }

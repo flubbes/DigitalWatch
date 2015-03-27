@@ -26,5 +26,10 @@ namespace DigitalWatch.Behaviors
         /// <param name="clock">The clock.</param>
         /// <param name="data">The data.</param>
         public abstract void Load(IClock clock, DateTime data);
+
+        /// <summary>
+        /// Unloads this instance.
+        /// </summary>
+        public abstract void Unload();
     }
 }

@@ -42,6 +42,11 @@ namespace DigitalWatch.Tests.Behaviors
             {
                 throw new NotImplementedException();
             }
+
+            public override void Unload()
+            {
+                throw new NotImplementedException();
+            }
         }
     }
 }

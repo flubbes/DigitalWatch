@@ -62,6 +62,38 @@ namespace DigitalWatch.Tests.Core
             testBehavior.LoadDateTime.Should().Be(expected);
         }
 
+        [Test]
+        public void WhenSwitchingBehavior_UnloadsOldOneFirst()
+        {
+            var clockBehavior = A.Fake<ClockBehavior>();
+            _clock.Behavior = clockBehavior;
+            _clock.SwitchBehavior<TestBehavior>();
+            A.CallTo(() => clockBehavior.Unload()).MustHaveHappened();
+        }
+
+        [Test]
+        public void WhenSwitchingBehaviorWithDateTime_UnloadsOldOneFirst()
+        {
+            var clockBehavior = A.Fake<ClockBehavior>();
+            _clock.Behavior = clockBehavior;
+            _clock.SwitchBehavior<TestBehavior>(new DateTime());
+            A.CallTo(() => clockBehavior.Unload()).MustHaveHappened();
+        }
+
+        [Test]
+        public void WhenSwitchingBehavior_And_BehaviorIsNull_DoesNotThrowException()
+        {
+            _clock.Behavior = null;
+            _clock.SwitchBehavior<TestBehavior>();
+        }
+
+        [Test]
+        public void WhenSwitchingBehaviorWithDateTime_And_BehaviorIsNull_DoesNotThrowException()
+        {
+            _clock.Behavior = null;
+            _clock.SwitchBehavior<TestBehavior>(DateTime.Now);
+        }
+
         private class TestBehavior : ClockBehavior
         {
             public bool IsLoadCalled { get; private set; }
@@ -71,6 +103,11 @@ namespace DigitalWatch.Tests.Core
             public override void Load(IClock clock, DateTime data)
             {
                 LoadDateTime = data;
+            }
+
+            public override void Unload()
+            {
+                throw new NotImplementedException();
             }
 
             public override void Load(IClock clock)
