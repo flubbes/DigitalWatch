@@ -104,5 +104,34 @@ namespace DigitalWatch.Tests.Behaviors
             behavior.Time.Hour.Should().Be(12);
             behavior.Time.Minute.Should().Be(0);
         }
+
+        [Test]
+        public void WhenEditingHours_FlashesHourOnAndOffEverySecond()
+        {
+            _behavior.Time = new DateTime(2015, 3, 28, 13, 20, 0);
+            _testableClock.TriggerTickEvent();
+            A.CallTo(() => _clockDisplay.TriggerUpdate("20")).MustHaveHappened(Repeated.Exactly.Once);
+            _testableClock.TriggerTickEvent();
+            A.CallTo(() => _clockDisplay.TriggerUpdate("1320")).MustHaveHappened(Repeated.Exactly.Once);
+        }
+
+        [Test]
+        public void WhenEditingMinutes_FlashesMinuteOnAndOffEverySecond()
+        {
+            _behavior.Time = new DateTime(2015, 3, 28, 13, 31, 0);
+            _behavior.OnClick(new SetClick());
+            _testableClock.TriggerTickEvent();
+            A.CallTo(() => _clockDisplay.TriggerUpdate("13__")).MustHaveHappened(Repeated.Exactly.Once);
+            _testableClock.TriggerTickEvent();
+            A.CallTo(() => _clockDisplay.TriggerUpdate("1331")).MustHaveHappened(Repeated.Exactly.Once);
+        }
+
+        [Test]
+        public void WhenUnloadingBehavior_UnhooksTickEvent()
+        {
+            _behavior.Unload();
+            _testableClock.TriggerTickEvent();
+            A.CallTo(() => _clockDisplay.TriggerUpdate(A<string>.Ignored)).MustNotHaveHappened();
+        }
     }
 }

@@ -84,7 +84,7 @@
             this.sevenSegmentArray.Size = new System.Drawing.Size(409, 138);
             this.sevenSegmentArray.TabIndex = 0;
             this.sevenSegmentArray.TabStop = false;
-            this.sevenSegmentArray.Value = "0000";
+            this.sevenSegmentArray.Value = "___";
             // 
             // FormMain
             // 

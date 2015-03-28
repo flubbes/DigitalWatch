@@ -12,6 +12,7 @@ namespace DigitalWatch.Behaviors
     {
         private IClock _clock;
         private Mode _mode;
+        private bool _isFlashing;
 
         /// <summary>
         /// The internal  ode of the timeChangeBehavior
@@ -29,14 +30,6 @@ namespace DigitalWatch.Behaviors
         /// The time.
         /// </value>
         public DateTime Time { get; set; }
-
-        /// <summary>
-        /// Increments the property 'Time' by one (1) Second
-        /// </summary>
-        private void IncrementSecond()
-        {
-            Time = Time.AddSeconds(1.0);
-        }
 
         /// <summary>
         /// Increments the property 'Time' by one (1) Minute
@@ -76,7 +69,23 @@ namespace DigitalWatch.Behaviors
         /// <param name="e"></param>
         private void Tick(object sender, EventArgs e)
         {
-            IncrementSecond();
+            var toUpdate = Time.ToDigitalClockFormat();
+            if (_mode == Mode.ChangeHour)
+            {
+                if (!_isFlashing)
+                {
+                    toUpdate = Time.Minute.ToString();
+                }
+            }
+            else
+            {
+                if (!_isFlashing)
+                {
+                    toUpdate = String.Format("{0}__", Time.Hour);
+                }
+            }
+            _clock.Display.TriggerUpdate(toUpdate);
+            _isFlashing = !_isFlashing;
         }
 
         /// <summary>
@@ -141,6 +150,7 @@ namespace DigitalWatch.Behaviors
         /// </summary>
         public override void Unload()
         {
+            _clock.Tick -= Tick;
         }
     }
 }
