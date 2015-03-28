@@ -127,6 +127,23 @@ namespace DigitalWatch.Tests.Behaviors
         }
 
         [Test]
+        public void WhenEditingMinutes_AndHourIsBelow10_UpdatesWithLeadingZero()
+        {
+            _behavior.Time = new DateTime(2015, 3, 28, 5, 31, 0);
+            _behavior.OnClick(new SetClick());
+            _testableClock.TriggerTickEvent();
+            A.CallTo(() => _clockDisplay.TriggerUpdate("05__")).MustHaveHappened(Repeated.Exactly.Once);
+        }
+
+        [Test]
+        public void WhenEditingHours_AndMinuteIsBelow10_UpdatesWithLeadingZero()
+        {
+            _behavior.Time = new DateTime(2015, 3, 28, 5, 1, 0);
+            _testableClock.TriggerTickEvent();
+            A.CallTo(() => _clockDisplay.TriggerUpdate("01")).MustHaveHappened(Repeated.Exactly.Once);
+        }
+
+        [Test]
         public void WhenUnloadingBehavior_UnhooksTickEvent()
         {
             _behavior.Unload();

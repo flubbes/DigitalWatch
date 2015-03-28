@@ -74,14 +74,14 @@ namespace DigitalWatch.Behaviors
             {
                 if (!_isFlashing)
                 {
-                    toUpdate = Time.Minute.ToString();
+                    toUpdate = Time.Minute.ToString("D2");
                 }
             }
             else
             {
                 if (!_isFlashing)
                 {
-                    toUpdate = String.Format("{0}__", Time.Hour);
+                    toUpdate = Time.Hour.ToString("D2") + "__";
                 }
             }
             _clock.Display.TriggerUpdate(toUpdate);
@@ -94,42 +94,28 @@ namespace DigitalWatch.Behaviors
         /// <param name="buttonClick"></param>
         public override void OnClick(IClockButtonClick buttonClick)
         {
-            //TODO clean this method
             if (buttonClick is ModeClick)
             {
-                switch (_mode)
+                if (_mode == Mode.ChangeHour)
                 {
-                    case Mode.ChangeHour:
-                        {
-                            IncrementHour();
-                        }
-                        break;
-
-                    case Mode.ChangeMinute:
-                        {
-                            IncrementMinute();
-                        }
-                        break;
+                    IncrementHour();
+                }
+                else
+                {
+                    IncrementMinute();
                 }
                 _clock.Display.TriggerUpdate(Time.ToDigitalClockFormat());
             }
-            if (!(buttonClick is SetClick))
+            else if (buttonClick is SetClick)
             {
-                return;
-            }
-            switch (_mode)
-            {
-                case Mode.ChangeHour:
-                    {
-                        _mode = Mode.ChangeMinute;
-                    }
-                    break;
-
-                case Mode.ChangeMinute:
-                    {
-                        _clock.SwitchBehavior<TimeBehavior>(Time);
-                    }
-                    break;
+                if (_mode == Mode.ChangeHour)
+                {
+                    _mode = Mode.ChangeMinute;
+                }
+                else
+                {
+                    _clock.SwitchBehavior<TimeBehavior>(Time);
+                }
             }
         }
 

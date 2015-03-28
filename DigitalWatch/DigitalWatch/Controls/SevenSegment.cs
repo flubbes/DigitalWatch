@@ -194,58 +194,83 @@ namespace DigitalWatch.Controls
                 if (value != null)
                 {
                     //is it an integer?
-                    bool success = false;
-                    try
+                    int tempValue;
+                    var success = Int32.TryParse(value, out tempValue);
+                    if (tempValue > 9) tempValue = 9; if (tempValue < 0) tempValue = 0;
                     {
-                        int tempValue = Convert.ToInt32(value);
-                        if (tempValue > 9) tempValue = 9; if (tempValue < 0) tempValue = 0;
                         switch (tempValue)
                         {
-                            case 0: customPattern = (int)ValuePattern.Zero; break;
-                            case 1: customPattern = (int)ValuePattern.One; break;
-                            case 2: customPattern = (int)ValuePattern.Two; break;
-                            case 3: customPattern = (int)ValuePattern.Three; break;
-                            case 4: customPattern = (int)ValuePattern.Four; break;
-                            case 5: customPattern = (int)ValuePattern.Five; break;
-                            case 6: customPattern = (int)ValuePattern.Six; break;
-                            case 7: customPattern = (int)ValuePattern.Seven; break;
-                            case 8: customPattern = (int)ValuePattern.Eight; break;
-                            case 9: customPattern = (int)ValuePattern.Nine; break;
+                            case 0:
+                                customPattern = (int)ValuePattern.Zero;
+                                break;
+
+                            case 1:
+                                customPattern = (int)ValuePattern.One;
+                                break;
+
+                            case 2:
+                                customPattern = (int)ValuePattern.Two;
+                                break;
+
+                            case 3:
+                                customPattern = (int)ValuePattern.Three;
+                                break;
+
+                            case 4:
+                                customPattern = (int)ValuePattern.Four;
+                                break;
+
+                            case 5:
+                                customPattern = (int)ValuePattern.Five;
+                                break;
+
+                            case 6:
+                                customPattern = (int)ValuePattern.Six;
+                                break;
+
+                            case 7:
+                                customPattern = (int)ValuePattern.Seven;
+                                break;
+
+                            case 8:
+                                customPattern = (int)ValuePattern.Eight;
+                                break;
+
+                            case 9:
+                                customPattern = (int)ValuePattern.Nine;
+                                break;
                         }
-                        success = true;
                     }
-                    catch { }
                     if (!success)
                     {
-                        try
+                        //is it a letter?
+                        var tempString = value;
+                        switch (tempString.ToLower()[0])
                         {
-                            //is it a letter?
-                            string tempString = Convert.ToString(value);
-                            switch (tempString.ToLower()[0])
-                            {
-                                case 'a': customPattern = (int)ValuePattern.A; break;
-                                case 'b': customPattern = (int)ValuePattern.B; break;
-                                case 'c': customPattern = (int)ValuePattern.C; break;
-                                case 'd': customPattern = (int)ValuePattern.D; break;
-                                case 'e': customPattern = (int)ValuePattern.E; break;
-                                case 'f': customPattern = (int)ValuePattern.F; break;
-                                case 'g': customPattern = (int)ValuePattern.G; break;
-                                case 'h': customPattern = (int)ValuePattern.H; break;
-                                case 'j': customPattern = (int)ValuePattern.J; break;
-                                case 'l': customPattern = (int)ValuePattern.L; break;
-                                case 'n': customPattern = (int)ValuePattern.N; break;
-                                case 'o': customPattern = (int)ValuePattern.O; break;
-                                case 'p': customPattern = (int)ValuePattern.P; break;
-                                case 'q': customPattern = (int)ValuePattern.Q; break;
-                                case 'r': customPattern = (int)ValuePattern.R; break;
-                                case 't': customPattern = (int)ValuePattern.T; break;
-                                case 'u': customPattern = (int)ValuePattern.U; break;
-                                case 'y': customPattern = (int)ValuePattern.Y; break;
-                                case '-': customPattern = (int)ValuePattern.Dash; break;
-                                case '=': customPattern = (int)ValuePattern.Equals; break;
-                            }
+                            case 'a': customPattern = (int)ValuePattern.A; break;
+                            case 'b': customPattern = (int)ValuePattern.B; break;
+                            case 'c': customPattern = (int)ValuePattern.C; break;
+                            case 'd': customPattern = (int)ValuePattern.D; break;
+                            case 'e': customPattern = (int)ValuePattern.E; break;
+                            case 'f': customPattern = (int)ValuePattern.F; break;
+                            case 'g': customPattern = (int)ValuePattern.G; break;
+                            case 'h': customPattern = (int)ValuePattern.H; break;
+                            case 'j': customPattern = (int)ValuePattern.J; break;
+                            case 'l': customPattern = (int)ValuePattern.L; break;
+                            case 'n': customPattern = (int)ValuePattern.N; break;
+                            case 'o': customPattern = (int)ValuePattern.O; break;
+                            case 'p': customPattern = (int)ValuePattern.P; break;
+                            case 'q': customPattern = (int)ValuePattern.Q; break;
+                            case 'r': customPattern = (int)ValuePattern.R; break;
+                            case 't': customPattern = (int)ValuePattern.T; break;
+                            case 'u': customPattern = (int)ValuePattern.U; break;
+                            case 'y': customPattern = (int)ValuePattern.Y; break;
+                            case '-': customPattern = (int)ValuePattern.Dash; break;
+                            case '=': customPattern = (int)ValuePattern.Equals; break;
+                            case '_':
+                                customPattern = (int)ValuePattern.None;
+                                break;
                         }
-                        catch { }
                     }
                 }
                 theValue = value; Invalidate();
