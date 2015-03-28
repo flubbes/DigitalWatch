@@ -1,4 +1,6 @@
-﻿/*
+extensions: designer.cs generated.cs
+extensions: .cs .cpp .h
+/* 
  * Copyright (C) 2015  Fabian Berg and Marvin Karaschewski
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -9,19 +11,18 @@
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
- *
+ * 
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>
  */
 
-using DigitalWatch.Core;
-
-namespace DigitalWatch.Clicks
-{
-    /// <summary>
-    /// A flyweight to define a light toggle
-    /// </summary>
-    public class LightClick : IClockButtonClick
-    {
-    }
-}
+extensions: .aspx .ascx
+<%-- 
+Sample license text.
+--%>
+extensions: .vb
+'Sample license text.
+extensions:  .xml .config .xsd
+<!--
+Sample license text.
+-->
