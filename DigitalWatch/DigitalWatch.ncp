@@ -7,7 +7,7 @@
       <Entity type="Interface">
         <Name>IClockButtonClick</Name>
         <Access>Public</Access>
-        <Location left="1594" top="1027" />
+        <Location left="1863" top="960" />
         <Size width="162" height="216" />
         <Collapsed>False</Collapsed>
       </Entity>
@@ -49,7 +49,7 @@
       <Entity type="Class">
         <Name>ClockBehavior</Name>
         <Access>Public</Access>
-        <Location left="2331" top="1406" />
+        <Location left="2401" top="1424" />
         <Size width="162" height="216" />
         <Collapsed>False</Collapsed>
         <Member type="Constructor">protected ClockBehavior()</Member>
@@ -62,7 +62,7 @@
       <Entity type="Class">
         <Name>SingletonClockBehavior&lt;T&gt;</Name>
         <Access>Public</Access>
-        <Location left="2603" top="1406" />
+        <Location left="2646" top="1424" />
         <Size width="225" height="216" />
         <Collapsed>False</Collapsed>
         <Member type="Field">private T SingletonInstance</Member>
@@ -396,7 +396,7 @@
       <Entity type="Enum">
         <Name>Mode</Name>
         <Access>Public</Access>
-        <Location left="1869" top="1123" />
+        <Location left="1848" top="1254" />
         <Size width="162" height="216" />
         <Collapsed>False</Collapsed>
         <Value>ChangeHour = 0</Value>
@@ -445,42 +445,86 @@
       <Relationship type="Nesting" first="7" second="27">
         <StartOrientation>Vertical</StartOrientation>
         <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>2211</X>
+          <Y>1349</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>1918</X>
+          <Y>1501</Y>
+        </BendPoint>
       </Relationship>
       <Relationship type="Nesting" first="12" second="28">
         <StartOrientation>Vertical</StartOrientation>
         <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>1835</X>
+          <Y>30</Y>
+        </BendPoint>
       </Relationship>
       <Relationship type="Generalization" first="5" second="4">
-        <StartOrientation>Vertical</StartOrientation>
-        <EndOrientation>Vertical</EndOrientation>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>2621</X>
+          <Y>1529</Y>
+        </BendPoint>
       </Relationship>
       <Relationship type="Generalization" first="6" second="4">
         <StartOrientation>Vertical</StartOrientation>
         <EndOrientation>Vertical</EndOrientation>
       </Relationship>
-      <Relationship type="Generalization" first="7" second="4">
-        <StartOrientation>Vertical</StartOrientation>
-        <EndOrientation>Vertical</EndOrientation>
-      </Relationship>
       <Relationship type="Realization" first="8" second="0">
         <StartOrientation>Vertical</StartOrientation>
-        <EndOrientation>Vertical</EndOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>2123</X>
+          <Y>906</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>2071</X>
+          <Y>995</Y>
+        </BendPoint>
       </Relationship>
       <Relationship type="Realization" first="9" second="0">
         <StartOrientation>Vertical</StartOrientation>
-        <EndOrientation>Vertical</EndOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>1742</X>
+          <Y>913</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>1832</X>
+          <Y>995</Y>
+        </BendPoint>
       </Relationship>
       <Relationship type="Realization" first="10" second="0">
         <StartOrientation>Vertical</StartOrientation>
         <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="False">
+          <X>1973</X>
+          <Y>927</Y>
+        </BendPoint>
       </Relationship>
       <Relationship type="Realization" first="11" second="0">
         <StartOrientation>Vertical</StartOrientation>
         <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>1880</X>
+          <Y>906</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>1880</X>
+          <Y>935</Y>
+        </BendPoint>
       </Relationship>
       <Relationship type="Realization" first="14" second="1">
         <StartOrientation>Vertical</StartOrientation>
-        <EndOrientation>Vertical</EndOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="False">
+          <X>2504</X>
+          <Y>784</Y>
+        </BendPoint>
       </Relationship>
       <Relationship type="Realization" first="17" second="2">
         <StartOrientation>Vertical</StartOrientation>
@@ -489,56 +533,102 @@
       <Relationship type="Realization" first="21" second="3">
         <StartOrientation>Vertical</StartOrientation>
         <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="False">
+          <X>2831</X>
+          <Y>824</Y>
+        </BendPoint>
       </Relationship>
       <Relationship type="Association" first="6" second="1">
+        <Label>
+        </Label>
         <StartOrientation>Vertical</StartOrientation>
         <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="False">
+          <X>2425</X>
+          <Y>832</Y>
+        </BendPoint>
         <Direction>Unidirectional</Direction>
         <AssociationType>Association</AssociationType>
         <StartRole>_clock</StartRole>
         <EndMultiplicity>1</EndMultiplicity>
       </Relationship>
       <Relationship type="Association" first="7" second="1">
+        <Label>
+        </Label>
         <StartOrientation>Vertical</StartOrientation>
         <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="False">
+          <X>2332</X>
+          <Y>823</Y>
+        </BendPoint>
         <Direction>Unidirectional</Direction>
         <AssociationType>Association</AssociationType>
         <StartRole>_clock</StartRole>
         <EndMultiplicity>1</EndMultiplicity>
       </Relationship>
       <Relationship type="Association" first="7" second="27">
+        <Label>
+        </Label>
         <StartOrientation>Vertical</StartOrientation>
-        <EndOrientation>Vertical</EndOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>2145</X>
+          <Y>1347</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>2035</X>
+          <Y>1448</Y>
+        </BendPoint>
         <Direction>Unidirectional</Direction>
         <AssociationType>Association</AssociationType>
         <StartRole>_mode</StartRole>
         <EndMultiplicity>1</EndMultiplicity>
       </Relationship>
       <Relationship type="Association" first="13" second="12">
+        <Label>
+        </Label>
         <StartOrientation>Vertical</StartOrientation>
         <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="False">
+          <X>1912</X>
+          <Y>28</Y>
+        </BendPoint>
         <Direction>Unidirectional</Direction>
         <AssociationType>Association</AssociationType>
         <StartRole>segments</StartRole>
         <EndMultiplicity>*</EndMultiplicity>
       </Relationship>
       <Relationship type="Association" first="14" second="3">
+        <Label>
+        </Label>
         <StartOrientation>Vertical</StartOrientation>
         <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>2638</X>
+          <Y>821</Y>
+        </BendPoint>
         <Direction>Unidirectional</Direction>
         <AssociationType>Association</AssociationType>
         <StartRole>_tickControl</StartRole>
         <EndMultiplicity>1</EndMultiplicity>
       </Relationship>
       <Relationship type="Association" first="15" second="1">
+        <Label>
+        </Label>
         <StartOrientation>Vertical</StartOrientation>
         <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="False">
+          <X>2467</X>
+          <Y>828</Y>
+        </BendPoint>
         <Direction>Unidirectional</Direction>
         <AssociationType>Association</AssociationType>
         <StartRole>_clock</StartRole>
         <EndMultiplicity>1</EndMultiplicity>
       </Relationship>
       <Relationship type="Association" first="19" second="1">
+        <Label>
+        </Label>
         <StartOrientation>Vertical</StartOrientation>
         <EndOrientation>Vertical</EndOrientation>
         <Direction>Unidirectional</Direction>
@@ -547,12 +637,26 @@
         <EndMultiplicity>1</EndMultiplicity>
       </Relationship>
       <Relationship type="Association" first="19" second="13">
+        <Label>
+        </Label>
         <StartOrientation>Horizontal</StartOrientation>
         <EndOrientation>Horizontal</EndOrientation>
         <Direction>Unidirectional</Direction>
         <AssociationType>Association</AssociationType>
         <StartRole>sevenSegmentArray</StartRole>
         <EndMultiplicity>1</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Generalization" first="15" second="5">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+      </Relationship>
+      <Relationship type="Generalization" first="7" second="4">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="False">
+          <X>2376</X>
+          <Y>1534</Y>
+        </BendPoint>
       </Relationship>
     </Relationships>
   </ProjectItem>
