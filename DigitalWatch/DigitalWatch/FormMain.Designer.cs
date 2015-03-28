@@ -28,9 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.btnMode = new System.Windows.Forms.Button();
             this.btnSet = new System.Windows.Forms.Button();
             this.btnLight = new System.Windows.Forms.Button();
+            this.ttMainForm = new System.Windows.Forms.ToolTip(this.components);
             this.sevenSegmentArray = new DigitalWatch.Controls.SevenSegmentArray();
             this.SuspendLayout();
             // 
@@ -42,6 +44,7 @@
             this.btnMode.Size = new System.Drawing.Size(75, 23);
             this.btnMode.TabIndex = 1;
             this.btnMode.Text = "Mode";
+            this.ttMainForm.SetToolTip(this.btnMode, "Changes the Mode of the Watch");
             this.btnMode.UseVisualStyleBackColor = true;
             this.btnMode.Click += new System.EventHandler(this.btnMode_Click);
             // 
@@ -53,6 +56,8 @@
             this.btnSet.Size = new System.Drawing.Size(75, 23);
             this.btnSet.TabIndex = 2;
             this.btnSet.Text = "Set";
+            this.ttMainForm.SetToolTip(this.btnSet, "Normal: Enables setting the time \r\nStopwatch: Starts/Stops the counter \r\nResets o" +
+        "n when pressed down prolonged (>1.5s)");
             this.btnSet.UseVisualStyleBackColor = true;
             this.btnSet.Click += new System.EventHandler(this.btnSet_Click);
             this.btnSet.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btnSet_MouseDown);
@@ -66,6 +71,7 @@
             this.btnLight.Size = new System.Drawing.Size(75, 23);
             this.btnLight.TabIndex = 3;
             this.btnLight.Text = "Light";
+            this.ttMainForm.SetToolTip(this.btnLight, "Turns on the light for 5s");
             this.btnLight.UseVisualStyleBackColor = true;
             this.btnLight.Click += new System.EventHandler(this.btnLight_Click);
             // 
@@ -110,6 +116,7 @@
         private System.Windows.Forms.Button btnMode;
         private System.Windows.Forms.Button btnSet;
         private System.Windows.Forms.Button btnLight;
+        private System.Windows.Forms.ToolTip ttMainForm;
     }
 }
 
