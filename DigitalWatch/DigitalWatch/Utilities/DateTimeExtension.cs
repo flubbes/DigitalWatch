@@ -12,24 +12,9 @@ namespace DigitalWatch.Utilities
         /// </summary>
         public static string ToDigitalClockFormat(this DateTime time)
         {
-            var result = "";
-            if (time.Hour < 10)
-            {
-                result += string.Format("0{0}", time.Hour);
-            }
-            else
-            {
-                result += time.Hour;
-            }
-            if (time.Minute < 10)
-            {
-                result += string.Format("0{0}", time.Minute);
-            }
-            else
-            {
-                result += time.Minute;
-            }
-            return result;
+            var hour = time.Hour.ToString("D2");
+            var minute = time.Minute.ToString("D2");
+            return string.Format("{0}{1}", hour, minute);
         }
     }
 }
