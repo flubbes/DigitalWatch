@@ -1,0 +1,575 @@
+<Project>
+  <Name>DigitalWatch</Name>
+  <ProjectItem type="NClass.DiagramEditor.ClassDiagram.Diagram" assembly="NClass.DiagramEditor, Version=2.4.1823.0, Culture=neutral, PublicKeyToken=null">
+    <Name>DigitalWatch.exe</Name>
+    <Language>CSharp</Language>
+    <Entities>
+      <Entity type="Interface">
+        <Name>IClockButtonClick</Name>
+        <Access>Public</Access>
+        <Location left="1594" top="1027" />
+        <Size width="162" height="216" />
+        <Collapsed>False</Collapsed>
+      </Entity>
+      <Entity type="Interface">
+        <Name>IClock</Name>
+        <Access>Public</Access>
+        <Location left="2317" top="582" />
+        <Size width="162" height="216" />
+        <Collapsed>False</Collapsed>
+        <Member type="Property">ClockBehavior Behavior { get; set; }</Member>
+        <Member type="Property">IClockDisplay Display { get; set; }</Member>
+        <Member type="Property">ITickControl TickControl { get; set; }</Member>
+        <Member type="Event">event ClockTickEventHandler Tick</Member>
+        <Member type="Method">Void SwitchBehavior()</Member>
+        <Member type="Method">Void SwitchBehavior(DateTime time)</Member>
+        <Member type="Method">Void RegisterClick(IClockButtonClick clockButtonClick)</Member>
+      </Entity>
+      <Entity type="Interface">
+        <Name>IClockDisplay</Name>
+        <Access>Public</Access>
+        <Location left="3105" top="582" />
+        <Size width="162" height="216" />
+        <Collapsed>False</Collapsed>
+        <Member type="Event">event UpdateEventHandler Update</Member>
+        <Member type="Event">event SwitchLightOnEventHandler SwitchLightOn</Member>
+        <Member type="Event">event SwitchLightOffEventHandler SwitchLightOff</Member>
+        <Member type="Method">Void TriggerUpdate(String displayData)</Member>
+        <Member type="Method">Void TriggerSwitchLightOn()</Member>
+        <Member type="Method">Void TriggerSwitchLightOff()</Member>
+      </Entity>
+      <Entity type="Interface">
+        <Name>ITickControl</Name>
+        <Access>Public</Access>
+        <Location left="2719" top="582" />
+        <Size width="162" height="216" />
+        <Collapsed>False</Collapsed>
+        <Member type="Method">Void Start(Action routine)</Member>
+      </Entity>
+      <Entity type="Class">
+        <Name>ClockBehavior</Name>
+        <Access>Public</Access>
+        <Location left="2331" top="1406" />
+        <Size width="162" height="216" />
+        <Collapsed>False</Collapsed>
+        <Member type="Constructor">protected ClockBehavior()</Member>
+        <Member type="Method">public abstract Void Load(IClock clock)</Member>
+        <Member type="Method">public abstract Void OnClick(IClockButtonClick buttonClick)</Member>
+        <Member type="Method">public abstract Void Load(IClock clock, DateTime data)</Member>
+        <Member type="Method">public abstract Void Unload()</Member>
+        <Modifier>Abstract</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>SingletonClockBehavior&lt;T&gt;</Name>
+        <Access>Public</Access>
+        <Location left="2603" top="1406" />
+        <Size width="225" height="216" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private T SingletonInstance</Member>
+        <Member type="Property">public T Instance { get; }</Member>
+        <Member type="Constructor">protected SingletonClockBehavior()</Member>
+        <Member type="Constructor">static SingletonClockBehavior()</Member>
+        <Modifier>Abstract</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>StopwatchBehavior</Name>
+        <Access>Public</Access>
+        <Location left="2401" top="1041" />
+        <Size width="162" height="298" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private IClock _clock</Member>
+        <Member type="Property">public TimeSpan TimeSpan { get; set; }</Member>
+        <Member type="Property">public Boolean IsRunning { get; set; }</Member>
+        <Member type="Constructor">public StopwatchBehavior()</Member>
+        <Member type="Method">public Void IncrementTimeSpanBySecond()</Member>
+        <Member type="Method">private Void Tick(Object sender, EventArgs eventArgs)</Member>
+        <Member type="Method">private String GetTimeSpanString()</Member>
+        <Member type="Method">public override Void Load(IClock clock)</Member>
+        <Member type="Method">public override Void OnClick(IClockButtonClick buttonClick)</Member>
+        <Member type="Method">public override Void Load(IClock clock, DateTime data)</Member>
+        <Member type="Method">public override Void Unload()</Member>
+        <Member type="Method">public Void Start()</Member>
+        <Member type="Method">public Void Stop()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>TimeChangeBehavior</Name>
+        <Access>Public</Access>
+        <Location left="2109" top="1041" />
+        <Size width="262" height="281" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private IClock _clock</Member>
+        <Member type="Field">private Mode _mode</Member>
+        <Member type="Field">private Boolean _isFlashing</Member>
+        <Member type="Property">public DateTime Time { get; set; }</Member>
+        <Member type="Constructor">public TimeChangeBehavior()</Member>
+        <Member type="Method">public Void IncrementMinute()</Member>
+        <Member type="Method">public Void IncrementHour()</Member>
+        <Member type="Method">public override Void Load(IClock clock)</Member>
+        <Member type="Method">private Void Tick(Object sender, EventArgs e)</Member>
+        <Member type="Method">public override Void OnClick(IClockButtonClick buttonClick)</Member>
+        <Member type="Method">public override Void Load(IClock clock, DateTime data)</Member>
+        <Member type="Method">public override Void Unload()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>LightClick</Name>
+        <Access>Public</Access>
+        <Location left="2109" top="665" />
+        <Size width="162" height="216" />
+        <Collapsed>False</Collapsed>
+        <Member type="Constructor">public LightClick()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>LongSetClick</Name>
+        <Access>Public</Access>
+        <Location left="1594" top="665" />
+        <Size width="162" height="216" />
+        <Collapsed>False</Collapsed>
+        <Member type="Constructor">public LongSetClick()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>SetClick</Name>
+        <Access>Public</Access>
+        <Location left="1936" top="665" />
+        <Size width="162" height="216" />
+        <Collapsed>False</Collapsed>
+        <Member type="Constructor">public SetClick()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>ModeClick</Name>
+        <Access>Public</Access>
+        <Location left="1767" top="665" />
+        <Size width="162" height="216" />
+        <Collapsed>False</Collapsed>
+        <Member type="Constructor">public ModeClick()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>SevenSegment</Name>
+        <Access>Public</Access>
+        <Location left="1792" top="55" />
+        <Size width="162" height="536" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private Point[][] segPoints</Member>
+        <Member type="Field">private Int32 gridHeight</Member>
+        <Member type="Field">private Int32 gridWidth</Member>
+        <Member type="Field">private Int32 elementWidth</Member>
+        <Member type="Field">private Single italicFactor</Member>
+        <Member type="Field">private Color colorBackground</Member>
+        <Member type="Field">private Color colorDark</Member>
+        <Member type="Field">private Color colorLight</Member>
+        <Member type="Field">private String theValue</Member>
+        <Member type="Field">private Int32 customPattern</Member>
+        <Member type="Field">private Boolean showDot</Member>
+        <Member type="Field">private Boolean dotOn</Member>
+        <Member type="Property">public Color ColorBackground { get; set; }</Member>
+        <Member type="Property">public Color ColorDark { get; set; }</Member>
+        <Member type="Property">public Color ColorLight { get; set; }</Member>
+        <Member type="Property">public Int32 ElementWidth { get; set; }</Member>
+        <Member type="Property">public Single ItalicFactor { get; set; }</Member>
+        <Member type="Property">public String Value { get; set; }</Member>
+        <Member type="Property">public Int32 CustomPattern { get; set; }</Member>
+        <Member type="Property">public Boolean DecimalShow { get; set; }</Member>
+        <Member type="Property">public Boolean DecimalOn { get; set; }</Member>
+        <Member type="Constructor">public SevenSegment()</Member>
+        <Member type="Method">private Void RecalculatePoints()</Member>
+        <Member type="Method">private Void SevenSegment_Resize(Object sender, EventArgs e)</Member>
+        <Member type="Method">protected virtual Void OnPaddingChanged(EventArgs e)</Member>
+        <Member type="Method">protected virtual Void OnPaintBackground(PaintEventArgs e)</Member>
+        <Member type="Method">private Void SevenSegment_Paint(Object sender, PaintEventArgs e)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>SevenSegmentArray</Name>
+        <Access>Public</Access>
+        <Location left="1972" top="55" />
+        <Size width="162" height="502" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private SevenSegment[] segments</Member>
+        <Member type="Field">private Int32 elementWidth</Member>
+        <Member type="Field">private Single italicFactor</Member>
+        <Member type="Field">private Color colorBackground</Member>
+        <Member type="Field">private Color colorDark</Member>
+        <Member type="Field">private Color colorLight</Member>
+        <Member type="Field">private Boolean showDot</Member>
+        <Member type="Field">private Padding elementPadding</Member>
+        <Member type="Field">private String theValue</Member>
+        <Member type="Property">public Color ColorBackground { get; set; }</Member>
+        <Member type="Property">public Color ColorDark { get; set; }</Member>
+        <Member type="Property">public Color ColorLight { get; set; }</Member>
+        <Member type="Property">public Int32 ElementWidth { get; set; }</Member>
+        <Member type="Property">public Single ItalicFactor { get; set; }</Member>
+        <Member type="Property">public Boolean DecimalShow { get; set; }</Member>
+        <Member type="Property">public Int32 ArrayCount { get; set; }</Member>
+        <Member type="Property">public Padding ElementPadding { get; set; }</Member>
+        <Member type="Property">public String Value { get; set; }</Member>
+        <Member type="Constructor">public SevenSegmentArray()</Member>
+        <Member type="Method">private Void RecreateSegments(Int32 count)</Member>
+        <Member type="Method">private Void ResizeSegments()</Member>
+        <Member type="Method">private Void UpdateSegments()</Member>
+        <Member type="Method">private Void SevenSegmentArray_Resize(Object sender, EventArgs e)</Member>
+        <Member type="Method">protected virtual Void OnPaintBackground(PaintEventArgs e)</Member>
+        <Member type="Method">private Void InitializeComponent()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>Clock</Name>
+        <Access>Public</Access>
+        <Location left="2524" top="532" />
+        <Size width="162" height="264" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private ITickControl _tickControl</Member>
+        <Member type="Property">public ClockBehavior Behavior { get; set; }</Member>
+        <Member type="Property">public IClockDisplay Display { get; set; }</Member>
+        <Member type="Property">public ITickControl TickControl { get; set; }</Member>
+        <Member type="Event">private event ClockTickEventHandler _tick</Member>
+        <Member type="Event">public event ClockTickEventHandler Tick</Member>
+        <Member type="Constructor">public Clock()</Member>
+        <Member type="Method">public Void SwitchBehavior(DateTime time)</Member>
+        <Member type="Method">public Void SwitchBehavior()</Member>
+        <Member type="Method">public Void RegisterClick(IClockButtonClick clockButtonClick)</Member>
+        <Member type="Method">protected Void OnTick()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>TimeBehavior</Name>
+        <Access>Public</Access>
+        <Location left="2603" top="1041" />
+        <Size width="286" height="247" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private IClock _clock</Member>
+        <Member type="Field">private DateTime _time</Member>
+        <Member type="Property">private TimeBehavior Container { get; }</Member>
+        <Member type="Property">public DateTime Time { get; set; }</Member>
+        <Member type="Constructor">public TimeBehavior()</Member>
+        <Member type="Method">private Void Tick(Object sender, EventArgs eventArgs)</Member>
+        <Member type="Method">public override Void Load(IClock clock)</Member>
+        <Member type="Method">public override Void OnClick(IClockButtonClick buttonClick)</Member>
+        <Member type="Method">public override Void Load(IClock clock, DateTime data)</Member>
+        <Member type="Method">public override Void Unload()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>DefaultClockFactory</Name>
+        <Access>Public</Access>
+        <Location left="3062" top="249" />
+        <Size width="162" height="216" />
+        <Collapsed>False</Collapsed>
+        <Member type="Constructor">public DefaultClockFactory()</Member>
+        <Member type="Method">public Clock Create()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>DefaultDisplay</Name>
+        <Access>Public</Access>
+        <Location left="3105" top="852" />
+        <Size width="162" height="281" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private Int32 _countdownSeconds</Member>
+        <Member type="Event">public event UpdateEventHandler Update</Member>
+        <Member type="Event">public event SwitchLightOnEventHandler SwitchLightOn</Member>
+        <Member type="Event">public event SwitchLightOffEventHandler SwitchLightOff</Member>
+        <Member type="Constructor">public DefaultDisplay()</Member>
+        <Member type="Method">public Void TriggerUpdate(String displayData)</Member>
+        <Member type="Method">public Void TriggerSwitchLightOn()</Member>
+        <Member type="Method">public Void TriggerSwitchLightOff()</Member>
+        <Member type="Method">private Void InitiateCountdown()</Member>
+        <Member type="Method">private Void IncrementCountdownByFiveSeconds()</Member>
+        <Member type="Method">private Boolean IsDisplayLightActivated()</Member>
+        <Member type="Method">private Void Countdown()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>UpdateEventArgs</Name>
+        <Access>Public</Access>
+        <Location left="2880" top="249" />
+        <Size width="162" height="216" />
+        <Collapsed>False</Collapsed>
+        <Member type="Property">public String DisplayData { get; set; }</Member>
+        <Member type="Constructor">public UpdateEventArgs()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>FormMain</Name>
+        <Access>Public</Access>
+        <Location left="2248" top="55" />
+        <Size width="162" height="451" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private readonly IClock _clock</Member>
+        <Member type="Field">private DateTime _mouseDownTime</Member>
+        <Member type="Field">private IContainer components</Member>
+        <Member type="Field">private SevenSegmentArray sevenSegmentArray</Member>
+        <Member type="Field">private Button btnMode</Member>
+        <Member type="Field">private Button btnSet</Member>
+        <Member type="Field">private Button btnLight</Member>
+        <Member type="Field">private ToolTip ttMainForm</Member>
+        <Member type="Constructor">public FormMain()</Member>
+        <Member type="Method">private Void Display_SwitchLightOn(Object sender, EventArgs args)</Member>
+        <Member type="Method">private Void Display_SwitchLightOff(Object sender, EventArgs args)</Member>
+        <Member type="Method">private Void Display_Update(Object sender, UpdateEventArgs e)</Member>
+        <Member type="Method">private Void btnMode_Click(Object sender, EventArgs e)</Member>
+        <Member type="Method">private Void btnSet_Click(Object sender, EventArgs e)</Member>
+        <Member type="Method">private Void btnLight_Click(Object sender, EventArgs e)</Member>
+        <Member type="Method">private Void btnLongSetClick_Click(Object sender, EventArgs e)</Member>
+        <Member type="Method">private Void btnSet_MouseDown(Object sender, MouseEventArgs e)</Member>
+        <Member type="Method">private Void btnSet_MouseUp(Object sender, MouseEventArgs e)</Member>
+        <Member type="Method">private Void SetDisplayColorToGreen()</Member>
+        <Member type="Method">private Void SetDisplayColorToBlack()</Member>
+        <Member type="Method">protected virtual Void Dispose(Boolean disposing)</Member>
+        <Member type="Method">private Void InitializeComponent()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>Program</Name>
+        <Access>Internal</Access>
+        <Location left="2693" top="10" />
+        <Size width="162" height="216" />
+        <Collapsed>False</Collapsed>
+        <Member type="Method">private static Void Main()</Member>
+        <Modifier>Static</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>DefaultClockTickControl</Name>
+        <Access>Public</Access>
+        <Location left="2909" top="582" />
+        <Size width="173" height="216" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private Action _routine</Member>
+        <Member type="Constructor">public DefaultClockTickControl()</Member>
+        <Member type="Method">public Void Start(Action routine)</Member>
+        <Member type="Method">private Void ThreadMethod()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>DateTimeExtension</Name>
+        <Access>Public</Access>
+        <Location left="3062" top="10" />
+        <Size width="162" height="216" />
+        <Collapsed>False</Collapsed>
+        <Member type="Method">public static String ToDigitalClockFormat(DateTime time)</Member>
+        <Modifier>Static</Modifier>
+      </Entity>
+      <Entity type="Delegate">
+        <Name>ClockTickEventHandler</Name>
+        <Access>Public</Access>
+        <Location left="2880" top="10" />
+        <Size width="162" height="216" />
+        <Collapsed>False</Collapsed>
+        <ReturnType>Void</ReturnType>
+        <Param>Object sender</Param>
+        <Param>EventArgs e</Param>
+      </Entity>
+      <Entity type="Delegate">
+        <Name>SwitchLightOffEventHandler</Name>
+        <Access>Public</Access>
+        <Location left="2507" top="10" />
+        <Size width="162" height="216" />
+        <Collapsed>False</Collapsed>
+        <ReturnType>Void</ReturnType>
+        <Param>Object sender</Param>
+        <Param>EventArgs args</Param>
+      </Entity>
+      <Entity type="Delegate">
+        <Name>SwitchLightOnEventHandler</Name>
+        <Access>Public</Access>
+        <Location left="2507" top="249" />
+        <Size width="162" height="216" />
+        <Collapsed>False</Collapsed>
+        <ReturnType>Void</ReturnType>
+        <Param>Object sender</Param>
+        <Param>EventArgs args</Param>
+      </Entity>
+      <Entity type="Delegate">
+        <Name>UpdateEventHandler</Name>
+        <Access>Public</Access>
+        <Location left="2693" top="249" />
+        <Size width="162" height="216" />
+        <Collapsed>False</Collapsed>
+        <ReturnType>Void</ReturnType>
+        <Param>Object sender</Param>
+        <Param>UpdateEventArgs e</Param>
+      </Entity>
+      <Entity type="Enum">
+        <Name>Mode</Name>
+        <Access>Public</Access>
+        <Location left="1869" top="1123" />
+        <Size width="162" height="216" />
+        <Collapsed>False</Collapsed>
+        <Value>ChangeHour = 0</Value>
+        <Value>ChangeMinute = 1</Value>
+      </Entity>
+      <Entity type="Enum">
+        <Name>ValuePattern</Name>
+        <Access>Public</Access>
+        <Location left="1594" top="55" />
+        <Size width="162" height="588" />
+        <Collapsed>False</Collapsed>
+        <Value>None = 0</Value>
+        <Value>Zero = 119</Value>
+        <Value>One = 36</Value>
+        <Value>Two = 93</Value>
+        <Value>Three = 109</Value>
+        <Value>Four = 46</Value>
+        <Value>Five = 107</Value>
+        <Value>Six = 123</Value>
+        <Value>Seven = 37</Value>
+        <Value>Eight = 127</Value>
+        <Value>Nine = 111</Value>
+        <Value>A = 63</Value>
+        <Value>B = 122</Value>
+        <Value>C = 83</Value>
+        <Value>D = 124</Value>
+        <Value>E = 91</Value>
+        <Value>F = 27</Value>
+        <Value>G = 115</Value>
+        <Value>H = 62</Value>
+        <Value>J = 116</Value>
+        <Value>L = 82</Value>
+        <Value>N = 56</Value>
+        <Value>O = 120</Value>
+        <Value>P = 31</Value>
+        <Value>Q = 47</Value>
+        <Value>R = 24</Value>
+        <Value>T = 90</Value>
+        <Value>U = 118</Value>
+        <Value>Y = 110</Value>
+        <Value>Dash = 8</Value>
+        <Value>Equals = 72</Value>
+      </Entity>
+    </Entities>
+    <Relationships>
+      <Relationship type="Nesting" first="7" second="27">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+      </Relationship>
+      <Relationship type="Nesting" first="12" second="28">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+      </Relationship>
+      <Relationship type="Generalization" first="5" second="4">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+      </Relationship>
+      <Relationship type="Generalization" first="6" second="4">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+      </Relationship>
+      <Relationship type="Generalization" first="7" second="4">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+      </Relationship>
+      <Relationship type="Realization" first="8" second="0">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+      </Relationship>
+      <Relationship type="Realization" first="9" second="0">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+      </Relationship>
+      <Relationship type="Realization" first="10" second="0">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+      </Relationship>
+      <Relationship type="Realization" first="11" second="0">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+      </Relationship>
+      <Relationship type="Realization" first="14" second="1">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+      </Relationship>
+      <Relationship type="Realization" first="17" second="2">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+      </Relationship>
+      <Relationship type="Realization" first="21" second="3">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+      </Relationship>
+      <Relationship type="Association" first="6" second="1">
+        <Label>
+        </Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <StartRole>_clock</StartRole>
+        <EndMultiplicity>1</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="7" second="1">
+        <Label>
+        </Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <StartRole>_clock</StartRole>
+        <EndMultiplicity>1</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="7" second="27">
+        <Label>
+        </Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <StartRole>_mode</StartRole>
+        <EndMultiplicity>1</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="13" second="12">
+        <Label>
+        </Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <StartRole>segments</StartRole>
+        <EndMultiplicity>*</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="14" second="3">
+        <Label>
+        </Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <StartRole>_tickControl</StartRole>
+        <EndMultiplicity>1</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="15" second="1">
+        <Label>
+        </Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <StartRole>_clock</StartRole>
+        <EndMultiplicity>1</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="19" second="1">
+        <Label>
+        </Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <StartRole>_clock</StartRole>
+        <EndMultiplicity>1</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="19" second="13">
+        <Label>
+        </Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <StartRole>sevenSegmentArray</StartRole>
+        <EndMultiplicity>1</EndMultiplicity>
+      </Relationship>
+    </Relationships>
+  </ProjectItem>
+</Project>
